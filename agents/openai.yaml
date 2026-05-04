@@ -1,0 +1,3 @@
+display_name: Market Intelligence Telegram
+short_description: Score and publish market news to Telegram.
+default_prompt: Run or extend the market intelligence Telegram pipeline for Spain/EU finance, policy, grants, tax, imports, SME, and expat business news.
