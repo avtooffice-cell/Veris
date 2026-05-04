@@ -1,0 +1,14 @@
+timezone: "Europe/Madrid"
+
+jobs:
+  digest:
+    enabled: true
+    interval_minutes: 180
+    quiet_hours:
+      start: "22:00"
+      end: "07:00"
+
+  deep_dive:
+    enabled: true
+    run_after_digest: true
+    max_articles: 3
