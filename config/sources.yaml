@@ -1,0 +1,69 @@
+sources:
+  - name: "European Commission"
+    level: "L1"
+    type: "institution"
+    region: "EU"
+    topics: ["grants", "regulation", "state_aid", "funding"]
+    urls:
+      - "https://ec.europa.eu/commission/presscorner/home/en"
+
+  - name: "European Central Bank"
+    level: "L1"
+    type: "institution"
+    region: "EU"
+    topics: ["rates", "inflation", "monetary_policy"]
+    urls:
+      - "https://www.ecb.europa.eu/press/html/index.en.html"
+
+  - name: "Banco de España"
+    level: "L1"
+    type: "institution"
+    region: "Spain"
+    topics: ["banking", "macro", "credit"]
+    urls:
+      - "https://www.bde.es/wbe/en/noticias-eventos/"
+
+  - name: "Agencia Tributaria"
+    level: "L1"
+    type: "institution"
+    region: "Spain"
+    topics: ["tax", "iva", "compliance"]
+    urls:
+      - "https://sede.agenciatributaria.gob.es/"
+
+  - name: "IMF"
+    level: "L1"
+    type: "institution"
+    region: "Global"
+    topics: ["macro", "risk", "forecast"]
+    urls:
+      - "https://www.imf.org/en/Publications/WEO"
+
+  - name: "Reuters Business"
+    level: "L2"
+    type: "rss"
+    region: "Global"
+    topics: ["business", "markets", "macro"]
+    rss:
+      - "https://www.reuters.com/markets/"
+
+  - name: "Expansion"
+    level: "L2"
+    type: "rss"
+    region: "Spain"
+    topics: ["business", "tax", "finance"]
+    rss: []
+
+  - name: "Cinco Dias"
+    level: "L2"
+    type: "rss"
+    region: "Spain"
+    topics: ["economy", "tax", "policy"]
+    rss: []
+
+  - name: "Valencia Plaza"
+    level: "L3"
+    type: "rss"
+    region: "Valencia"
+    topics: ["regional_business", "sme", "policy"]
+    rss: []
