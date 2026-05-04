@@ -1,0 +1,18 @@
+source_level_weights:
+  L1: 4
+  L2: 3
+  L3: 2
+  L4: 1
+
+market_relevance_weights:
+  grants: 25
+  tax: 20
+  trade: 20
+  finance: 15
+  sme: 10
+  expats: 10
+
+minimum_digest_score: 60
+minimum_deep_dive_score: 80
+max_deep_dive_articles: 3
+min_deep_dive_articles: 2
