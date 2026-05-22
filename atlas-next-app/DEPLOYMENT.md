@@ -15,26 +15,24 @@ Language pages:
 - https://next-app-steel-ten.vercel.app/de
 - https://next-app-steel-ten.vercel.app/pl
 
-## Latest multilingual marketing update
+## Latest visual audit update
 
 Date: 2026-05-22
 
-All supported language pages now use the same conversion-focused marketing architecture:
+Implemented recommendations from `Veris Atlas visual audit — 2026-05-22`:
 
-- hero with two CTA paths;
-- high-positioned lead-check form;
-- audience block for autonomo, small business, expats, and technology projects;
-- problem block explaining grant-fit risk;
-- `How Atlas works` section;
-- `What Atlas scores` section;
-- `What you get after scoring` section;
-- before/after Atlas comparison;
-- Atlas Scoring vs Veris Advisory cards;
-- compliance block;
-- updated packages: `€99` single scoring and `€198` strategic package;
-- shortened CEO message;
-- FAQ;
-- final CTA.
+- localized Ukrainian form labels and section eyebrows;
+- set client-side document language from the active route;
+- removed unfinished `+34 ...` phone placeholder;
+- replaced fake Telegram CTA with `mailto:info@veris.es`;
+- made legal footer items non-live while legal pages are not ready;
+- tightened mobile header to logo + language + compact CTA;
+- rebuilt the hero visual as an Atlas product-preview panel with score ring, risk bars, checklist, and recommendation chip;
+- added restrained grid/paper hero background;
+- added card hover depth and small markers/icons;
+- added lead-section mini checklist;
+- added mobile sticky CTA;
+- added one-time scroll reveal and FAQ open animation.
 
 ## Local project path
 
@@ -42,10 +40,9 @@ All supported language pages now use the same conversion-focused marketing archi
 
 ## Changed local files for this update
 
-- `app/[lang]/page.tsx`
 - `components/MarketingLandingPage.tsx`
-- deleted `components/UkrainianMarketingPage.tsx`
-- `app/globals.css` from the previous marketing layout remains in use
+- `components/PageRuntime.tsx`
+- `app/globals.css`
 
 ## Stack
 
@@ -59,9 +56,14 @@ All supported language pages now use the same conversion-focused marketing archi
 ## Verified
 
 - `npm run build` completed successfully locally.
+- Local `/uk` route returned HTTP 200.
+- Local `/uk` contains Ukrainian `Статус` and `Проблема` labels.
+- Local `/uk` contains the new hero product-preview panel and mobile sticky CTA.
+- In-app browser mobile check: `/uk` document language becomes `uk`, mobile header height is about 71px, login is hidden on mobile, sticky CTA is visible.
 - Vercel production deploy completed successfully.
 - Public `/en`, `/uk`, `/es`, `/ru`, `/de`, `/pl` routes returned HTTP 200.
-- All public language routes contain the new lead-check section, FAQ section, and language-specific package links.
+- Public language routes contain the lead-check section and hero product preview.
+- Public language routes no longer contain `+34 ...` or `https://t.me/` placeholders.
 
 ## Vercel deployment
 
@@ -71,7 +73,7 @@ https://next-app-steel-ten.vercel.app
 
 Latest production deployment URL from CLI:
 
-https://next-caw6iu5rv-avtooffice-cells-projects.vercel.app
+https://next-kbss1uer6-avtooffice-cells-projects.vercel.app
 
 ## Note
 
