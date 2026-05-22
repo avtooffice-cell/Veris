@@ -15,9 +15,18 @@ Language pages:
 - https://next-app-steel-ten.vercel.app/de
 - https://next-app-steel-ten.vercel.app/pl
 
-## Latest visual audit update
+## Latest copy and mobile logo fix
 
 Date: 2026-05-22
+
+Implemented follow-up fixes:
+
+- completed body copy localization for PL, ES, RU, DE, and UK pages;
+- confirmed English copy remains only on `/en`;
+- fixed mobile header logo overlap by cropping the mobile logo to the square Veris mark only;
+- kept mobile header compact with logo mark + language selector + compact CTA.
+
+## Prior visual audit update
 
 Implemented recommendations from `Veris Atlas visual audit — 2026-05-22`:
 
@@ -41,7 +50,6 @@ Implemented recommendations from `Veris Atlas visual audit — 2026-05-22`:
 ## Changed local files for this update
 
 - `components/MarketingLandingPage.tsx`
-- `components/PageRuntime.tsx`
 - `app/globals.css`
 
 ## Stack
@@ -56,14 +64,12 @@ Implemented recommendations from `Veris Atlas visual audit — 2026-05-22`:
 ## Verified
 
 - `npm run build` completed successfully locally.
-- Local `/uk` route returned HTTP 200.
-- Local `/uk` contains Ukrainian `Статус` and `Проблема` labels.
-- Local `/uk` contains the new hero product-preview panel and mobile sticky CTA.
-- In-app browser mobile check: `/uk` document language becomes `uk`, mobile header height is about 71px, login is hidden on mobile, sticky CTA is visible.
+- Local `/pl`, `/es`, `/ru`, `/de` routes returned HTTP 200.
+- Local PL/ES/RU/DE routes no longer contain English hero text or English hero bullets.
+- In-app browser mobile check for `/pl`: document language is `pl`, mobile logo width is 48px, no Veris text overlap, hero text is Polish.
 - Vercel production deploy completed successfully.
-- Public `/en`, `/uk`, `/es`, `/ru`, `/de`, `/pl` routes returned HTTP 200.
-- Public language routes contain the lead-check section and hero product preview.
-- Public language routes no longer contain `+34 ...` or `https://t.me/` placeholders.
+- Public `/pl`, `/es`, `/ru`, `/de`, `/uk` routes no longer contain English hero text or English hero bullets.
+- Public `/en` still contains English copy as expected.
 
 ## Vercel deployment
 
@@ -73,7 +79,7 @@ https://next-app-steel-ten.vercel.app
 
 Latest production deployment URL from CLI:
 
-https://next-kbss1uer6-avtooffice-cells-projects.vercel.app
+https://next-6wtl1kftx-avtooffice-cells-projects.vercel.app
 
 ## Note
 
