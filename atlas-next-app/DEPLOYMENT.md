@@ -6,17 +6,22 @@ Atlas landing page was migrated locally to Next.js 16.2.6 and deployed to Vercel
 
 https://next-app-steel-ten.vercel.app
 
-Primary marketing page:
+Language pages:
 
-https://next-app-steel-ten.vercel.app/uk
+- https://next-app-steel-ten.vercel.app/en
+- https://next-app-steel-ten.vercel.app/uk
+- https://next-app-steel-ten.vercel.app/es
+- https://next-app-steel-ten.vercel.app/ru
+- https://next-app-steel-ten.vercel.app/de
+- https://next-app-steel-ten.vercel.app/pl
 
-## Latest marketing update
+## Latest multilingual marketing update
 
 Date: 2026-05-22
 
-The Ukrainian `/uk` landing page was rebuilt around the marketer's conversion architecture:
+All supported language pages now use the same conversion-focused marketing architecture:
 
-- new hero with two CTA paths;
+- hero with two CTA paths;
 - high-positioned lead-check form;
 - audience block for autonomo, small business, expats, and technology projects;
 - problem block explaining grant-fit risk;
@@ -38,8 +43,9 @@ The Ukrainian `/uk` landing page was rebuilt around the marketer's conversion ar
 ## Changed local files for this update
 
 - `app/[lang]/page.tsx`
-- `components/UkrainianMarketingPage.tsx`
-- `app/globals.css`
+- `components/MarketingLandingPage.tsx`
+- deleted `components/UkrainianMarketingPage.tsx`
+- `app/globals.css` from the previous marketing layout remains in use
 
 ## Stack
 
@@ -48,14 +54,14 @@ The Ukrainian `/uk` landing page was rebuilt around the marketer's conversion ar
 - TypeScript
 - App Router
 - Next `proxy.ts` language redirect by `Accept-Language`
-- Localized pages: EN, UK, ES, RU, DE, PL
+- Supported pages: EN, UK, ES, RU, DE, PL
 
 ## Verified
 
 - `npm run build` completed successfully locally.
 - Vercel production deploy completed successfully.
-- Public `/uk` route returned HTTP 200.
-- Public `/uk` contains the new hero, lead-check form, FAQ, and package plan links.
+- Public `/en`, `/uk`, `/es`, `/ru`, `/de`, `/pl` routes returned HTTP 200.
+- All public language routes contain the new lead-check section, FAQ section, and language-specific package links.
 
 ## Vercel deployment
 
@@ -65,7 +71,7 @@ https://next-app-steel-ten.vercel.app
 
 Latest production deployment URL from CLI:
 
-https://next-bweck3smu-avtooffice-cells-projects.vercel.app
+https://next-caw6iu5rv-avtooffice-cells-projects.vercel.app
 
 ## Note
 
