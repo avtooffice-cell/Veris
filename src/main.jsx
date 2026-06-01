@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
 
@@ -112,10 +112,263 @@ const translations = {
   }
 };
 
+Object.assign(translations, {
+  es: {
+    nav: ["Cómo funciona", "Qué revisamos", "Diagnóstico", "FAQ"],
+    slogan: "No solo. No a ciegas.",
+    cta: "Revisar mi caso",
+    locale: "Alicante, Comunidad Valenciana y España",
+    h1: "No solicites ayudas a ciegas.",
+    lead: "Primero comprueba si tu negocio tiene opciones reales de subvenciones, ayudas o financiación en España.",
+    sub: "Veris analiza tu situación y te dice qué caminos pueden tener sentido, y cuándo es mejor detenerse.",
+    proof: "Si no hay opciones reales, lo diremos claramente.",
+    secondary: "Cómo funciona",
+    cardTitle: "Autónomo en preparación",
+    cardMeta: "Digitalización + equipamiento, Alicante",
+    meters: ["Encaje regional", "Documentos", "Riesgo de rechazo"],
+    reviewTitle: "Requiere revisión",
+    checkItems: ["Registro o fecha prevista", "Presupuesto de inversión", "Código de actividad"],
+    problemKicker: "Problema",
+    problemTitle: "Muchas solicitudes empiezan tarde, mal o sin encaje real.",
+    problems: [
+      ["Requisitos dispersos", "Las reglas, plazos y condiciones cambian según el programa, la región y el tipo de negocio."],
+      ["Tiempo perdido", "Preparar documentos puede llevar semanas, incluso cuando no se cumplen las condiciones básicas."],
+      ["Promesas vagas", "Necesitas una revisión clara, no frases genéricas sobre oportunidades."]
+    ],
+    diagnosticTitle: "Un filtro honesto antes del papeleo.",
+    diagnosticText:
+      "Veris Check ofrece una primera evaluación de tu perfil, posibles caminos y factores de bloqueo antes de dedicar tiempo a un expediente completo.",
+    price: "29-49 EUR",
+    stepsTitle: "De una pregunta amplia a un siguiente paso concreto.",
+    steps: ["Formulario breve.", "Revisión del perfil y contexto local.", "Primera respuesta o diagnóstico.", "Opciones reales, bloqueos o un no claro."],
+    checksTitle: "Revisamos encaje, requisitos y riesgos.",
+    checks: ["Subvenciones, ayudas y financiación", "Requisitos regionales y del programa", "Documentos listos o pendientes", "Riesgos, plazos y motivos para parar"],
+    complianceTitle: "No prometemos aprobación. Prometemos claridad.",
+    compliance: "La decisión final la toma el organismo público, banco o programa. Veris ofrece apoyo diagnóstico y consultivo.",
+    faqTitle: "Preguntas antes de empezar.",
+    faq: [
+      ["¿Veris garantiza una subvención?", "No. Ayudamos a entender si tiene sentido continuar."],
+      ["¿Sirve para autónomos?", "Sí. Veris está pensado para autónomos, futuros autónomos y pequeñas empresas."],
+      ["¿Se puede revisar financiación?", "Sí. Revisamos subvenciones, ayudas, financiación y factores de bloqueo."]
+    ],
+    formTitle: "Empieza con una evaluación clara de tu situación.",
+    time: "2 minutos",
+    fields: ["Nombre", "Email o WhatsApp", "Ciudad / región", "Tipo de negocio", "¿Qué quieres revisar?"],
+    submit: "Enviar solicitud",
+    finalTitle: "Empieza con una evaluación clara de tu caso.",
+    finalCopy: "No estás solo. No vas a ciegas.",
+    footer: "Veris ayuda a revisar opciones reales antes de preparar documentos.",
+    contact: "Contacto: TODO"
+  },
+  fr: {
+    nav: ["Fonctionnement", "Ce que nous vérifions", "Diagnostic", "FAQ"],
+    slogan: "Pas seul. Pas à l'aveugle.",
+    cta: "Vérifier mon cas",
+    locale: "Alicante, Communauté valencienne et Espagne",
+    h1: "Ne demandez pas une aide à l'aveugle.",
+    lead: "Vérifiez d'abord si votre activité a de vraies options de subventions, aides ou financement en Espagne.",
+    sub: "Veris analyse votre situation et indique quelles pistes peuvent avoir du sens, et quand il vaut mieux s'arrêter.",
+    proof: "S'il n'y a pas d'options réelles, nous le dirons clairement.",
+    secondary: "Fonctionnement",
+    cardTitle: "Autónomo en préparation",
+    cardMeta: "Numérisation + équipement, Alicante",
+    meters: ["Adéquation régionale", "Documents", "Risque de refus"],
+    reviewTitle: "À vérifier",
+    checkItems: ["Enregistrement ou date prévue", "Budget d'investissement", "Code d'activité"],
+    problemKicker: "Problème",
+    problemTitle: "Beaucoup de demandes commencent tard, mal ou sans réelle adéquation.",
+    problems: [
+      ["Exigences dispersées", "Les règles, délais et conditions changent selon le programme, la région et le type d'activité."],
+      ["Temps perdu", "Les documents peuvent prendre des semaines, même lorsque les conditions de base ne sont pas remplies."],
+      ["Promesses floues", "Il faut une vérification claire, pas des phrases générales sur les opportunités."]
+    ],
+    diagnosticTitle: "Un filtre honnête avant la paperasse.",
+    diagnosticText:
+      "Veris Check donne une première évaluation du profil, des pistes possibles et des facteurs bloquants avant de consacrer du temps à un dossier complet.",
+    price: "29-49 EUR",
+    stepsTitle: "D'une question large à une prochaine étape concrète.",
+    steps: ["Formulaire court.", "Analyse du profil et du contexte local.", "Première réponse ou diagnostic.", "Options réelles, blocages ou non clair."],
+    checksTitle: "Nous vérifions l'adéquation, les exigences et les risques.",
+    checks: ["Subventions, aides et financement", "Exigences régionales et du programme", "Documents prêts ou manquants", "Risques, délais et raisons de s'arrêter"],
+    complianceTitle: "Nous ne promettons pas l'approbation. Nous promettons la clarté.",
+    compliance: "La décision finale appartient à l'organisme public, à la banque ou au programme. Veris fournit un soutien de diagnostic et de conseil.",
+    faqTitle: "Questions avant de commencer.",
+    faq: [
+      ["Veris garantit-il une subvention ?", "Non. Nous aidons à comprendre s'il est pertinent de continuer."],
+      ["Est-ce adapté aux autónomos ?", "Oui. Veris est conçu pour les autónomos, futurs autónomos et petites entreprises."],
+      ["Peut-on vérifier un financement ?", "Oui. Nous examinons subventions, aides, financement et facteurs bloquants."]
+    ],
+    formTitle: "Commencez par une évaluation claire de votre situation.",
+    time: "2 minutes",
+    fields: ["Nom", "Email ou WhatsApp", "Ville / région", "Type d'activité", "Que voulez-vous vérifier ?"],
+    submit: "Envoyer la demande",
+    finalTitle: "Commencez par une évaluation claire de votre cas.",
+    finalCopy: "Pas seul. Pas à l'aveugle.",
+    footer: "Veris aide à vérifier les options réelles avant de préparer les documents.",
+    contact: "Contact : TODO"
+  },
+  de: {
+    nav: ["So funktioniert es", "Was wir prüfen", "Diagnose", "FAQ"],
+    slogan: "Nicht allein. Nicht im Dunkeln.",
+    cta: "Fall prüfen",
+    locale: "Alicante, Valencianische Gemeinschaft und Spanien",
+    h1: "Beantragen Sie keine Förderung im Blindflug.",
+    lead: "Prüfen Sie zuerst, ob Ihr Unternehmen echte Optionen für Zuschüsse, Fördermittel oder Finanzierung in Spanien hat.",
+    sub: "Veris analysiert Ihre Situation und sagt, welche Wege sinnvoll sein können und wann es besser ist, nicht weiterzumachen.",
+    proof: "Wenn es keine realistischen Optionen gibt, sagen wir das klar.",
+    secondary: "So funktioniert es",
+    cardTitle: "Autónomo in Vorbereitung",
+    cardMeta: "Digitalisierung + Ausstattung, Alicante",
+    meters: ["Regionale Passung", "Dokumente", "Ablehnungsrisiko"],
+    reviewTitle: "Zu prüfen",
+    checkItems: ["Registrierung oder geplantes Datum", "Investitionsbudget", "Tätigkeitscode"],
+    problemKicker: "Problem",
+    problemTitle: "Viele Anträge starten zu spät, falsch oder ohne echte Passung.",
+    problems: [
+      ["Verstreute Anforderungen", "Regeln, Fristen und Bedingungen ändern sich je nach Programm, Region und Unternehmenstyp."],
+      ["Verlorene Zeit", "Dokumente können Wochen dauern, selbst wenn Grundbedingungen nicht erfüllt sind."],
+      ["Unklare Versprechen", "Sie brauchen eine ehrliche Prüfung, keine allgemeinen Aussagen über Chancen."]
+    ],
+    diagnosticTitle: "Ein ehrlicher Filter vor der Papierarbeit.",
+    diagnosticText:
+      "Veris Check gibt eine erste Einschätzung von Profil, möglichen Wegen und Stop-Faktoren, bevor Sie Zeit in vollständige Unterlagen investieren.",
+    price: "29-49 EUR",
+    stepsTitle: "Von einer breiten Frage zum konkreten nächsten Schritt.",
+    steps: ["Kurzes Formular.", "Prüfung von Profil und lokalem Kontext.", "Erste Antwort oder Diagnose.", "Reale Optionen, Blocker oder ein klares Nein."],
+    checksTitle: "Wir prüfen Passung, Anforderungen und Risiken.",
+    checks: ["Zuschüsse, Fördermittel und Finanzierung", "Regionale und programmspezifische Anforderungen", "Vorhandene oder fehlende Dokumente", "Risiken, Fristen und Stop-Gründe"],
+    complianceTitle: "Wir versprechen keine Genehmigung. Wir versprechen Klarheit.",
+    compliance: "Die endgültige Entscheidung trifft die öffentliche Stelle, Bank oder das Programm. Veris bietet diagnostische und beratende Unterstützung.",
+    faqTitle: "Fragen vor dem Start.",
+    faq: [
+      ["Garantiert Veris eine Förderung?", "Nein. Wir helfen zu verstehen, ob es sinnvoll ist, weiterzumachen."],
+      ["Ist das für Autónomos geeignet?", "Ja. Veris ist für Autónomos, zukünftige Autónomos und kleine Unternehmen gedacht."],
+      ["Kann Finanzierung geprüft werden?", "Ja. Wir prüfen Zuschüsse, Fördermittel, Finanzierung und Stop-Faktoren."]
+    ],
+    formTitle: "Beginnen Sie mit einer klaren Einschätzung Ihrer Situation.",
+    time: "2 Minuten",
+    fields: ["Name", "Email oder WhatsApp", "Stadt / Region", "Unternehmenstyp", "Was möchten Sie prüfen?"],
+    submit: "Anfrage senden",
+    finalTitle: "Beginnen Sie mit einer klaren Einschätzung Ihres Falls.",
+    finalCopy: "Nicht allein. Nicht im Dunkeln.",
+    footer: "Veris hilft, reale Optionen vor der Dokumentenvorbereitung zu prüfen.",
+    contact: "Kontakt: TODO"
+  },
+  pl: {
+    nav: ["Jak to działa", "Co sprawdzamy", "Diagnoza", "FAQ"],
+    slogan: "Nie sam. Nie na ślepo.",
+    cta: "Sprawdź przypadek",
+    locale: "Alicante, Wspólnota Walencka i Hiszpania",
+    h1: "Nie składaj wniosku o pomoc na ślepo.",
+    lead: "Najpierw sprawdź, czy Twoja firma ma realne opcje dotacji, grantów lub finansowania w Hiszpanii.",
+    sub: "Veris analizuje Twoją sytuację i mówi, które ścieżki mogą mieć sens, a kiedy lepiej się zatrzymać.",
+    proof: "Jeśli nie ma realnych opcji, powiemy to wprost.",
+    secondary: "Jak to działa",
+    cardTitle: "Autónomo w przygotowaniu",
+    cardMeta: "Cyfryzacja + wyposażenie, Alicante",
+    meters: ["Dopasowanie regionalne", "Dokumenty", "Ryzyko odmowy"],
+    reviewTitle: "Do sprawdzenia",
+    checkItems: ["Rejestracja lub planowana data", "Budżet inwestycji", "Kod działalności"],
+    problemKicker: "Problem",
+    problemTitle: "Wiele wniosków zaczyna się za późno, błędnie albo bez realnego dopasowania.",
+    problems: [
+      ["Rozproszone wymagania", "Zasady, terminy i warunki zmieniają się zależnie od programu, regionu i typu firmy."],
+      ["Stracony czas", "Dokumenty mogą zająć tygodnie, nawet gdy podstawowe warunki nie są spełnione."],
+      ["Niejasne obietnice", "Potrzebujesz rzetelnej weryfikacji, nie ogólnych haseł o możliwościach."]
+    ],
+    diagnosticTitle: "Uczciwy filtr przed papierologią.",
+    diagnosticText:
+      "Veris Check daje pierwszą ocenę profilu, możliwych ścieżek i czynników blokujących, zanim poświęcisz czas na pełny pakiet dokumentów.",
+    price: "29-49 EUR",
+    stepsTitle: "Od szerokiego pytania do konkretnego następnego kroku.",
+    steps: ["Krótki formularz.", "Analiza profilu i lokalnego kontekstu.", "Pierwsza odpowiedź lub diagnoza.", "Realne opcje, blokady albo jasne nie."],
+    checksTitle: "Sprawdzamy dopasowanie, wymagania i ryzyka.",
+    checks: ["Dotacje, granty i finansowanie", "Wymagania regionalne i programowe", "Gotowe lub brakujące dokumenty", "Ryzyka, terminy i powody, by się zatrzymać"],
+    complianceTitle: "Nie obiecujemy zatwierdzenia. Obiecujemy jasność.",
+    compliance: "Ostateczną decyzję podejmuje instytucja publiczna, bank lub program. Veris zapewnia wsparcie diagnostyczne i doradcze.",
+    faqTitle: "Pytania przed startem.",
+    faq: [
+      ["Czy Veris gwarantuje dotację?", "Nie. Pomagamy zrozumieć, czy warto iść dalej."],
+      ["Czy to jest dla autónomos?", "Tak. Veris jest dla autónomos, przyszłych autónomos i małych firm."],
+      ["Czy można sprawdzić finansowanie?", "Tak. Sprawdzamy dotacje, granty, finansowanie i czynniki blokujące."]
+    ],
+    formTitle: "Zacznij od jasnej oceny swojej sytuacji.",
+    time: "2 minuty",
+    fields: ["Imię", "Email lub WhatsApp", "Miasto / region", "Typ firmy", "Co chcesz sprawdzić?"],
+    submit: "Wyślij zapytanie",
+    finalTitle: "Zacznij od jasnej oceny swojego przypadku.",
+    finalCopy: "Nie sam. Nie na ślepo.",
+    footer: "Veris pomaga sprawdzić realne opcje przed przygotowaniem dokumentów.",
+    contact: "Kontakt: TODO"
+  },
+  ru: {
+    nav: ["Как это работает", "Что проверяем", "Диагностика", "FAQ"],
+    slogan: "Не один. Не вслепую.",
+    cta: "Проверить случай",
+    locale: "Аликанте, Валенсийское сообщество и Испания",
+    h1: "Не подавайте заявку на помощь вслепую.",
+    lead: "Сначала проверьте, есть ли у вашего бизнеса реальные варианты субсидий, грантов или финансирования в Испании.",
+    sub: "Veris анализирует вашу ситуацию и говорит, какие пути могут иметь смысл, а когда лучше остановиться.",
+    proof: "Если реальных вариантов нет, мы скажем прямо.",
+    secondary: "Как это работает",
+    cardTitle: "Autónomo в подготовке",
+    cardMeta: "Цифровизация + оборудование, Аликанте",
+    meters: ["Региональное соответствие", "Документы", "Риск отказа"],
+    reviewTitle: "Нужно проверить",
+    checkItems: ["Регистрация или плановая дата", "Бюджет инвестиции", "Код деятельности"],
+    problemKicker: "Проблема",
+    problemTitle: "Многие заявки начинаются поздно, неправильно или без реального соответствия.",
+    problems: [
+      ["Разрозненные требования", "Правила, сроки и условия меняются в зависимости от программы, региона и типа бизнеса."],
+      ["Потерянное время", "Подготовка документов может занять недели, даже когда базовые условия не выполнены."],
+      ["Нечеткие обещания", "Нужна честная проверка, а не общие фразы о возможностях."]
+    ],
+    diagnosticTitle: "Честный фильтр перед бумажной работой.",
+    diagnosticText:
+      "Veris Check дает первую оценку профиля, возможных путей и стоп-факторов до того, как вы потратите время на полный пакет документов.",
+    price: "29-49 EUR",
+    stepsTitle: "От широкого вопроса к конкретному следующему шагу.",
+    steps: ["Короткая форма.", "Проверка профиля и локального контекста.", "Первый ответ или диагностика.", "Реальные варианты, блокеры или четкое нет."],
+    checksTitle: "Мы проверяем соответствие, требования и риски.",
+    checks: ["Субсидии, гранты и финансирование", "Региональные и программные требования", "Готовые или отсутствующие документы", "Риски, сроки и причины остановиться"],
+    complianceTitle: "Мы не обещаем одобрение. Мы обещаем ясность.",
+    compliance: "Окончательное решение принимает государственный орган, банк или программа. Veris оказывает диагностическую и консультационную поддержку.",
+    faqTitle: "Вопросы перед стартом.",
+    faq: [
+      ["Veris гарантирует субсидию?", "Нет. Мы помогаем понять, есть ли смысл двигаться дальше."],
+      ["Это подходит для autonomos?", "Да. Veris создан для autonomos, будущих autonomos и малого бизнеса."],
+      ["Можно проверить финансирование?", "Да. Мы смотрим субсидии, гранты, финансирование и стоп-факторы."]
+    ],
+    formTitle: "Начните с ясной оценки вашей ситуации.",
+    time: "2 минуты",
+    fields: ["Имя", "Email или WhatsApp", "Город / регион", "Тип бизнеса", "Что хотите проверить?"],
+    submit: "Отправить запрос",
+    finalTitle: "Начните с ясной оценки вашего случая.",
+    finalCopy: "Не один. Не вслепую.",
+    footer: "Veris помогает проверить реальные варианты до подготовки документов.",
+    contact: "Контакт: TODO"
+  }
+});
+
+const languageOrder = ["en", "es", "fr", "de", "pl", "ru", "uk"];
+
+const languageLabels = {
+  en: "EN",
+  es: "ES",
+  fr: "FR",
+  de: "DE",
+  pl: "PL",
+  ru: "RU",
+  uk: "UA"
+};
+
 function App() {
   const [lang, setLang] = useState("uk");
   const t = translations[lang];
-  const labels = useMemo(() => ({ uk: "UA", en: "EN" }), []);
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   return (
     <>
@@ -132,9 +385,9 @@ function App() {
         </nav>
         <div className="header-actions">
           <select aria-label="Language" value={lang} onChange={(event) => setLang(event.target.value)}>
-            {Object.keys(translations).map((code) => (
+            {languageOrder.map((code) => (
               <option key={code} value={code}>
-                {labels[code]}
+                {languageLabels[code]}
               </option>
             ))}
           </select>
@@ -200,10 +453,10 @@ function App() {
             </ul>
           </div>
           <form className="lead-form" onSubmit={(event) => event.preventDefault()}>
-            {t.fields.slice(0, 4).map((field) => (
+            {t.fields.slice(0, 4).map((field, index) => (
               <label key={field}>
                 <span>{field}</span>
-                <input type={field.includes("Email") ? "email" : "text"} />
+                <input type={index === 1 ? "email" : "text"} />
               </label>
             ))}
             <label className="full">
