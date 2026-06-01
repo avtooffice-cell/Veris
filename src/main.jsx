@@ -457,14 +457,18 @@ function App() {
             <p className="kicker">{t.cta}</p>
             <h2>{t.formTitle}</h2>
           </div>
-          <details className="questionnaire-dropdown" open>
+          <details className="questionnaire-dropdown">
             <summary>
               <span className="dropdown-title">Анкета перевірки</span>
               <ul className="compact-list">
                 <li>{t.time}</li>
                 <li>{t.proof}</li>
               </ul>
-              <span className="dropdown-icon" aria-hidden="true">⌄</span>
+              <span className="dropdown-action" aria-hidden="true">
+                <span className="action-open">Розгорнути</span>
+                <span className="action-close">Згорнути</span>
+                <span className="chevron">⌄</span>
+              </span>
             </summary>
             <form className="lead-form large-lead-form detailed-check-form" onSubmit={(event) => event.preventDefault()}>
               <FormSelect label={checkFormSelects[0][0]} options={checkFormSelects[0][1]} className="full" />
