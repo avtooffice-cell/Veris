@@ -108,6 +108,12 @@ select {
   font-weight: 800;
 }
 
+.header-actions select {
+  width: auto;
+  min-width: 96px;
+  max-width: 112px;
+}
+
 .section {
   padding: clamp(56px, 8vw, 112px) clamp(18px, 5vw, 72px);
 }
@@ -543,9 +549,9 @@ label {
   font-weight: 800;
 }
 
-input,
-select,
-textarea {
+.lead-form input,
+.lead-form select,
+.lead-form textarea {
   width: 100%;
   border: 1px solid var(--veris-line);
   border-radius: 6px;
