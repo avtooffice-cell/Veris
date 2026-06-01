@@ -362,6 +362,15 @@ const languageLabels = {
   uk: "UA"
 };
 
+const checkFormSelects = [
+  ["Ситуація", ["Оберіть варіант", "Я вже autonomo", "Планую стати autonomo", "Маю малий бізнес", "Хочу перевірити ідею"]],
+  ["Вік бізнесу", ["Оберіть варіант", "Ще не зареєстрований", "До 6 місяців", "6-24 місяці", "Більше 2 років"]],
+  ["Орієнтовна сума", ["Оберіть варіант", "До 3 000 EUR", "3 000-10 000 EUR", "10 000-30 000 EUR", "Понад 30 000 EUR"]],
+  ["Для чого потрібна підтримка?", ["Оберіть варіант", "Обладнання", "Цифровізація", "Запуск бізнесу", "Оборотні кошти", "Інше"]],
+  ["Інвестиція", ["Оберіть варіант", "Планується", "Вже зроблена", "Частково зроблена", "Поки не знаю"]],
+  ["Бажаний контакт", ["Оберіть варіант", "Email", "WhatsApp", "Телефон"]]
+];
+
 function App() {
   const [lang, setLang] = useState("uk");
   const t = translations[lang];
@@ -452,18 +461,29 @@ function App() {
               <li>{t.proof}</li>
             </ul>
           </div>
-          <form className="lead-form large-lead-form" onSubmit={(event) => event.preventDefault()}>
-            {t.fields.slice(0, 4).map((field, index) => (
-              <label key={field}>
-                <span>{field}</span>
-                <input type={index === 1 ? "email" : "text"} />
-              </label>
-            ))}
-            <label className="full">
-              <span>{t.fields[4]}</span>
-              <textarea rows="6" />
+          <form className="lead-form large-lead-form detailed-check-form" onSubmit={(event) => event.preventDefault()}>
+            <FormSelect label={checkFormSelects[0][0]} options={checkFormSelects[0][1]} className="full" />
+            <TextField label="Місто і регіон" placeholder="Напр. Аліканте, Валенсійська спільнота" className="full" />
+            <TextField label="Сектор або діяльність" placeholder="Напр. торгівля, horeca, послуги..." className="full" />
+            <FormSelect label={checkFormSelects[1][0]} options={checkFormSelects[1][1]} />
+            <FormSelect label={checkFormSelects[2][0]} options={checkFormSelects[2][1]} />
+            <FormSelect label={checkFormSelects[3][0]} options={checkFormSelects[3][1]} className="full" />
+            <FormSelect label={checkFormSelects[4][0]} options={checkFormSelects[4][1]} className="full" />
+            <FormSelect label={checkFormSelects[5][0]} options={checkFormSelects[5][1]} />
+            <TextField label="Контакт" placeholder="Email або телефон" />
+            <TextField label="Конкретна програма, якщо вже є" placeholder="Необов'язково" className="full" />
+            <label className="form-field full">
+              <span>Щось важливе про ваш випадок</span>
+              <textarea rows="5" placeholder="Необов'язково" />
             </label>
-            <button className="button primary full" type="submit">{t.submit}</button>
+            <label className="consent full">
+              <input type="checkbox" />
+              <span>
+                Я погоджуюсь, щоб Veris розглянув цю інформацію для відповіді щодо мого випадку. TODO: додати
+                реальну політику приватності.
+              </span>
+            </label>
+            <button className="button primary full" type="submit">Надіслати на перевірку</button>
           </form>
         </section>
 
@@ -546,6 +566,30 @@ function DiagnosticCard({ t }) {
       </div>
       <a className="button dark" href="#lead-check">{t.cta}</a>
     </aside>
+  );
+}
+
+function TextField({ label, placeholder, className = "" }) {
+  return (
+    <label className={`form-field ${className}`}>
+      <span>{label}</span>
+      <input type="text" placeholder={placeholder} />
+    </label>
+  );
+}
+
+function FormSelect({ label, options, className = "" }) {
+  return (
+    <label className={`form-field ${className}`}>
+      <span>{label}</span>
+      <select defaultValue="">
+        {options.map((option, index) => (
+          <option key={option} value={index === 0 ? "" : option}>
+            {option}
+          </option>
+        ))}
+      </select>
+    </label>
   );
 }
 
