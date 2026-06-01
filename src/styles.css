@@ -408,26 +408,26 @@ details {
 .lead-section {
   grid-template-columns: minmax(0, 1.15fr) minmax(420px, 0.72fr);
   min-height: 78vh;
-  background:
-    linear-gradient(135deg, rgba(236, 0, 0, 0.96) 0%, rgba(201, 0, 0, 0.94) 46%, var(--veris-white) 46.1%, var(--veris-white) 100%);
-  color: var(--veris-white);
+  background: var(--veris-white);
+  color: var(--veris-ink);
   align-items: center;
+  border-top: 6px solid var(--veris-red);
 }
 
 .lead-section .kicker,
 .lead-section p {
-  color: var(--veris-white);
+  color: var(--veris-red);
 }
 
 .lead-section h2 {
   max-width: 900px;
-  color: var(--veris-white);
+  color: var(--veris-ink);
   font-size: clamp(50px, 6.4vw, 98px);
   line-height: 0.95;
 }
 
 .lead-section .kicker {
-  color: var(--veris-white);
+  color: var(--veris-red);
 }
 
 .compact-list {
@@ -444,6 +444,7 @@ details {
   display: flex;
   align-items: center;
   gap: 12px;
+  color: var(--veris-ink);
 }
 
 .compact-list li::before {
@@ -451,9 +452,9 @@ details {
   display: inline-block;
   width: 10px;
   height: 10px;
-  border: 2px solid var(--veris-white);
+  border: 2px solid var(--veris-red);
   border-radius: 50%;
-  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.14);
+  box-shadow: 0 0 0 4px rgba(236, 0, 0, 0.1);
 }
 
 .lead-form {
