@@ -402,7 +402,8 @@ details {
 .lead-section {
   grid-template-columns: minmax(0, 1.15fr) minmax(420px, 0.72fr);
   min-height: 78vh;
-  background: var(--veris-ink);
+  background:
+    linear-gradient(135deg, rgba(236, 0, 0, 0.96) 0%, rgba(201, 0, 0, 0.94) 46%, var(--veris-white) 46.1%, var(--veris-white) 100%);
   color: var(--veris-white);
   align-items: center;
 }
@@ -419,6 +420,10 @@ details {
   line-height: 0.95;
 }
 
+.lead-section .kicker {
+  color: var(--veris-white);
+}
+
 .compact-list {
   display: grid;
   gap: 18px;
@@ -427,6 +432,22 @@ details {
   list-style: none;
   font-size: clamp(20px, 1.8vw, 26px);
   font-weight: 800;
+}
+
+.compact-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.compact-list li::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--veris-white);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.14);
 }
 
 .lead-form {
@@ -440,7 +461,9 @@ details {
 .large-lead-form {
   gap: 24px 18px;
   padding: clamp(22px, 3vw, 34px);
+  border-color: rgba(236, 0, 0, 0.18);
   border-radius: 8px;
+  box-shadow: 0 34px 90px rgba(236, 0, 0, 0.14), 0 18px 50px rgba(16, 16, 16, 0.1);
 }
 
 .large-lead-form .form-field {
@@ -463,6 +486,20 @@ details {
 
 .large-lead-form textarea {
   min-height: 154px;
+}
+
+.large-lead-form input,
+.large-lead-form select,
+.large-lead-form textarea {
+  border-color: rgba(236, 0, 0, 0.18);
+  background: #fffdfd;
+}
+
+.large-lead-form input:focus,
+.large-lead-form select:focus,
+.large-lead-form textarea:focus {
+  border-color: var(--veris-red);
+  box-shadow: 0 0 0 4px rgba(236, 0, 0, 0.12);
 }
 
 .large-lead-form .button {
