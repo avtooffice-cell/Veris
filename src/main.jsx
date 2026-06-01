@@ -456,35 +456,41 @@ function App() {
           <div className="lead-copy">
             <p className="kicker">{t.cta}</p>
             <h2>{t.formTitle}</h2>
-            <ul className="compact-list">
-              <li>{t.time}</li>
-              <li>{t.proof}</li>
-            </ul>
           </div>
-          <form className="lead-form large-lead-form detailed-check-form" onSubmit={(event) => event.preventDefault()}>
-            <FormSelect label={checkFormSelects[0][0]} options={checkFormSelects[0][1]} className="full" />
-            <TextField label="Місто і регіон" placeholder="Напр. Аліканте, Валенсійська спільнота" className="full" />
-            <TextField label="Сектор або діяльність" placeholder="Напр. торгівля, horeca, послуги..." className="full" />
-            <FormSelect label={checkFormSelects[1][0]} options={checkFormSelects[1][1]} />
-            <FormSelect label={checkFormSelects[2][0]} options={checkFormSelects[2][1]} />
-            <FormSelect label={checkFormSelects[3][0]} options={checkFormSelects[3][1]} className="full" />
-            <FormSelect label={checkFormSelects[4][0]} options={checkFormSelects[4][1]} className="full" />
-            <FormSelect label={checkFormSelects[5][0]} options={checkFormSelects[5][1]} />
-            <TextField label="Контакт" placeholder="Email або телефон" />
-            <TextField label="Конкретна програма, якщо вже є" placeholder="Необов'язково" className="full" />
-            <label className="form-field full">
-              <span>Щось важливе про ваш випадок</span>
-              <textarea rows="5" placeholder="Необов'язково" />
-            </label>
-            <label className="consent full">
-              <input type="checkbox" />
-              <span>
-                Я погоджуюсь, щоб Veris розглянув цю інформацію для відповіді щодо мого випадку. TODO: додати
-                реальну політику приватності.
-              </span>
-            </label>
-            <button className="button primary full" type="submit">Надіслати на перевірку</button>
-          </form>
+          <details className="questionnaire-dropdown" open>
+            <summary>
+              <span className="dropdown-title">Анкета перевірки</span>
+              <ul className="compact-list">
+                <li>{t.time}</li>
+                <li>{t.proof}</li>
+              </ul>
+              <span className="dropdown-icon" aria-hidden="true">⌄</span>
+            </summary>
+            <form className="lead-form large-lead-form detailed-check-form" onSubmit={(event) => event.preventDefault()}>
+              <FormSelect label={checkFormSelects[0][0]} options={checkFormSelects[0][1]} className="full" />
+              <TextField label="Місто і регіон" placeholder="Напр. Аліканте, Валенсійська спільнота" className="full" />
+              <TextField label="Сектор або діяльність" placeholder="Напр. торгівля, horeca, послуги..." className="full" />
+              <FormSelect label={checkFormSelects[1][0]} options={checkFormSelects[1][1]} />
+              <FormSelect label={checkFormSelects[2][0]} options={checkFormSelects[2][1]} />
+              <FormSelect label={checkFormSelects[3][0]} options={checkFormSelects[3][1]} className="full" />
+              <FormSelect label={checkFormSelects[4][0]} options={checkFormSelects[4][1]} className="full" />
+              <FormSelect label={checkFormSelects[5][0]} options={checkFormSelects[5][1]} />
+              <TextField label="Контакт" placeholder="Email або телефон" />
+              <TextField label="Конкретна програма, якщо вже є" placeholder="Необов'язково" className="full" />
+              <label className="form-field full">
+                <span>Щось важливе про ваш випадок</span>
+                <textarea rows="5" placeholder="Необов'язково" />
+              </label>
+              <label className="consent full">
+                <input type="checkbox" />
+                <span>
+                  Я погоджуюсь, щоб Veris розглянув цю інформацію для відповіді щодо мого випадку. TODO: додати
+                  реальну політику приватності.
+                </span>
+              </label>
+              <button className="button primary full" type="submit">Надіслати на перевірку</button>
+            </form>
+          </details>
         </section>
 
         <section className="section steps" id="how">
