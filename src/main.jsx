@@ -452,7 +452,7 @@ function App() {
               <li>{t.proof}</li>
             </ul>
           </div>
-          <form className="lead-form" onSubmit={(event) => event.preventDefault()}>
+          <form className="lead-form large-lead-form" onSubmit={(event) => event.preventDefault()}>
             {t.fields.slice(0, 4).map((field, index) => (
               <label key={field}>
                 <span>{field}</span>
@@ -461,7 +461,7 @@ function App() {
             ))}
             <label className="full">
               <span>{t.fields[4]}</span>
-              <textarea rows="4" />
+              <textarea rows="6" />
             </label>
             <button className="button primary full" type="submit">{t.submit}</button>
           </form>

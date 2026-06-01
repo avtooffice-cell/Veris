@@ -400,8 +400,11 @@ details {
 }
 
 .lead-section {
+  grid-template-columns: minmax(0, 1.15fr) minmax(420px, 0.72fr);
+  min-height: 78vh;
   background: var(--veris-ink);
   color: var(--veris-white);
+  align-items: center;
 }
 
 .lead-section .kicker,
@@ -409,11 +412,20 @@ details {
   color: var(--veris-white);
 }
 
+.lead-section h2 {
+  max-width: 900px;
+  color: var(--veris-white);
+  font-size: clamp(50px, 6.4vw, 98px);
+  line-height: 0.95;
+}
+
 .compact-list {
   display: grid;
-  gap: 10px;
+  gap: 18px;
+  margin: 28px 0 0;
   padding: 0;
   list-style: none;
+  font-size: clamp(20px, 1.8vw, 26px);
   font-weight: 800;
 }
 
@@ -423,6 +435,38 @@ details {
   gap: 14px;
   padding: 22px;
   box-shadow: var(--veris-shadow-deep);
+}
+
+.large-lead-form {
+  gap: 24px 18px;
+  padding: clamp(22px, 3vw, 34px);
+  border-radius: 8px;
+}
+
+.large-lead-form label {
+  gap: 10px;
+}
+
+.large-lead-form label span {
+  color: var(--veris-ink);
+  font-size: clamp(19px, 1.5vw, 24px);
+  font-weight: 900;
+  line-height: 1.05;
+}
+
+.large-lead-form input,
+.large-lead-form textarea {
+  min-height: 66px;
+  border-radius: 8px;
+}
+
+.large-lead-form textarea {
+  min-height: 154px;
+}
+
+.large-lead-form .button {
+  min-height: 68px;
+  font-size: clamp(20px, 1.5vw, 25px);
 }
 
 label {
