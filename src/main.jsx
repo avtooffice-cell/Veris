@@ -121,7 +121,7 @@ function App() {
     <>
       <header className="site-header" id="top">
         <a className="brand" href="#top" aria-label="Veris home">
-          <BrandMark />
+          <img className="brand-logo" src="/veris-full-logo.png" alt="Veris" />
           <span className="brand-slogan">{t.slogan}</span>
         </a>
         <nav className="nav-links" aria-label="Primary">
@@ -263,20 +263,11 @@ function App() {
       </main>
 
       <footer className="footer">
-        <BrandMark />
+        <img className="footer-logo" src="/veris-full-logo.png" alt="Veris" />
         <p>{t.footer}</p>
         <p>{t.contact}</p>
       </footer>
     </>
-  );
-}
-
-function BrandMark() {
-  return (
-    <span className="brand-mark" aria-label="Veris">
-      <span className="brand-symbol" aria-hidden="true">V</span>
-      <span>Veris</span>
-    </span>
   );
 }
 

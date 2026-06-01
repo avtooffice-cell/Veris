@@ -64,20 +64,12 @@ textarea {
 
 .brand {
   display: inline-grid;
-  gap: 5px;
-}
-
-.brand-mark {
-  display: inline-flex;
+  gap: 4px;
   align-items: center;
-  gap: 12px;
-  font-size: 26px;
-  font-weight: 500;
-  line-height: 1;
 }
 
 .brand-slogan {
-  padding-left: 50px;
+  padding-left: 76px;
   color: var(--veris-red);
   font-size: 11px;
   font-weight: 900;
@@ -85,17 +77,10 @@ textarea {
   text-transform: uppercase;
 }
 
-.brand-symbol {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  color: var(--veris-ink);
-  border: 1px solid var(--veris-red);
-  border-radius: 5px;
-  font-size: 24px;
-  font-weight: 900;
-  box-shadow: inset 0 0 0 4px rgba(236, 0, 0, 0.08), 0 10px 22px rgba(236, 0, 0, 0.12);
+.brand-logo {
+  display: block;
+  width: clamp(150px, 17vw, 220px);
+  height: auto;
 }
 
 .nav-links {
@@ -573,9 +558,13 @@ details p {
   background: var(--veris-dark-gray);
 }
 
-.footer .brand-symbol {
-  color: var(--veris-white);
-  border-color: var(--veris-red);
+.footer-logo {
+  display: block;
+  width: 152px;
+  height: auto;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--veris-white);
 }
 
 .footer p {
@@ -615,20 +604,13 @@ details p {
     padding: 10px 14px;
   }
 
-  .brand-mark {
-    gap: 8px;
-    font-size: 21px;
+  .brand-logo {
+    width: 126px;
   }
 
   .brand-slogan {
-    padding-left: 40px;
+    padding-left: 54px;
     font-size: 9px;
-  }
-
-  .brand-symbol {
-    width: 32px;
-    height: 32px;
-    font-size: 20px;
   }
 
   .header-actions {
