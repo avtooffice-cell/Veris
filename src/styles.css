@@ -267,17 +267,17 @@ details {
 
 .sample-watermark {
   position: absolute;
-  right: clamp(18px, 3vw, 34px);
-  bottom: 126px;
+  left: 50%;
+  top: 54%;
   z-index: 0;
-  color: rgba(236, 0, 0, 0.055);
+  color: rgba(236, 0, 0, 0.12);
   font-family: var(--veris-font-display);
-  font-size: clamp(54px, 7vw, 96px);
+  font-size: clamp(58px, 8vw, 118px);
   font-weight: 950;
   line-height: 1;
   pointer-events: none;
   text-transform: uppercase;
-  transform: rotate(-8deg);
+  transform: translate(-50%, -50%) rotate(-10deg);
   white-space: nowrap;
 }
 
