@@ -66,7 +66,7 @@ const translations = {
     time: "2 хвилини",
     fields: ["Ім'я", "Email або WhatsApp", "Місто / регіон", "Тип бізнесу", "Що хочете перевірити?"],
     submit: "Надіслати запит",
-    finalTitle: "Почніть з ясної оцінки вашого випадку.",
+    finalTitle: "Оцініть реальний шанс отримати фінансування.",
     finalCopy: "Не сам. Не навмання.",
     footer: "Veris допомагає перевірити реальні варіанти до підготовки документів.",
     contact: "Контакт: TODO"
@@ -120,7 +120,7 @@ const translations = {
     time: "2 minutes",
     fields: ["Name", "Email or WhatsApp", "City / region", "Business type", "What do you want to check?"],
     submit: "Send request",
-    finalTitle: "Start with a clear assessment of your case.",
+    finalTitle: "Assess your real chance of getting financing.",
     finalCopy: "Not alone. Not in the dark.",
     footer: "Veris helps check real options before document preparation.",
     contact: "Contact: TODO"
@@ -177,7 +177,7 @@ Object.assign(translations, {
     time: "2 minutos",
     fields: ["Nombre", "Email o WhatsApp", "Ciudad / región", "Tipo de negocio", "¿Qué quieres revisar?"],
     submit: "Enviar solicitud",
-    finalTitle: "Empieza con una evaluación clara de tu caso.",
+    finalTitle: "Evalúa tus posibilidades reales de obtener financiación.",
     finalCopy: "No solo. No a ciegas.",
     footer: "Veris ayuda a revisar opciones reales antes de preparar documentos.",
     contact: "Contacto: TODO"
@@ -231,7 +231,7 @@ Object.assign(translations, {
     time: "2 minutes",
     fields: ["Nom", "Email ou WhatsApp", "Ville / région", "Type d'activité", "Que voulez-vous vérifier ?"],
     submit: "Envoyer la demande",
-    finalTitle: "Commencez par une évaluation claire de votre cas.",
+    finalTitle: "Évaluez vos chances réelles d'obtenir un financement.",
     finalCopy: "Pas seul. Pas à l'aveugle.",
     footer: "Veris aide à vérifier les options réelles avant de préparer les documents.",
     contact: "Contact : TODO"
@@ -285,7 +285,7 @@ Object.assign(translations, {
     time: "2 Minuten",
     fields: ["Name", "Email oder WhatsApp", "Stadt / Region", "Unternehmenstyp", "Was möchten Sie prüfen?"],
     submit: "Anfrage senden",
-    finalTitle: "Beginnen Sie mit einer klaren Einschätzung Ihres Falls.",
+    finalTitle: "Bewerten Sie Ihre realen Chancen auf Finanzierung.",
     finalCopy: "Nicht allein. Nicht im Dunkeln.",
     footer: "Veris hilft, reale Optionen vor der Dokumentenvorbereitung zu prüfen.",
     contact: "Kontakt: TODO"
@@ -339,7 +339,7 @@ Object.assign(translations, {
     time: "2 minuty",
     fields: ["Imię", "Email lub WhatsApp", "Miasto / region", "Typ firmy", "Co chcesz sprawdzić?"],
     submit: "Wyślij zapytanie",
-    finalTitle: "Zacznij od jasnej oceny swojego przypadku.",
+    finalTitle: "Oceń realną szansę na uzyskanie finansowania.",
     finalCopy: "Nie sam. Nie na ślepo.",
     footer: "Veris pomaga sprawdzić realne opcje przed przygotowaniem dokumentów.",
     contact: "Kontakt: TODO"
@@ -393,7 +393,7 @@ Object.assign(translations, {
     time: "2 минуты",
     fields: ["Имя", "Email или WhatsApp", "Город / регион", "Тип бизнеса", "Что хотите проверить?"],
     submit: "Отправить запрос",
-    finalTitle: "Начните с ясной оценки вашего случая.",
+    finalTitle: "Оцените реальный шанс получить финансирование.",
     finalCopy: "Не один. Не вслепую.",
     footer: "Veris помогает проверить реальные варианты до подготовки документов.",
     contact: "Контакт: TODO"
