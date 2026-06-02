@@ -555,7 +555,7 @@ details {
 
 .questionnaire-dropdown summary {
   display: grid;
-  grid-template-columns: minmax(240px, auto) 1fr auto;
+  grid-template-columns: 1fr auto;
   gap: 16px;
   align-items: center;
   min-height: 72px;
@@ -917,7 +917,7 @@ details p {
   }
 
   .dropdown-meta {
-    grid-column: 1 / -1;
+    grid-column: auto;
   }
 
   .problem-grid,

@@ -9,6 +9,7 @@ const translations = {
     cta: "Перевірити випадок",
     heroCta: "Перевірити мої шанси",
     formCta: "Оцінити можливості",
+    diagnosticCta: "Почати діагностику",
     locale: "Аліканте, Валенсійська спільнота та Іспанія",
     h1: "Не подавайтеся на допомогу навмання.",
     lead:
@@ -75,6 +76,7 @@ const translations = {
     cta: "Check your case",
     heroCta: "Check my options",
     formCta: "Assess options",
+    diagnosticCta: "Start diagnosis",
     locale: "Alicante, Valencian Community and Spain",
     h1: "Do not apply in the dark.",
     lead: "First check whether your business has real options for subsidies, grants or financing in Spain.",
@@ -130,6 +132,7 @@ Object.assign(translations, {
     cta: "Revisar mi caso",
     heroCta: "Comprobar mis opciones",
     formCta: "Evaluar opciones",
+    diagnosticCta: "Empezar diagnóstico",
     locale: "Alicante, Comunidad Valenciana y España",
     h1: "No solicites ayudas a ciegas.",
     lead: "Primero comprueba si tu negocio tiene opciones reales de subvenciones, ayudas o financiación en España.",
@@ -182,6 +185,7 @@ Object.assign(translations, {
     cta: "Vérifier mon cas",
     heroCta: "Vérifier mes options",
     formCta: "Évaluer les options",
+    diagnosticCta: "Commencer le diagnostic",
     locale: "Alicante, Communauté valencienne et Espagne",
     h1: "Ne demandez pas une aide à l'aveugle.",
     lead: "Vérifiez d'abord si votre activité a de vraies options de subventions, aides ou financement en Espagne.",
@@ -234,6 +238,7 @@ Object.assign(translations, {
     cta: "Fall prüfen",
     heroCta: "Meine Optionen prüfen",
     formCta: "Optionen bewerten",
+    diagnosticCta: "Diagnose starten",
     locale: "Alicante, Valencianische Gemeinschaft und Spanien",
     h1: "Beantragen Sie keine Förderung im Blindflug.",
     lead: "Prüfen Sie zuerst, ob Ihr Unternehmen echte Optionen für Zuschüsse, Fördermittel oder Finanzierung in Spanien hat.",
@@ -286,6 +291,7 @@ Object.assign(translations, {
     cta: "Sprawdź przypadek",
     heroCta: "Sprawdź moje opcje",
     formCta: "Oceń możliwości",
+    diagnosticCta: "Rozpocznij diagnozę",
     locale: "Alicante, Wspólnota Walencka i Hiszpania",
     h1: "Nie składaj wniosku o pomoc na ślepo.",
     lead: "Najpierw sprawdź, czy Twoja firma ma realne opcje dotacji, grantów lub finansowania w Hiszpanii.",
@@ -338,6 +344,7 @@ Object.assign(translations, {
     cta: "Проверить случай",
     heroCta: "Проверить мои шансы",
     formCta: "Оценить возможности",
+    diagnosticCta: "Начать диагностику",
     locale: "Аликанте, Валенсийское сообщество и Испания",
     h1: "Не подавайте заявку на помощь вслепую.",
     lead: "Сначала проверьте, есть ли у вашего бизнеса реальные варианты субсидий, грантов или финансирования в Испании.",
@@ -649,7 +656,6 @@ function App() {
           </div>
           <details className="questionnaire-dropdown">
             <summary>
-              <span className="dropdown-title">{q.title}</span>
               <span className="dropdown-meta">{q.meta}</span>
               <span className="dropdown-action" aria-hidden="true">
                 <span className="action-open">{q.open}</span>
@@ -713,7 +719,7 @@ function App() {
               <small>{t.priceTax}</small>
               <p>{t.priceNote}</p>
             </div>
-            <a className="button primary" href="#lead-check">{t.formCta}</a>
+            <a className="button primary" href="#lead-check">{t.diagnosticCta}</a>
           </div>
         </section>
 
