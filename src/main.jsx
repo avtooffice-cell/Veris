@@ -7,6 +7,8 @@ const translations = {
     nav: ["Як це працює", "Що перевіряємо", "Діагностика", "FAQ"],
     slogan: "Не сам. Не навмання.",
     cta: "Перевірити випадок",
+    heroCta: "Перевірити мої шанси",
+    formCta: "Почати діагностику",
     locale: "Аліканте, Валенсійська спільнота та Іспанія",
     h1: "Не подавайтеся на допомогу навмання.",
     lead:
@@ -71,6 +73,8 @@ const translations = {
     nav: ["How it works", "What we check", "Diagnostic", "FAQ"],
     slogan: "Not alone. Not in the dark.",
     cta: "Check your case",
+    heroCta: "Check my options",
+    formCta: "Start diagnosis",
     locale: "Alicante, Valencian Community and Spain",
     h1: "Do not apply in the dark.",
     lead: "First check whether your business has real options for subsidies, grants or financing in Spain.",
@@ -124,6 +128,8 @@ Object.assign(translations, {
     nav: ["Cómo funciona", "Qué revisamos", "Diagnóstico", "FAQ"],
     slogan: "No solo. No a ciegas.",
     cta: "Revisar mi caso",
+    heroCta: "Comprobar mis opciones",
+    formCta: "Empezar diagnóstico",
     locale: "Alicante, Comunidad Valenciana y España",
     h1: "No solicites ayudas a ciegas.",
     lead: "Primero comprueba si tu negocio tiene opciones reales de subvenciones, ayudas o financiación en España.",
@@ -174,6 +180,8 @@ Object.assign(translations, {
     nav: ["Fonctionnement", "Ce que nous vérifions", "Diagnostic", "FAQ"],
     slogan: "Pas seul. Pas à l'aveugle.",
     cta: "Vérifier mon cas",
+    heroCta: "Vérifier mes options",
+    formCta: "Commencer le diagnostic",
     locale: "Alicante, Communauté valencienne et Espagne",
     h1: "Ne demandez pas une aide à l'aveugle.",
     lead: "Vérifiez d'abord si votre activité a de vraies options de subventions, aides ou financement en Espagne.",
@@ -224,6 +232,8 @@ Object.assign(translations, {
     nav: ["So funktioniert es", "Was wir prüfen", "Diagnose", "FAQ"],
     slogan: "Nicht allein. Nicht im Dunkeln.",
     cta: "Fall prüfen",
+    heroCta: "Meine Optionen prüfen",
+    formCta: "Diagnose starten",
     locale: "Alicante, Valencianische Gemeinschaft und Spanien",
     h1: "Beantragen Sie keine Förderung im Blindflug.",
     lead: "Prüfen Sie zuerst, ob Ihr Unternehmen echte Optionen für Zuschüsse, Fördermittel oder Finanzierung in Spanien hat.",
@@ -274,6 +284,8 @@ Object.assign(translations, {
     nav: ["Jak to działa", "Co sprawdzamy", "Diagnoza", "FAQ"],
     slogan: "Nie sam. Nie na ślepo.",
     cta: "Sprawdź przypadek",
+    heroCta: "Sprawdź moje opcje",
+    formCta: "Rozpocznij diagnozę",
     locale: "Alicante, Wspólnota Walencka i Hiszpania",
     h1: "Nie składaj wniosku o pomoc na ślepo.",
     lead: "Najpierw sprawdź, czy Twoja firma ma realne opcje dotacji, grantów lub finansowania w Hiszpanii.",
@@ -324,6 +336,8 @@ Object.assign(translations, {
     nav: ["Как это работает", "Что проверяем", "Диагностика", "FAQ"],
     slogan: "Не один. Не вслепую.",
     cta: "Проверить случай",
+    heroCta: "Проверить мои шансы",
+    formCta: "Начать диагностику",
     locale: "Аликанте, Валенсийское сообщество и Испания",
     h1: "Не подавайте заявку на помощь вслепую.",
     lead: "Сначала проверьте, есть ли у вашего бизнеса реальные варианты субсидий, грантов или финансирования в Испании.",
@@ -570,7 +584,7 @@ function App() {
             ))}
           </select>
           <a className="button primary small" href="#lead-check">
-            {t.cta}
+            {t.formCta}
           </a>
         </div>
       </header>
@@ -583,7 +597,7 @@ function App() {
             <p className="muted">{t.sub}</p>
             <div className="actions">
               <a className="button primary" href="#lead-check">
-                {t.cta}
+                {t.heroCta}
               </a>
               <a className="button quiet" href="#how">
                 {t.secondary}
@@ -624,7 +638,7 @@ function App() {
         <section className="section lead-section" id="lead-check">
           <div className="lead-copy">
             <div className="lead-heading">
-              <p className="kicker">{t.cta}</p>
+              <p className="kicker">{t.formCta}</p>
               <h2>{t.formTitle}</h2>
             </div>
             <ul className="compact-list">
@@ -699,7 +713,7 @@ function App() {
               <small>{t.priceTax}</small>
               <p>{t.priceNote}</p>
             </div>
-            <a className="button primary" href="#lead-check">{t.cta}</a>
+            <a className="button primary" href="#lead-check">{t.formCta}</a>
           </div>
         </section>
 
@@ -716,7 +730,7 @@ function App() {
         <section className="section final-cta">
           <h2>{t.finalTitle}</h2>
           <p>{t.finalCopy}</p>
-          <a className="button primary" href="#lead-check">{t.cta}</a>
+          <a className="button primary" href="#lead-check">{t.formCta}</a>
         </section>
       </main>
 
@@ -749,7 +763,7 @@ function DiagnosticCard({ t }) {
           <span key={item}>{item}</span>
         ))}
       </div>
-      <a className="button dark" href="#lead-check">{t.cta}</a>
+      <a className="button dark" href="#lead-check">{t.formCta}</a>
     </aside>
   );
 }
