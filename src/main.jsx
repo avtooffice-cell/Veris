@@ -586,6 +586,19 @@ function App() {
           </div>
         </section>
 
+        <section className="section steps" id="how">
+          <p className="kicker">{t.nav[0]}</p>
+          <h2>{t.stepsTitle}</h2>
+          <div className="step-list">
+            {t.steps.map((step, index) => (
+              <div className="step" key={step}>
+                <span>{index + 1}</span>
+                <p>{step}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section className="section offer" id="diagnostic">
           <div>
             <p className="kicker">Veris Check</p>
@@ -644,19 +657,6 @@ function App() {
               <button className="button primary full" type="submit">{q.submit}</button>
             </form>
           </details>
-        </section>
-
-        <section className="section steps" id="how">
-          <p className="kicker">{t.nav[0]}</p>
-          <h2>{t.stepsTitle}</h2>
-          <div className="step-list">
-            {t.steps.map((step, index) => (
-              <div className="step" key={step}>
-                <span>{index + 1}</span>
-                <p>{step}</p>
-              </div>
-            ))}
-          </div>
         </section>
 
         <section className="section checks" id="checks">
