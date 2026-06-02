@@ -726,7 +726,6 @@ function DiagnosticCard({ t }) {
         <Meter label={t.meters[2]} value="36" />
       </div>
       <div className="review-box">
-        <strong>{t.reviewTitle}</strong>
         {t.checkItems.map((item) => (
           <span key={item}>{item}</span>
         ))}

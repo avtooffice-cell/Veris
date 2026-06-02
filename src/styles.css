@@ -914,6 +914,12 @@ details p {
     padding-right: 14px;
   }
 
+  .diagnostic-card {
+    width: calc(100% + 20px);
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
   .lead-section {
     gap: 18px;
     padding-top: 34px;
