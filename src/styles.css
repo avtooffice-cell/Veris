@@ -121,7 +121,7 @@ select {
 .hero {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 0.98fr) minmax(360px, 0.82fr);
+  grid-template-columns: minmax(0, 1.04fr) minmax(320px, 0.72fr);
   gap: clamp(32px, 6vw, 76px);
   align-items: center;
   min-height: calc(100vh - 72px);
@@ -299,6 +299,8 @@ details {
 .diagnostic-card {
   position: relative;
   overflow: hidden;
+  width: 110%;
+  justify-self: end;
   padding: clamp(24px, 3.3vw, 38px);
   box-shadow: var(--veris-shadow-deep);
   transform: translateZ(0);
@@ -1143,6 +1145,7 @@ details p {
 
   .diagnostic-card {
     width: calc(100% + 20px);
+    justify-self: stretch;
     margin-left: -10px;
     margin-right: -10px;
   }
