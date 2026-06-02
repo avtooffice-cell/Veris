@@ -17,7 +17,7 @@ const translations = {
     lead:
       "Veris допомагає підприємцям в Іспанії перевірити, які ayudas, subvenciones або фінансування можуть підходити їхньому бізнесу. Рідною мовою, без порожніх гарантій, з чітким наступним кроком.",
     sub: "",
-    proof: "Якщо реальних варіантів немає, ми скажемо прямо.",
+    proof: "Якщо реальних варіантів немає, ми скажемо про це прямо.",
     secondary: "Як це працює",
     cardTitle: "Autonomo у підготовці",
     cardMeta: "Цифровізація + обладнання, Аліканте",
@@ -84,7 +84,7 @@ const translations = {
     h1: "Do not lose financing opportunities just because the system is unclear.",
     lead: "Veris helps entrepreneurs in Spain check which ayudas, subvenciones or financing may fit their business. In your language, without empty guarantees, with a clear next step.",
     sub: "",
-    proof: "If there are no real options, we say it clearly.",
+    proof: "If there are no real options, we say so clearly.",
     secondary: "How it works",
     cardTitle: "Autonomo in preparation",
     cardMeta: "Digitalization + equipment, Alicante",
@@ -307,7 +307,7 @@ Object.assign(translations, {
     h1: "Nie trać możliwości finansowania tylko dlatego, że system jest niezrozumiały.",
     lead: "Veris pomaga przedsiębiorcom w Hiszpanii sprawdzić, które ayudas, subvenciones lub finansowanie mogą pasować do ich biznesu. W Twoim języku, bez pustych gwarancji, z jasnym następnym krokiem.",
     sub: "",
-    proof: "Jeśli nie ma realnych opcji, powiemy to wprost.",
+    proof: "Jeśli nie ma realnych opcji, powiemy o tym wprost.",
     secondary: "Jak to działa",
     cardTitle: "Autónomo w przygotowaniu",
     cardMeta: "Cyfryzacja + wyposażenie, Alicante",
@@ -362,7 +362,7 @@ Object.assign(translations, {
     h1: "Не теряйте возможности финансирования только потому, что система непонятна.",
     lead: "Veris помогает предпринимателям в Испании проверить, какие ayudas, subvenciones или финансирование могут подходить их бизнесу. На родном языке, без пустых гарантий, с четким следующим шагом.",
     sub: "",
-    proof: "Если реальных вариантов нет, мы скажем прямо.",
+    proof: "Если реальных вариантов нет, мы скажем об этом прямо.",
     secondary: "Как это работает",
     cardTitle: "Autónomo в подготовке",
     cardMeta: "Цифровизация + оборудование, Аликанте",
@@ -624,7 +624,7 @@ function App() {
                 {t.secondary}
               </a>
             </div>
-            <p className="proof">{t.proof}</p>
+            <p className="proof"><span aria-hidden="true">*</span>{t.proof}</p>
           </div>
           <DiagnosticCard t={t} />
         </section>
