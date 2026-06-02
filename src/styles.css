@@ -846,6 +846,12 @@ label {
   padding-bottom: clamp(42px, 5vw, 76px);
 }
 
+.faq h2 {
+  max-width: 1040px;
+  font-size: clamp(30px, 4vw, 56px);
+  line-height: 1.08;
+}
+
 details {
   padding: 20px 22px;
 }
@@ -994,6 +1000,11 @@ details p {
   }
 
   .steps h2 {
+    font-size: 30px;
+    line-height: 1.1;
+  }
+
+  .faq h2 {
     font-size: 30px;
     line-height: 1.1;
   }
