@@ -121,7 +121,7 @@ select {
 .hero {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.04fr) minmax(320px, 0.72fr);
+  grid-template-columns: minmax(0, 0.98fr) minmax(360px, 0.82fr);
   gap: clamp(32px, 6vw, 76px);
   align-items: center;
   min-height: calc(100vh - 72px);
@@ -299,7 +299,7 @@ details {
 .diagnostic-card {
   position: relative;
   overflow: hidden;
-  padding: clamp(22px, 3vw, 34px);
+  padding: clamp(24px, 3.3vw, 38px);
   box-shadow: var(--veris-shadow-deep);
   transform: translateZ(0);
 }
@@ -329,22 +329,26 @@ details {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .card-top span {
+  color: var(--veris-red);
+  font-size: 13px;
   font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
 }
 
 .card-top strong {
   display: grid;
   place-items: center;
-  width: 86px;
-  height: 86px;
-  border: 12px solid var(--veris-red);
+  width: 95px;
+  height: 95px;
+  border: 13px solid var(--veris-red);
   border-right-color: var(--veris-line);
   border-radius: 50%;
-  font-size: 28px;
+  font-size: 31px;
 }
 
 .diagnostic-card > p {
@@ -1141,6 +1145,13 @@ details p {
     width: calc(100% + 20px);
     margin-left: -10px;
     margin-right: -10px;
+  }
+
+  .card-top strong {
+    width: 86px;
+    height: 86px;
+    border-width: 12px;
+    font-size: 28px;
   }
 
   .diagnostic-card .button.dark {
