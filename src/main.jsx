@@ -621,22 +621,6 @@ function App() {
           </div>
         </section>
 
-        <section className="section offer" id="diagnostic">
-          <div>
-            <p className="kicker">Veris Check</p>
-            <h2>{t.diagnosticTitle}</h2>
-            <p>{t.diagnosticText}</p>
-          </div>
-          <div className="price-panel">
-            <div className="price-copy">
-              <span>{t.price}</span>
-              <small>{t.priceTax}</small>
-              <p>{t.priceNote}</p>
-            </div>
-            <a className="button primary" href="#lead-check">{t.cta}</a>
-          </div>
-        </section>
-
         <section className="section lead-section" id="lead-check">
           <div className="lead-copy">
             <div className="lead-heading">
@@ -685,16 +669,6 @@ function App() {
           </details>
         </section>
 
-        <section className="section checks" id="checks">
-          <p className="kicker">{t.nav[1]}</p>
-          <h2>{t.checksTitle}</h2>
-          <div className="check-grid">
-            {t.checks.map((check) => (
-              <div className="check-item" key={check}>{check}</div>
-            ))}
-          </div>
-        </section>
-
         <section className="section compliance">
           <h2>{t.complianceTitle}</h2>
           <p>{t.compliance}</p>
@@ -709,6 +683,32 @@ function App() {
                 <summary>{question}</summary>
                 <p>{answer}</p>
               </details>
+            ))}
+          </div>
+        </section>
+
+        <section className="section offer" id="diagnostic">
+          <div>
+            <p className="kicker">Veris Check</p>
+            <h2>{t.diagnosticTitle}</h2>
+            <p>{t.diagnosticText}</p>
+          </div>
+          <div className="price-panel">
+            <div className="price-copy">
+              <span>{t.price}</span>
+              <small>{t.priceTax}</small>
+              <p>{t.priceNote}</p>
+            </div>
+            <a className="button primary" href="#lead-check">{t.cta}</a>
+          </div>
+        </section>
+
+        <section className="section checks" id="checks">
+          <p className="kicker">{t.nav[1]}</p>
+          <h2>{t.checksTitle}</h2>
+          <div className="check-grid">
+            {t.checks.map((check) => (
+              <div className="check-item" key={check}>{check}</div>
             ))}
           </div>
         </section>
