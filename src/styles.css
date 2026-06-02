@@ -760,6 +760,12 @@ label {
   background: var(--veris-light-gray);
 }
 
+.steps h2 {
+  max-width: 1180px;
+  font-size: clamp(34px, 4.7vw, 76px);
+  line-height: 1.06;
+}
+
 .step-list {
   display: grid;
   gap: 14px;
@@ -985,6 +991,11 @@ details p {
   .lead-section h2 {
     font-size: 38px;
     line-height: 1.04;
+  }
+
+  .steps h2 {
+    font-size: 34px;
+    line-height: 1.08;
   }
 
   .compact-list {
