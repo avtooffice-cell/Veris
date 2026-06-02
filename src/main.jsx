@@ -469,9 +469,8 @@ function App() {
               <span className="dropdown-title">Заповнити анкету перевірки</span>
               <span className="dropdown-meta">6 блоків питань · без обіцянок схвалення</span>
               <span className="dropdown-action" aria-hidden="true">
-                <span className="action-open">Розгорнути</span>
-                <span className="action-close">Згорнути</span>
-                <span className="chevron">⌄</span>
+                <span className="action-open">Відкрити анкету</span>
+                <span className="action-close">Закрити анкету</span>
               </span>
             </summary>
             <form className="lead-form large-lead-form detailed-check-form" onSubmit={(event) => event.preventDefault()}>

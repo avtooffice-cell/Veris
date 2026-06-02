@@ -464,13 +464,19 @@ details {
 }
 
 .compact-list li::before {
-  content: "";
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border: 2px solid var(--veris-red);
+  content: "✓";
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  color: var(--veris-white);
+  background: var(--veris-red);
   border-radius: 50%;
-  box-shadow: 0 0 0 3px rgba(236, 0, 0, 0.1);
+  box-shadow: 0 0 0 4px rgba(236, 0, 0, 0.1);
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1;
 }
 
 .questionnaire-dropdown {
@@ -541,22 +547,12 @@ details {
   display: none;
 }
 
-.chevron {
-  font-size: 18px;
-  line-height: 1;
-  transition: transform 170ms ease;
-}
-
 .questionnaire-dropdown[open] .action-open {
   display: none;
 }
 
 .questionnaire-dropdown[open] .action-close {
   display: inline;
-}
-
-.questionnaire-dropdown[open] .chevron {
-  transform: rotate(180deg);
 }
 
 .questionnaire-dropdown:not([open]) > .lead-form {
@@ -626,6 +622,9 @@ details {
 
 .large-lead-form .button {
   min-height: 68px;
+  justify-self: end;
+  width: min(100%, 420px);
+  padding: 0 28px;
   font-size: clamp(20px, 1.5vw, 25px);
 }
 
@@ -842,6 +841,19 @@ details p {
     grid-template-columns: 1fr;
   }
 
+  .lead-copy {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .questionnaire-dropdown summary {
+    grid-template-columns: 1fr auto;
+  }
+
+  .dropdown-meta {
+    grid-column: 1 / -1;
+  }
+
   .problem-grid,
   .check-grid {
     grid-template-columns: 1fr 1fr;
@@ -879,6 +891,68 @@ details p {
     padding-right: 14px;
   }
 
+  .lead-section {
+    gap: 18px;
+    padding-top: 34px;
+    padding-bottom: 44px;
+  }
+
+  .lead-section h2 {
+    font-size: 38px;
+    line-height: 1.04;
+  }
+
+  .compact-list {
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid var(--veris-line);
+    border-radius: 8px;
+    background: var(--veris-soft);
+  }
+
+  .compact-list li {
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .compact-list li::before {
+    width: 20px;
+    height: 20px;
+    margin-top: 1px;
+    font-size: 12px;
+  }
+
+  .questionnaire-dropdown {
+    border-radius: 8px;
+    box-shadow: 0 12px 28px rgba(16, 16, 16, 0.07);
+  }
+
+  .questionnaire-dropdown summary {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 16px;
+    border-left: 0;
+    border-top: 4px solid var(--veris-red);
+  }
+
+  .dropdown-title {
+    font-size: 18px;
+    line-height: 1.15;
+  }
+
+  .dropdown-meta {
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  .dropdown-action {
+    justify-self: stretch;
+    width: 100%;
+    min-height: 48px;
+  }
+
   h1 {
     font-size: 48px;
   }
@@ -891,6 +965,42 @@ details p {
 
   .detailed-check-form {
     grid-template-columns: 1fr;
+  }
+
+  .form-group-title {
+    padding: 13px 16px;
+  }
+
+  .large-lead-form .form-field,
+  .detailed-check-form .consent {
+    padding: 16px;
+  }
+
+  .detailed-check-form > .form-field:not(.full) {
+    border-left: 0;
+  }
+
+  .large-lead-form input,
+  .large-lead-form select,
+  .large-lead-form textarea {
+    min-height: 56px;
+    font-size: 16px;
+  }
+
+  .large-lead-form .button {
+    justify-self: stretch;
+    width: 100%;
+    min-height: 58px;
+    font-size: 18px;
+  }
+
+  .detailed-check-form .consent {
+    grid-template-columns: 24px 1fr;
+    gap: 12px;
+  }
+
+  .detailed-check-form .consent span {
+    font-size: 14px;
   }
 
   .problem-card {
