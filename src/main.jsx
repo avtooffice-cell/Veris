@@ -19,7 +19,8 @@ const translations = {
     cardMeta: "Цифровізація + обладнання, Аліканте",
     meters: ["Регіональна відповідність", "Документи", "Ризик відмови"],
     reviewTitle: "Потрібно перевірити",
-    checkItems: ["Реєстрація або планова дата", "Бюджет інвестиції", "Код діяльності"],
+    sampleWatermark: "Зразок",
+    checkItems: ["Строки та дедлайни", "Варіанти програм + код BDNS", "Необхідна документація"],
     problemKicker: "Проблема",
     problemTitle: "Багато заявок починаються запізно, неправильно або без реальної відповідності.",
     problems: [
@@ -77,7 +78,8 @@ const translations = {
     cardMeta: "Digitalization + equipment, Alicante",
     meters: ["Regional fit", "Documents", "Refusal risk"],
     reviewTitle: "Needs review",
-    checkItems: ["Registration or planned date", "Investment budget", "Activity code"],
+    sampleWatermark: "Sample",
+    checkItems: ["Timelines and deadlines", "Program options + BDNS code", "Required documentation"],
     problemKicker: "Problem",
     problemTitle: "Many applications start late, incorrectly or without real fit.",
     problems: [
@@ -127,7 +129,8 @@ Object.assign(translations, {
     cardMeta: "Digitalización + equipamiento, Alicante",
     meters: ["Encaje regional", "Documentos", "Riesgo de rechazo"],
     reviewTitle: "Requiere revisión",
-    checkItems: ["Registro o fecha prevista", "Presupuesto de inversión", "Código de actividad"],
+    sampleWatermark: "Muestra",
+    checkItems: ["Plazos y fechas límite", "Opciones de programas + código BDNS", "Documentación necesaria"],
     problemKicker: "Problema",
     problemTitle: "Muchas solicitudes empiezan tarde, mal o sin encaje real.",
     problems: [
@@ -174,7 +177,8 @@ Object.assign(translations, {
     cardMeta: "Numérisation + équipement, Alicante",
     meters: ["Adéquation régionale", "Documents", "Risque de refus"],
     reviewTitle: "À vérifier",
-    checkItems: ["Enregistrement ou date prévue", "Budget d'investissement", "Code d'activité"],
+    sampleWatermark: "Exemple",
+    checkItems: ["Délais et dates limites", "Options de programmes + code BDNS", "Documentation nécessaire"],
     problemKicker: "Problème",
     problemTitle: "Beaucoup de demandes commencent tard, mal ou sans réelle adéquation.",
     problems: [
@@ -221,7 +225,8 @@ Object.assign(translations, {
     cardMeta: "Digitalisierung + Ausstattung, Alicante",
     meters: ["Regionale Passung", "Dokumente", "Ablehnungsrisiko"],
     reviewTitle: "Zu prüfen",
-    checkItems: ["Registrierung oder geplantes Datum", "Investitionsbudget", "Tätigkeitscode"],
+    sampleWatermark: "Beispiel",
+    checkItems: ["Fristen und Termine", "Programmoptionen + BDNS-Code", "Erforderliche Dokumentation"],
     problemKicker: "Problem",
     problemTitle: "Viele Anträge starten zu spät, falsch oder ohne echte Passung.",
     problems: [
@@ -268,7 +273,8 @@ Object.assign(translations, {
     cardMeta: "Cyfryzacja + wyposażenie, Alicante",
     meters: ["Dopasowanie regionalne", "Dokumenty", "Ryzyko odmowy"],
     reviewTitle: "Do sprawdzenia",
-    checkItems: ["Rejestracja lub planowana data", "Budżet inwestycji", "Kod działalności"],
+    sampleWatermark: "Przykład",
+    checkItems: ["Terminy i deadline'y", "Opcje programów + kod BDNS", "Wymagana dokumentacja"],
     problemKicker: "Problem",
     problemTitle: "Wiele wniosków zaczyna się za późno, błędnie albo bez realnego dopasowania.",
     problems: [
@@ -315,7 +321,8 @@ Object.assign(translations, {
     cardMeta: "Цифровизация + оборудование, Аликанте",
     meters: ["Региональное соответствие", "Документы", "Риск отказа"],
     reviewTitle: "Нужно проверить",
-    checkItems: ["Регистрация или плановая дата", "Бюджет инвестиции", "Код деятельности"],
+    sampleWatermark: "Образец",
+    checkItems: ["Сроки и дедлайны", "Варианты программ + код BDNS", "Необходимая документация"],
     problemKicker: "Проблема",
     problemTitle: "Многие заявки начинаются поздно, неправильно или без реального соответствия.",
     problems: [
@@ -706,6 +713,7 @@ function App() {
 function DiagnosticCard({ t }) {
   return (
     <aside className="diagnostic-card" aria-label="Diagnostic preview">
+      <span className="sample-watermark" aria-hidden="true">{t.sampleWatermark}</span>
       <div className="card-top">
         <span>Veris Check</span>
         <strong>68</strong>

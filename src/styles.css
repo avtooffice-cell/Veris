@@ -258,9 +258,32 @@ details {
 }
 
 .diagnostic-card {
+  position: relative;
+  overflow: hidden;
   padding: clamp(22px, 3vw, 34px);
   box-shadow: var(--veris-shadow-deep);
   transform: translateZ(0);
+}
+
+.sample-watermark {
+  position: absolute;
+  right: clamp(18px, 3vw, 34px);
+  bottom: 126px;
+  z-index: 0;
+  color: rgba(236, 0, 0, 0.055);
+  font-family: var(--veris-font-display);
+  font-size: clamp(54px, 7vw, 96px);
+  font-weight: 950;
+  line-height: 1;
+  pointer-events: none;
+  text-transform: uppercase;
+  transform: rotate(-8deg);
+  white-space: nowrap;
+}
+
+.diagnostic-card > *:not(.sample-watermark) {
+  position: relative;
+  z-index: 1;
 }
 
 .card-top {
