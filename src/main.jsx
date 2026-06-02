@@ -653,7 +653,23 @@ function App() {
               </div>
             ))}
           </div>
-          <h2>{t.stepsTitle}</h2>
+          <div className="steps-message">
+            <h2>{t.stepsTitle}</h2>
+            <div className="steps-visual" aria-hidden="true">
+              <svg viewBox="0 0 420 220" role="img">
+                <rect className="paper back" x="118" y="24" width="168" height="132" rx="10" />
+                <rect className="paper front" x="88" y="44" width="184" height="142" rx="12" />
+                <path className="doc-line" d="M116 82h108" />
+                <path className="doc-line short" d="M116 112h82" />
+                <path className="doc-line" d="M116 142h120" />
+                <circle className="coin soft" cx="300" cy="72" r="42" />
+                <circle className="coin" cx="302" cy="72" r="30" />
+                <text className="coin-text" x="302" y="83">EUR</text>
+                <path className="checkmark" d="M278 151l22 22 54-66" />
+                <path className="route" d="M42 174c46-44 86-50 128-24 34 21 63 20 96-4 31-22 59-27 94-13" />
+              </svg>
+            </div>
+          </div>
         </section>
 
         <section className="section lead-section" id="lead-check">
