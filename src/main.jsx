@@ -556,7 +556,6 @@ function App() {
       <main>
         <section className="hero section">
           <div className="hero-copy">
-            <p className="eyebrow">{t.locale}</p>
             <h1>{t.h1}</h1>
             <p className="lead">{t.lead}</p>
             <p className="muted">{t.sub}</p>
