@@ -762,7 +762,7 @@ label {
 
 .steps h2 {
   max-width: 1180px;
-  font-size: clamp(34px, 4.7vw, 76px);
+  font-size: clamp(30px, 3.9vw, 58px);
   line-height: 1.06;
 }
 
@@ -994,8 +994,8 @@ details p {
   }
 
   .steps h2 {
-    font-size: 34px;
-    line-height: 1.08;
+    font-size: 30px;
+    line-height: 1.1;
   }
 
   .compact-list {
