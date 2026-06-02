@@ -31,7 +31,9 @@ const translations = {
     diagnosticTitle: "Чесний фільтр перед паперовою роботою.",
     diagnosticText:
       "Veris Check дає першу оцінку профілю, можливих шляхів і стоп-факторів до того, як ви витратите час на повний пакет документів.",
-    price: "29-49 EUR",
+    price: "49 EUR",
+    priceTax: "21% IVA включено",
+    priceNote: "* враховується при подальшому супроводі",
     stepsTitle: "Від широкого питання до конкретного наступного кроку.",
     steps: [
       "Ви заповнюєте коротку форму.",
@@ -91,7 +93,9 @@ const translations = {
     diagnosticTitle: "An honest filter before paperwork.",
     diagnosticText:
       "Veris Check gives a first view of your profile, possible paths and stop factors before you spend time on a full file.",
-    price: "29-49 EUR",
+    price: "49 EUR",
+    priceTax: "21% IVA included",
+    priceNote: "* credited toward further support",
     stepsTitle: "From a broad question to a concrete next step.",
     steps: ["Short form.", "Profile and local context review.", "You receive the first answer within 24 hours.", "If the result is positive - Veris Check.", "Real options, blockers or a clear no."],
     checksTitle: "We check fit, requirements and risks.",
@@ -142,7 +146,9 @@ Object.assign(translations, {
     diagnosticTitle: "Un filtro honesto antes del papeleo.",
     diagnosticText:
       "Veris Check ofrece una primera evaluación de tu perfil, posibles caminos y factores de bloqueo antes de dedicar tiempo a un expediente completo.",
-    price: "29-49 EUR",
+    price: "49 EUR",
+    priceTax: "21% IVA incluido",
+    priceNote: "* se descuenta del acompañamiento posterior",
     stepsTitle: "De una pregunta amplia a un siguiente paso concreto.",
     steps: ["Formulario breve.", "Revisión del perfil y contexto local.", "Recibes la primera respuesta en un plazo de 24 horas.", "Si el resultado es positivo - Veris Check.", "Opciones reales, bloqueos o un no claro."],
     checksTitle: "Revisamos encaje, requisitos y riesgos.",
@@ -190,7 +196,9 @@ Object.assign(translations, {
     diagnosticTitle: "Un filtre honnête avant la paperasse.",
     diagnosticText:
       "Veris Check donne une première évaluation du profil, des pistes possibles et des facteurs bloquants avant de consacrer du temps à un dossier complet.",
-    price: "29-49 EUR",
+    price: "49 EUR",
+    priceTax: "21% IVA inclus",
+    priceNote: "* déduit de l'accompagnement ultérieur",
     stepsTitle: "D'une question large à une prochaine étape concrète.",
     steps: ["Formulaire court.", "Analyse du profil et du contexte local.", "Vous recevez une première réponse sous 24 heures.", "Si le résultat est positif - Veris Check.", "Options réelles, blocages ou non clair."],
     checksTitle: "Nous vérifions l'adéquation, les exigences et les risques.",
@@ -238,7 +246,9 @@ Object.assign(translations, {
     diagnosticTitle: "Ein ehrlicher Filter vor der Papierarbeit.",
     diagnosticText:
       "Veris Check gibt eine erste Einschätzung von Profil, möglichen Wegen und Stop-Faktoren, bevor Sie Zeit in vollständige Unterlagen investieren.",
-    price: "29-49 EUR",
+    price: "49 EUR",
+    priceTax: "21% IVA enthalten",
+    priceNote: "* wird bei weiterer Begleitung angerechnet",
     stepsTitle: "Von einer breiten Frage zum konkreten nächsten Schritt.",
     steps: ["Kurzes Formular.", "Prüfung von Profil und lokalem Kontext.", "Sie erhalten die erste Antwort innerhalb von 24 Stunden.", "Bei positivem Ergebnis - Veris Check.", "Reale Optionen, Blocker oder ein klares Nein."],
     checksTitle: "Wir prüfen Passung, Anforderungen und Risiken.",
@@ -286,7 +296,9 @@ Object.assign(translations, {
     diagnosticTitle: "Uczciwy filtr przed papierologią.",
     diagnosticText:
       "Veris Check daje pierwszą ocenę profilu, możliwych ścieżek i czynników blokujących, zanim poświęcisz czas na pełny pakiet dokumentów.",
-    price: "29-49 EUR",
+    price: "49 EUR",
+    priceTax: "21% IVA wliczone",
+    priceNote: "* zaliczane przy dalszym wsparciu",
     stepsTitle: "Od szerokiego pytania do konkretnego następnego kroku.",
     steps: ["Krótki formularz.", "Analiza profilu i lokalnego kontekstu.", "Otrzymujesz pierwszą odpowiedź w ciągu 24 godzin.", "Przy pozytywnym wyniku - Veris Check.", "Realne opcje, blokady albo jasne nie."],
     checksTitle: "Sprawdzamy dopasowanie, wymagania i ryzyka.",
@@ -334,7 +346,9 @@ Object.assign(translations, {
     diagnosticTitle: "Честный фильтр перед бумажной работой.",
     diagnosticText:
       "Veris Check дает первую оценку профиля, возможных путей и стоп-факторов до того, как вы потратите время на полный пакет документов.",
-    price: "29-49 EUR",
+    price: "49 EUR",
+    priceTax: "21% IVA включено",
+    priceNote: "* учитывается при дальнейшем сопровождении",
     stepsTitle: "От широкого вопроса к конкретному следующему шагу.",
     steps: ["Короткая форма.", "Проверка профиля и локального контекста.", "Вы получаете первый ответ в течение 24 часов.", "При положительном результате - Veris Check.", "Реальные варианты, блокеры или четкое нет."],
     checksTitle: "Мы проверяем соответствие, требования и риски.",
@@ -614,7 +628,11 @@ function App() {
             <p>{t.diagnosticText}</p>
           </div>
           <div className="price-panel">
-            <span>{t.price}</span>
+            <div className="price-copy">
+              <span>{t.price}</span>
+              <small>{t.priceTax}</small>
+              <p>{t.priceNote}</p>
+            </div>
             <a className="button primary" href="#lead-check">{t.cta}</a>
           </div>
         </section>

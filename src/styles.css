@@ -423,9 +423,28 @@ details {
   box-shadow: var(--veris-shadow);
 }
 
-.price-panel span {
+.price-copy {
+  display: grid;
+  gap: 6px;
+}
+
+.price-copy span {
   font-size: 38px;
   font-weight: 900;
+}
+
+.price-copy small {
+  color: var(--veris-body-gray);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.price-copy p {
+  margin: 8px 0 0;
+  color: var(--veris-body-gray);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.35;
 }
 
 .lead-section {
