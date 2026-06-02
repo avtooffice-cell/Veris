@@ -584,6 +584,7 @@ function App() {
 
   return (
     <>
+      <SiteWatermark />
       <header className="site-header" id="top">
         <a className="brand" href="#top" aria-label="Veris home">
           <img className="brand-logo" src="/veris-full-logo.png" alt="Veris" />
@@ -776,6 +777,33 @@ function App() {
         <p>{t.contact}</p>
       </footer>
     </>
+  );
+}
+
+function SiteWatermark() {
+  return (
+    <div className="site-watermark" aria-hidden="true">
+      <svg viewBox="0 0 1200 620" preserveAspectRatio="xMidYMid slice">
+        <g className="watermark-grid">
+          <path d="M80 120H1120M80 230H1120M80 340H1120M80 450H1120M80 560H1120" />
+          <path d="M170 60V580M310 60V580M450 60V580M600 60V580M750 60V580M890 60V580M1030 60V580" />
+          <path d="M80 310C250 285 420 285 600 310C780 335 950 335 1120 310" />
+        </g>
+        <g className="watermark-land">
+          <path d="M155 176c34-48 96-66 156-48 48 14 65 44 118 52 52 8 82-16 116 4 36 22 25 65-12 91-52 37-88 1-139 30-45 25-38 67-89 79-54 13-111-22-128-77-13-43-50-70-22-131Z" />
+          <path d="M268 374c58-18 112 10 134 56 19 40 3 98-38 126-43 30-110 14-142-30-33-46-14-132 46-152Z" />
+          <path d="M552 152c76-54 185-43 260-8 49 23 98 20 154 45 74 33 89 93 32 125-50 28-105 4-154 28-60 30-53 89-123 111-76 24-153-11-178-70-24-57 36-99 8-149-21-37-40-53 1-82Z" />
+          <path d="M742 394c57-9 104 24 117 71 14 51-22 101-74 111-49 9-97-25-108-76-11-52 15-98 65-106Z" />
+          <path d="M943 366c54-38 139-30 173 19 30 43 9 102-43 122-61 24-142-11-154-69-6-31 2-57 24-72Z" />
+        </g>
+        <g className="watermark-route">
+          <path d="M128 420C250 326 372 316 500 388C648 472 778 420 902 314C980 248 1066 226 1140 244" />
+          <circle cx="128" cy="420" r="10" />
+          <circle cx="902" cy="314" r="10" />
+          <circle cx="1140" cy="244" r="10" />
+        </g>
+      </svg>
+    </div>
   );
 }
 

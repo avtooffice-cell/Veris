@@ -34,6 +34,48 @@ body {
   background: var(--veris-soft);
 }
 
+.site-watermark {
+  position: fixed;
+  inset: -8vh -10vw;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 0.075;
+  mix-blend-mode: multiply;
+}
+
+.site-watermark svg {
+  width: 120vw;
+  height: 116vh;
+  filter: drop-shadow(0 28px 54px rgba(16, 16, 16, 0.05));
+  transform: rotate(-1.5deg) scale(1.04);
+  transform-origin: center;
+}
+
+.watermark-grid path {
+  fill: none;
+  stroke: rgba(16, 16, 16, 0.22);
+  stroke-width: 1.3;
+}
+
+.watermark-land path {
+  fill: rgba(236, 0, 0, 0.085);
+  stroke: rgba(236, 0, 0, 0.22);
+  stroke-width: 3;
+  stroke-linejoin: round;
+}
+
+.watermark-route path {
+  fill: none;
+  stroke: rgba(236, 0, 0, 0.34);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 18 18;
+}
+
+.watermark-route circle {
+  fill: rgba(236, 0, 0, 0.32);
+}
+
 a {
   color: inherit;
   text-decoration: none;
