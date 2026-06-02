@@ -806,8 +806,6 @@ label {
 }
 
 .steps h2 {
-  position: sticky;
-  top: 112px;
   max-width: 760px;
   padding: clamp(24px, 3vw, 42px);
   border-left: 6px solid var(--veris-red);
@@ -1001,11 +999,6 @@ details p {
   .lead-section,
   .compliance {
     grid-template-columns: 1fr;
-  }
-
-  .steps h2 {
-    position: relative;
-    top: auto;
   }
 
   .lead-copy {

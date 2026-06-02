@@ -645,7 +645,6 @@ function App() {
 
         <section className="section steps" id="how">
           <p className="kicker">{t.nav[0]}</p>
-          <h2>{t.stepsTitle}</h2>
           <div className="step-list">
             {t.steps.map((step, index) => (
               <div className="step" key={step}>
@@ -654,6 +653,7 @@ function App() {
               </div>
             ))}
           </div>
+          <h2>{t.stepsTitle}</h2>
         </section>
 
         <section className="section lead-section" id="lead-check">
