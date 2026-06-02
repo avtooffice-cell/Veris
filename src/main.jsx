@@ -362,18 +362,165 @@ const languageLabels = {
   uk: "UA"
 };
 
-const checkFormSelects = [
-  ["Ситуація", ["Оберіть варіант", "Я вже autonomo", "Планую стати autonomo", "Маю малий бізнес", "Хочу перевірити ідею"]],
-  ["Вік бізнесу", ["Оберіть варіант", "Ще не зареєстрований", "До 6 місяців", "6-24 місяці", "Більше 2 років"]],
-  ["Орієнтовна сума", ["Оберіть варіант", "До 3 000 EUR", "3 000-10 000 EUR", "10 000-30 000 EUR", "Понад 30 000 EUR"]],
-  ["Для чого потрібна підтримка?", ["Оберіть варіант", "Обладнання", "Цифровізація", "Запуск бізнесу", "Оборотні кошти", "Інше"]],
-  ["Інвестиція", ["Оберіть варіант", "Планується", "Вже зроблена", "Частково зроблена", "Поки не знаю"]],
-  ["Бажаний контакт", ["Оберіть варіант", "Email", "WhatsApp", "Телефон"]]
-];
+const questionnaireTranslations = {
+  uk: {
+    clearStep: "Зрозумілий наступний крок",
+    title: "Заповнити анкету перевірки",
+    meta: "6 блоків питань · без обіцянок схвалення",
+    open: "Відкрити анкету",
+    close: "Закрити анкету",
+    groups: ["Профіль бізнесу", "Параметри запиту", "Контакт і деталі"],
+    selects: [
+      ["Ситуація", ["Оберіть варіант", "Я вже autonomo", "Планую стати autonomo", "Маю малий бізнес", "Хочу перевірити ідею"]],
+      ["Вік бізнесу", ["Оберіть варіант", "Ще не зареєстрований", "До 6 місяців", "6-24 місяці", "Більше 2 років"]],
+      ["Орієнтовна сума", ["Оберіть варіант", "До 3 000 EUR", "3 000-10 000 EUR", "10 000-30 000 EUR", "Понад 30 000 EUR"]],
+      ["Для чого потрібна підтримка?", ["Оберіть варіант", "Обладнання", "Цифровізація", "Запуск бізнесу", "Оборотні кошти", "Інше"]],
+      ["Інвестиція", ["Оберіть варіант", "Планується", "Вже зроблена", "Частково зроблена", "Поки не знаю"]],
+      ["Бажаний контакт", ["Оберіть варіант", "Email", "WhatsApp", "Телефон"]]
+    ],
+    textFields: [
+      ["Місто і регіон", "Напр. Аліканте, Валенсійська спільнота"],
+      ["Сектор або діяльність", "Напр. торгівля, horeca, послуги..."],
+      ["Контакт", "Email або телефон"],
+      ["Конкретна програма, якщо вже є", "Необов'язково"]
+    ],
+    notesLabel: "Щось важливе про ваш випадок",
+    optional: "Необов'язково",
+    consent: "Я погоджуюсь, щоб Veris розглянув цю інформацію для відповіді щодо мого випадку. TODO: додати реальну політику приватності.",
+    submit: "Надіслати на перевірку"
+  },
+  en: {
+    clearStep: "Clear next step",
+    title: "Fill in the check questionnaire",
+    meta: "6 question blocks · no approval promises",
+    open: "Open questionnaire",
+    close: "Close questionnaire",
+    groups: ["Business profile", "Request parameters", "Contact and details"],
+    selects: [
+      ["Situation", ["Choose an option", "I am already autonomo", "I plan to become autonomo", "I have a small business", "I want to check an idea"]],
+      ["Business age", ["Choose an option", "Not registered yet", "Up to 6 months", "6-24 months", "More than 2 years"]],
+      ["Estimated amount", ["Choose an option", "Up to 3,000 EUR", "3,000-10,000 EUR", "10,000-30,000 EUR", "More than 30,000 EUR"]],
+      ["What support is needed for?", ["Choose an option", "Equipment", "Digitalization", "Business launch", "Working capital", "Other"]],
+      ["Investment", ["Choose an option", "Planned", "Already made", "Partly made", "Not sure yet"]],
+      ["Preferred contact", ["Choose an option", "Email", "WhatsApp", "Phone"]]
+    ],
+    textFields: [["City and region", "E.g. Alicante, Valencian Community"], ["Sector or activity", "E.g. retail, horeca, services..."], ["Contact", "Email or phone"], ["Specific program, if any", "Optional"]],
+    notesLabel: "Anything important about your case",
+    optional: "Optional",
+    consent: "I agree that Veris may review this information to respond about my case. TODO: add a real privacy policy.",
+    submit: "Send for review"
+  },
+  es: {
+    clearStep: "Siguiente paso claro",
+    title: "Rellenar el cuestionario",
+    meta: "6 bloques de preguntas · sin promesas de aprobación",
+    open: "Abrir cuestionario",
+    close: "Cerrar cuestionario",
+    groups: ["Perfil del negocio", "Parámetros de la solicitud", "Contacto y detalles"],
+    selects: [
+      ["Situación", ["Elige una opción", "Ya soy autónomo", "Planeo ser autónomo", "Tengo una pequeña empresa", "Quiero revisar una idea"]],
+      ["Antigüedad del negocio", ["Elige una opción", "Aún no registrado", "Hasta 6 meses", "6-24 meses", "Más de 2 años"]],
+      ["Importe estimado", ["Elige una opción", "Hasta 3.000 EUR", "3.000-10.000 EUR", "10.000-30.000 EUR", "Más de 30.000 EUR"]],
+      ["¿Para qué necesitas apoyo?", ["Elige una opción", "Equipamiento", "Digitalización", "Inicio del negocio", "Capital circulante", "Otro"]],
+      ["Inversión", ["Elige una opción", "Planificada", "Ya realizada", "Realizada parcialmente", "Aún no lo sé"]],
+      ["Contacto preferido", ["Elige una opción", "Email", "WhatsApp", "Teléfono"]]
+    ],
+    textFields: [["Ciudad y región", "Ej. Alicante, Comunidad Valenciana"], ["Sector o actividad", "Ej. comercio, horeca, servicios..."], ["Contacto", "Email o teléfono"], ["Programa concreto, si ya existe", "Opcional"]],
+    notesLabel: "Algo importante sobre tu caso",
+    optional: "Opcional",
+    consent: "Acepto que Veris revise esta información para responder sobre mi caso. TODO: añadir una política de privacidad real.",
+    submit: "Enviar para revisión"
+  },
+  fr: {
+    clearStep: "Prochaine étape claire",
+    title: "Remplir le questionnaire",
+    meta: "6 blocs de questions · aucune promesse d'approbation",
+    open: "Ouvrir le questionnaire",
+    close: "Fermer le questionnaire",
+    groups: ["Profil de l'activité", "Paramètres de la demande", "Contact et détails"],
+    selects: [
+      ["Situation", ["Choisir une option", "Je suis déjà autónomo", "Je prévois de devenir autónomo", "J'ai une petite entreprise", "Je veux vérifier une idée"]],
+      ["Âge de l'activité", ["Choisir une option", "Pas encore enregistrée", "Jusqu'à 6 mois", "6-24 mois", "Plus de 2 ans"]],
+      ["Montant estimé", ["Choisir une option", "Jusqu'à 3 000 EUR", "3 000-10 000 EUR", "10 000-30 000 EUR", "Plus de 30 000 EUR"]],
+      ["Pourquoi avez-vous besoin d'aide ?", ["Choisir une option", "Équipement", "Numérisation", "Lancement d'activité", "Fonds de roulement", "Autre"]],
+      ["Investissement", ["Choisir une option", "Prévu", "Déjà réalisé", "Partiellement réalisé", "Pas encore sûr"]],
+      ["Contact préféré", ["Choisir une option", "Email", "WhatsApp", "Téléphone"]]
+    ],
+    textFields: [["Ville et région", "Ex. Alicante, Communauté valencienne"], ["Secteur ou activité", "Ex. commerce, horeca, services..."], ["Contact", "Email ou téléphone"], ["Programme précis, s'il existe", "Optionnel"]],
+    notesLabel: "Quelque chose d'important sur votre cas",
+    optional: "Optionnel",
+    consent: "J'accepte que Veris examine ces informations pour répondre à propos de mon cas. TODO : ajouter une vraie politique de confidentialité.",
+    submit: "Envoyer pour vérification"
+  },
+  de: {
+    clearStep: "Klarer nächster Schritt",
+    title: "Prüffragebogen ausfüllen",
+    meta: "6 Frageblöcke · keine Genehmigungsversprechen",
+    open: "Fragebogen öffnen",
+    close: "Fragebogen schließen",
+    groups: ["Geschäftsprofil", "Anfrageparameter", "Kontakt und Details"],
+    selects: [
+      ["Situation", ["Option wählen", "Ich bin bereits autónomo", "Ich plane autónomo zu werden", "Ich habe ein kleines Unternehmen", "Ich möchte eine Idee prüfen"]],
+      ["Alter des Unternehmens", ["Option wählen", "Noch nicht registriert", "Bis 6 Monate", "6-24 Monate", "Mehr als 2 Jahre"]],
+      ["Geschätzter Betrag", ["Option wählen", "Bis 3.000 EUR", "3.000-10.000 EUR", "10.000-30.000 EUR", "Mehr als 30.000 EUR"]],
+      ["Wofür wird Unterstützung benötigt?", ["Option wählen", "Ausstattung", "Digitalisierung", "Geschäftsstart", "Betriebskapital", "Sonstiges"]],
+      ["Investition", ["Option wählen", "Geplant", "Bereits getätigt", "Teilweise getätigt", "Noch unsicher"]],
+      ["Bevorzugter Kontakt", ["Option wählen", "Email", "WhatsApp", "Telefon"]]
+    ],
+    textFields: [["Stadt und Region", "Z. B. Alicante, Valencianische Gemeinschaft"], ["Branche oder Tätigkeit", "Z. B. Handel, Horeca, Dienstleistungen..."], ["Kontakt", "Email oder Telefon"], ["Konkretes Programm, falls vorhanden", "Optional"]],
+    notesLabel: "Etwas Wichtiges zu Ihrem Fall",
+    optional: "Optional",
+    consent: "Ich stimme zu, dass Veris diese Informationen prüft, um zu meinem Fall zu antworten. TODO: echte Datenschutzerklärung hinzufügen.",
+    submit: "Zur Prüfung senden"
+  },
+  pl: {
+    clearStep: "Jasny następny krok",
+    title: "Wypełnij ankietę weryfikacyjną",
+    meta: "6 bloków pytań · bez obietnic zatwierdzenia",
+    open: "Otwórz ankietę",
+    close: "Zamknij ankietę",
+    groups: ["Profil firmy", "Parametry zapytania", "Kontakt i szczegóły"],
+    selects: [
+      ["Sytuacja", ["Wybierz opcję", "Jestem już autónomo", "Planuję zostać autónomo", "Mam małą firmę", "Chcę sprawdzić pomysł"]],
+      ["Wiek firmy", ["Wybierz opcję", "Jeszcze niezarejestrowana", "Do 6 miesięcy", "6-24 miesiące", "Ponad 2 lata"]],
+      ["Szacowana kwota", ["Wybierz opcję", "Do 3 000 EUR", "3 000-10 000 EUR", "10 000-30 000 EUR", "Ponad 30 000 EUR"]],
+      ["Na co potrzebne jest wsparcie?", ["Wybierz opcję", "Wyposażenie", "Cyfryzacja", "Start firmy", "Kapitał obrotowy", "Inne"]],
+      ["Inwestycja", ["Wybierz opcję", "Planowana", "Już wykonana", "Częściowo wykonana", "Jeszcze nie wiem"]],
+      ["Preferowany kontakt", ["Wybierz opcję", "Email", "WhatsApp", "Telefon"]]
+    ],
+    textFields: [["Miasto i region", "Np. Alicante, Wspólnota Walencka"], ["Sektor lub działalność", "Np. handel, horeca, usługi..."], ["Kontakt", "Email lub telefon"], ["Konkretny program, jeśli już jest", "Opcjonalnie"]],
+    notesLabel: "Coś ważnego o Twoim przypadku",
+    optional: "Opcjonalnie",
+    consent: "Zgadzam się, aby Veris przeanalizował te informacje w celu odpowiedzi dotyczącej mojego przypadku. TODO: dodać prawdziwą politykę prywatności.",
+    submit: "Wyślij do sprawdzenia"
+  },
+  ru: {
+    clearStep: "Понятный следующий шаг",
+    title: "Заполнить анкету проверки",
+    meta: "6 блоков вопросов · без обещаний одобрения",
+    open: "Открыть анкету",
+    close: "Закрыть анкету",
+    groups: ["Профиль бизнеса", "Параметры запроса", "Контакт и детали"],
+    selects: [
+      ["Ситуация", ["Выберите вариант", "Я уже autonomo", "Планирую стать autonomo", "У меня малый бизнес", "Хочу проверить идею"]],
+      ["Возраст бизнеса", ["Выберите вариант", "Еще не зарегистрирован", "До 6 месяцев", "6-24 месяца", "Более 2 лет"]],
+      ["Ориентировочная сумма", ["Выберите вариант", "До 3 000 EUR", "3 000-10 000 EUR", "10 000-30 000 EUR", "Более 30 000 EUR"]],
+      ["Для чего нужна поддержка?", ["Выберите вариант", "Оборудование", "Цифровизация", "Запуск бизнеса", "Оборотные средства", "Другое"]],
+      ["Инвестиция", ["Выберите вариант", "Планируется", "Уже сделана", "Частично сделана", "Пока не знаю"]],
+      ["Желаемый контакт", ["Выберите вариант", "Email", "WhatsApp", "Телефон"]]
+    ],
+    textFields: [["Город и регион", "Напр. Аликанте, Валенсийское сообщество"], ["Сектор или деятельность", "Напр. торговля, horeca, услуги..."], ["Контакт", "Email или телефон"], ["Конкретная программа, если уже есть", "Необязательно"]],
+    notesLabel: "Что-то важное о вашем случае",
+    optional: "Необязательно",
+    consent: "Я соглашаюсь, чтобы Veris рассмотрел эту информацию для ответа по моему случаю. TODO: добавить реальную политику приватности.",
+    submit: "Отправить на проверку"
+  }
+};
 
 function App() {
   const [lang, setLang] = useState("uk");
   const t = translations[lang];
+  const q = questionnaireTranslations[lang];
 
   useEffect(() => {
     document.documentElement.lang = lang;
@@ -461,44 +608,41 @@ function App() {
             <ul className="compact-list">
               <li>{t.time}</li>
               <li>{t.proof}</li>
-              <li>Зрозумілий наступний крок</li>
+              <li>{q.clearStep}</li>
             </ul>
           </div>
           <details className="questionnaire-dropdown">
             <summary>
-              <span className="dropdown-title">Заповнити анкету перевірки</span>
-              <span className="dropdown-meta">6 блоків питань · без обіцянок схвалення</span>
+              <span className="dropdown-title">{q.title}</span>
+              <span className="dropdown-meta">{q.meta}</span>
               <span className="dropdown-action" aria-hidden="true">
-                <span className="action-open">Відкрити анкету</span>
-                <span className="action-close">Закрити анкету</span>
+                <span className="action-open">{q.open}</span>
+                <span className="action-close">{q.close}</span>
               </span>
             </summary>
             <form className="lead-form large-lead-form detailed-check-form" onSubmit={(event) => event.preventDefault()}>
-              <div className="form-group-title full">Профіль бізнесу</div>
-              <FormSelect label={checkFormSelects[0][0]} options={checkFormSelects[0][1]} className="full" />
-              <TextField label="Місто і регіон" placeholder="Напр. Аліканте, Валенсійська спільнота" className="full" />
-              <TextField label="Сектор або діяльність" placeholder="Напр. торгівля, horeca, послуги..." className="full" />
-              <div className="form-group-title full">Параметри запиту</div>
-              <FormSelect label={checkFormSelects[1][0]} options={checkFormSelects[1][1]} />
-              <FormSelect label={checkFormSelects[2][0]} options={checkFormSelects[2][1]} />
-              <FormSelect label={checkFormSelects[3][0]} options={checkFormSelects[3][1]} className="full" />
-              <FormSelect label={checkFormSelects[4][0]} options={checkFormSelects[4][1]} className="full" />
-              <div className="form-group-title full">Контакт і деталі</div>
-              <FormSelect label={checkFormSelects[5][0]} options={checkFormSelects[5][1]} />
-              <TextField label="Контакт" placeholder="Email або телефон" />
-              <TextField label="Конкретна програма, якщо вже є" placeholder="Необов'язково" className="full" />
+              <div className="form-group-title full">{q.groups[0]}</div>
+              <FormSelect label={q.selects[0][0]} options={q.selects[0][1]} className="full" />
+              <TextField label={q.textFields[0][0]} placeholder={q.textFields[0][1]} className="full" />
+              <TextField label={q.textFields[1][0]} placeholder={q.textFields[1][1]} className="full" />
+              <div className="form-group-title full">{q.groups[1]}</div>
+              <FormSelect label={q.selects[1][0]} options={q.selects[1][1]} />
+              <FormSelect label={q.selects[2][0]} options={q.selects[2][1]} />
+              <FormSelect label={q.selects[3][0]} options={q.selects[3][1]} className="full" />
+              <FormSelect label={q.selects[4][0]} options={q.selects[4][1]} className="full" />
+              <div className="form-group-title full">{q.groups[2]}</div>
+              <FormSelect label={q.selects[5][0]} options={q.selects[5][1]} />
+              <TextField label={q.textFields[2][0]} placeholder={q.textFields[2][1]} />
+              <TextField label={q.textFields[3][0]} placeholder={q.textFields[3][1]} className="full" />
               <label className="form-field full">
-                <span>Щось важливе про ваш випадок</span>
-                <textarea rows="5" placeholder="Необов'язково" />
+                <span>{q.notesLabel}</span>
+                <textarea rows="5" placeholder={q.optional} />
               </label>
               <label className="consent full">
                 <input type="checkbox" />
-                <span>
-                  Я погоджуюсь, щоб Veris розглянув цю інформацію для відповіді щодо мого випадку. TODO: додати
-                  реальну політику приватності.
-                </span>
+                <span>{q.consent}</span>
               </label>
-              <button className="button primary full" type="submit">Надіслати на перевірку</button>
+              <button className="button primary full" type="submit">{q.submit}</button>
             </form>
           </details>
         </section>
