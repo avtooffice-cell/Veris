@@ -56,7 +56,7 @@ const translations = {
     complianceTitle: "Ми не обіцяємо схвалення. Ми обіцяємо ясність.",
     compliance:
       "Остаточне рішення ухвалює державний орган, банк або програма. Veris надає діагностичну та консультаційну підтримку.",
-    faqTitle: "Питання перед стартом.",
+    faqTitle: "Так, тут можна отримати підтримку. Ні, це не працює як банкомат.",
     faq: [
       ["Veris гарантує субсидію?", "Ні. Ми допомагаємо зрозуміти, чи є сенс рухатись далі."],
       ["Це підходить для autonomos?", "Так. Veris створений для autonomos, майбутніх autonomos і малого бізнесу."],
@@ -110,7 +110,7 @@ const translations = {
     checks: ["Subsidies, grants and financing", "Regional and program requirements", "Ready or missing documents", "Risks, timing and stop reasons"],
     complianceTitle: "We do not promise approval. We promise clarity.",
     compliance: "The final decision is made by the public body, bank or program. Veris provides diagnostic and advisory support.",
-    faqTitle: "Questions before starting.",
+    faqTitle: "Yes, support may be available here. No, it does not work like an ATM.",
     faq: [
       ["Does Veris guarantee a subsidy?", "No. We help you understand whether it makes sense to continue."],
       ["Is it for autonomos?", "Yes. Veris is built for autonomos, future autonomos and small businesses."],
@@ -167,7 +167,7 @@ Object.assign(translations, {
     checks: ["Subvenciones, ayudas y financiación", "Requisitos regionales y del programa", "Documentos listos o pendientes", "Riesgos, plazos y motivos para parar"],
     complianceTitle: "No prometemos aprobación. Prometemos claridad.",
     compliance: "La decisión final la toma el organismo público, banco o programa. Veris ofrece apoyo diagnóstico y consultivo.",
-    faqTitle: "Preguntas antes de empezar.",
+    faqTitle: "Sí, aquí se puede obtener apoyo. No, no funciona como un cajero automático.",
     faq: [
       ["¿Veris garantiza una subvención?", "No. Ayudamos a entender si tiene sentido continuar."],
       ["¿Sirve para autónomos?", "Sí. Veris está pensado para autónomos, futuros autónomos y pequeñas empresas."],
@@ -221,7 +221,7 @@ Object.assign(translations, {
     checks: ["Subventions, aides et financement", "Exigences régionales et du programme", "Documents prêts ou manquants", "Risques, délais et raisons de s'arrêter"],
     complianceTitle: "Nous ne promettons pas l'approbation. Nous promettons la clarté.",
     compliance: "La décision finale appartient à l'organisme public, à la banque ou au programme. Veris fournit un soutien de diagnostic et de conseil.",
-    faqTitle: "Questions avant de commencer.",
+    faqTitle: "Oui, il est possible d'obtenir un soutien ici. Non, cela ne fonctionne pas comme un distributeur automatique.",
     faq: [
       ["Veris garantit-il une subvention ?", "Non. Nous aidons à comprendre s'il est pertinent de continuer."],
       ["Est-ce adapté aux autónomos ?", "Oui. Veris est conçu pour les autónomos, futurs autónomos et petites entreprises."],
@@ -275,7 +275,7 @@ Object.assign(translations, {
     checks: ["Zuschüsse, Fördermittel und Finanzierung", "Regionale und programmspezifische Anforderungen", "Vorhandene oder fehlende Dokumente", "Risiken, Fristen und Stop-Gründe"],
     complianceTitle: "Wir versprechen keine Genehmigung. Wir versprechen Klarheit.",
     compliance: "Die endgültige Entscheidung trifft die öffentliche Stelle, Bank oder das Programm. Veris bietet diagnostische und beratende Unterstützung.",
-    faqTitle: "Fragen vor dem Start.",
+    faqTitle: "Ja, hier kann Unterstützung möglich sein. Nein, es funktioniert nicht wie ein Geldautomat.",
     faq: [
       ["Garantiert Veris eine Förderung?", "Nein. Wir helfen zu verstehen, ob es sinnvoll ist, weiterzumachen."],
       ["Ist das für Autónomos geeignet?", "Ja. Veris ist für Autónomos, zukünftige Autónomos und kleine Unternehmen gedacht."],
@@ -329,7 +329,7 @@ Object.assign(translations, {
     checks: ["Dotacje, granty i finansowanie", "Wymagania regionalne i programowe", "Gotowe lub brakujące dokumenty", "Ryzyka, terminy i powody, by się zatrzymać"],
     complianceTitle: "Nie obiecujemy zatwierdzenia. Obiecujemy jasność.",
     compliance: "Ostateczną decyzję podejmuje instytucja publiczna, bank lub program. Veris zapewnia wsparcie diagnostyczne i doradcze.",
-    faqTitle: "Pytania przed startem.",
+    faqTitle: "Tak, tutaj można uzyskać wsparcie. Nie, to nie działa jak bankomat.",
     faq: [
       ["Czy Veris gwarantuje dotację?", "Nie. Pomagamy zrozumieć, czy warto iść dalej."],
       ["Czy to jest dla autónomos?", "Tak. Veris jest dla autónomos, przyszłych autónomos i małych firm."],
@@ -383,7 +383,7 @@ Object.assign(translations, {
     checks: ["Субсидии, гранты и финансирование", "Региональные и программные требования", "Готовые или отсутствующие документы", "Риски, сроки и причины остановиться"],
     complianceTitle: "Мы не обещаем одобрение. Мы обещаем ясность.",
     compliance: "Окончательное решение принимает государственный орган, банк или программа. Veris оказывает диагностическую и консультационную поддержку.",
-    faqTitle: "Вопросы перед стартом.",
+    faqTitle: "Да, здесь можно получить поддержку. Нет, это не работает как банкомат.",
     faq: [
       ["Veris гарантирует субсидию?", "Нет. Мы помогаем понять, есть ли смысл двигаться дальше."],
       ["Это подходит для autonomos?", "Да. Veris создан для autonomos, будущих autonomos и малого бизнеса."],
