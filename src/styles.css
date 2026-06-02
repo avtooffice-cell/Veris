@@ -920,6 +920,19 @@ details p {
     margin-right: -10px;
   }
 
+  .diagnostic-card .button.dark {
+    min-height: 52px;
+    padding: 0 14px;
+    font-size: 18px;
+  }
+
+  .sample-watermark {
+    top: 48%;
+    font-size: clamp(72px, 20vw, 118px);
+    letter-spacing: 0;
+    transform: translate(-50%, -50%) rotate(-6deg) scaleX(1.18);
+  }
+
   .lead-section {
     gap: 18px;
     padding-top: 34px;

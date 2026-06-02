@@ -20,7 +20,7 @@ const translations = {
     meters: ["Регіональна відповідність", "Документи", "Ризик відмови"],
     reviewTitle: "Потрібно перевірити",
     sampleWatermark: "Зразок",
-    checkItems: ["Строки та дедлайни", "Варіанти програм + код BDNS", "Необхідна документація"],
+    checkItems: ["Строки та дедлайни", "Варіанти програм + код BDNS", "Необхідна документація", "Варіанти співпраці"],
     problemKicker: "Проблема",
     problemTitle: "Багато заявок починаються запізно, неправильно або без реальної відповідності.",
     problems: [
@@ -79,7 +79,7 @@ const translations = {
     meters: ["Regional fit", "Documents", "Refusal risk"],
     reviewTitle: "Needs review",
     sampleWatermark: "Sample",
-    checkItems: ["Timelines and deadlines", "Program options + BDNS code", "Required documentation"],
+    checkItems: ["Timelines and deadlines", "Program options + BDNS code", "Required documentation", "Cooperation options"],
     problemKicker: "Problem",
     problemTitle: "Many applications start late, incorrectly or without real fit.",
     problems: [
@@ -130,7 +130,7 @@ Object.assign(translations, {
     meters: ["Encaje regional", "Documentos", "Riesgo de rechazo"],
     reviewTitle: "Requiere revisión",
     sampleWatermark: "Muestra",
-    checkItems: ["Plazos y fechas límite", "Opciones de programas + código BDNS", "Documentación necesaria"],
+    checkItems: ["Plazos y fechas límite", "Opciones de programas + código BDNS", "Documentación necesaria", "Opciones de colaboración"],
     problemKicker: "Problema",
     problemTitle: "Muchas solicitudes empiezan tarde, mal o sin encaje real.",
     problems: [
@@ -178,7 +178,7 @@ Object.assign(translations, {
     meters: ["Adéquation régionale", "Documents", "Risque de refus"],
     reviewTitle: "À vérifier",
     sampleWatermark: "Exemple",
-    checkItems: ["Délais et dates limites", "Options de programmes + code BDNS", "Documentation nécessaire"],
+    checkItems: ["Délais et dates limites", "Options de programmes + code BDNS", "Documentation nécessaire", "Options de collaboration"],
     problemKicker: "Problème",
     problemTitle: "Beaucoup de demandes commencent tard, mal ou sans réelle adéquation.",
     problems: [
@@ -226,7 +226,7 @@ Object.assign(translations, {
     meters: ["Regionale Passung", "Dokumente", "Ablehnungsrisiko"],
     reviewTitle: "Zu prüfen",
     sampleWatermark: "Beispiel",
-    checkItems: ["Fristen und Termine", "Programmoptionen + BDNS-Code", "Erforderliche Dokumentation"],
+    checkItems: ["Fristen und Termine", "Programmoptionen + BDNS-Code", "Erforderliche Dokumentation", "Möglichkeiten der Zusammenarbeit"],
     problemKicker: "Problem",
     problemTitle: "Viele Anträge starten zu spät, falsch oder ohne echte Passung.",
     problems: [
@@ -274,7 +274,7 @@ Object.assign(translations, {
     meters: ["Dopasowanie regionalne", "Dokumenty", "Ryzyko odmowy"],
     reviewTitle: "Do sprawdzenia",
     sampleWatermark: "Przykład",
-    checkItems: ["Terminy i deadline'y", "Opcje programów + kod BDNS", "Wymagana dokumentacja"],
+    checkItems: ["Terminy i deadline'y", "Opcje programów + kod BDNS", "Wymagana dokumentacja", "Opcje współpracy"],
     problemKicker: "Problem",
     problemTitle: "Wiele wniosków zaczyna się za późno, błędnie albo bez realnego dopasowania.",
     problems: [
@@ -322,7 +322,7 @@ Object.assign(translations, {
     meters: ["Региональное соответствие", "Документы", "Риск отказа"],
     reviewTitle: "Нужно проверить",
     sampleWatermark: "Образец",
-    checkItems: ["Сроки и дедлайны", "Варианты программ + код BDNS", "Необходимая документация"],
+    checkItems: ["Сроки и дедлайны", "Варианты программ + код BDNS", "Необходимая документация", "Варианты сотрудничества"],
     problemKicker: "Проблема",
     problemTitle: "Многие заявки начинаются поздно, неправильно или без реального соответствия.",
     problems: [
