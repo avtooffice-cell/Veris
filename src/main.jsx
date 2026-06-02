@@ -454,16 +454,20 @@ function App() {
 
         <section className="section lead-section" id="lead-check">
           <div className="lead-copy">
-            <p className="kicker">{t.cta}</p>
-            <h2>{t.formTitle}</h2>
+            <div className="lead-heading">
+              <p className="kicker">{t.cta}</p>
+              <h2>{t.formTitle}</h2>
+            </div>
+            <ul className="compact-list">
+              <li>{t.time}</li>
+              <li>{t.proof}</li>
+              <li>Зрозумілий наступний крок</li>
+            </ul>
           </div>
           <details className="questionnaire-dropdown">
             <summary>
-              <span className="dropdown-title">Анкета перевірки</span>
-              <ul className="compact-list">
-                <li>{t.time}</li>
-                <li>{t.proof}</li>
-              </ul>
+              <span className="dropdown-title">Заповнити анкету перевірки</span>
+              <span className="dropdown-meta">6 блоків питань · без обіцянок схвалення</span>
               <span className="dropdown-action" aria-hidden="true">
                 <span className="action-open">Розгорнути</span>
                 <span className="action-close">Згорнути</span>
@@ -471,13 +475,16 @@ function App() {
               </span>
             </summary>
             <form className="lead-form large-lead-form detailed-check-form" onSubmit={(event) => event.preventDefault()}>
+              <div className="form-group-title full">Профіль бізнесу</div>
               <FormSelect label={checkFormSelects[0][0]} options={checkFormSelects[0][1]} className="full" />
               <TextField label="Місто і регіон" placeholder="Напр. Аліканте, Валенсійська спільнота" className="full" />
               <TextField label="Сектор або діяльність" placeholder="Напр. торгівля, horeca, послуги..." className="full" />
+              <div className="form-group-title full">Параметри запиту</div>
               <FormSelect label={checkFormSelects[1][0]} options={checkFormSelects[1][1]} />
               <FormSelect label={checkFormSelects[2][0]} options={checkFormSelects[2][1]} />
               <FormSelect label={checkFormSelects[3][0]} options={checkFormSelects[3][1]} className="full" />
               <FormSelect label={checkFormSelects[4][0]} options={checkFormSelects[4][1]} className="full" />
+              <div className="form-group-title full">Контакт і деталі</div>
               <FormSelect label={checkFormSelects[5][0]} options={checkFormSelects[5][1]} />
               <TextField label="Контакт" placeholder="Email або телефон" />
               <TextField label="Конкретна програма, якщо вже є" placeholder="Необов'язково" className="full" />
