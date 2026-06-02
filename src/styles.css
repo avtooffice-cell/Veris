@@ -843,13 +843,35 @@ label {
 }
 
 .faq {
+  position: relative;
   padding-bottom: clamp(42px, 5vw, 76px);
+  background:
+    radial-gradient(circle at 88% 12%, rgba(236, 0, 0, 0.08), transparent 28%),
+    linear-gradient(180deg, var(--veris-soft), rgba(255, 255, 255, 0.82));
 }
 
 .faq h2 {
-  max-width: 1040px;
-  font-size: clamp(30px, 4vw, 56px);
-  line-height: 1.08;
+  position: relative;
+  max-width: 900px;
+  padding: clamp(22px, 3vw, 34px) clamp(22px, 3.4vw, 42px);
+  border-left: 6px solid var(--veris-red);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 24px 70px rgba(16, 16, 16, 0.1), 0 18px 48px rgba(236, 0, 0, 0.08);
+  font-size: clamp(26px, 3.2vw, 44px);
+  line-height: 1.12;
+}
+
+.faq h2::after {
+  content: "";
+  position: absolute;
+  right: clamp(18px, 3vw, 34px);
+  bottom: -10px;
+  width: min(240px, 42%);
+  height: 4px;
+  border-radius: 999px;
+  background: var(--veris-red);
+  box-shadow: 0 14px 32px rgba(236, 0, 0, 0.24);
 }
 
 details {
@@ -1005,8 +1027,15 @@ details p {
   }
 
   .faq h2 {
-    font-size: 30px;
-    line-height: 1.1;
+    padding: 18px 18px 22px;
+    border-left-width: 4px;
+    font-size: 25px;
+    line-height: 1.12;
+  }
+
+  .faq h2::after {
+    right: 18px;
+    width: 46%;
   }
 
   .compact-list {
