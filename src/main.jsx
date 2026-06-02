@@ -67,7 +67,7 @@ const translations = {
     fields: ["Ім'я", "Email або WhatsApp", "Місто / регіон", "Тип бізнесу", "Що хочете перевірити?"],
     submit: "Надіслати запит",
     finalTitle: "Почніть з ясної оцінки вашого випадку.",
-    finalCopy: "Ви не самі. Ви не йдете навмання.",
+    finalCopy: "Не сам. Не навмання.",
     footer: "Veris допомагає перевірити реальні варіанти до підготовки документів.",
     contact: "Контакт: TODO"
   },
@@ -178,7 +178,7 @@ Object.assign(translations, {
     fields: ["Nombre", "Email o WhatsApp", "Ciudad / región", "Tipo de negocio", "¿Qué quieres revisar?"],
     submit: "Enviar solicitud",
     finalTitle: "Empieza con una evaluación clara de tu caso.",
-    finalCopy: "No estás solo. No vas a ciegas.",
+    finalCopy: "No solo. No a ciegas.",
     footer: "Veris ayuda a revisar opciones reales antes de preparar documentos.",
     contact: "Contacto: TODO"
   },
@@ -742,7 +742,7 @@ function App() {
 
         <section className="section final-cta">
           <h2>{t.finalTitle}</h2>
-          <p>{t.finalCopy}</p>
+          <p>{t.slogan}</p>
           <a className="button primary" href="#lead-check">{t.formCta}</a>
         </section>
       </main>
