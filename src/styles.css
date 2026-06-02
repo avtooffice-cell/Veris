@@ -172,9 +172,9 @@ h3 {
 }
 
 h1 {
-  max-width: 780px;
-  font-size: clamp(42px, 4.9vw, 70px);
-  line-height: 1.02;
+  max-width: 720px;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.08;
 }
 
 h2 {
