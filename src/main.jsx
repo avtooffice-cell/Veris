@@ -1,845 +1,572 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
 
-const translations = {
-  uk: {
-    nav: ["Як це працює", "Що перевіряємо", "Діагностика", "FAQ"],
-    slogan: "Не сам. Не навмання.",
-    cta: "Перевірити випадок",
-    heroCta: "Перевірити мої шанси",
-    formCta: "Оцінити можливості",
-    diagnosticCta: "Почати діагностику",
-    cardCta: "Діагностувати",
-    locale: "Аліканте, Валенсійська спільнота та Іспанія",
-    heroEyebrow: "Для тих, хто будує бізнес в Іспанії не з нуля, а в новій системі",
-    h1: "Не втрачайте можливості фінансування тільки тому, що система незрозуміла",
-    lead:
-      "Veris допомагає підприємцям в Іспанії перевірити, які ayudas, subvenciones або фінансування можуть підходити їхньому бізнесу. Рідною мовою, без порожніх гарантій, з чітким наступним кроком.",
-    sub: "",
-    proof: "Якщо реальних варіантів немає, ми скажемо про це прямо.",
-    secondary: "Як це працює",
-    cardTitle: "Autonomo у підготовці",
-    cardMeta: "Цифровізація + обладнання, Аліканте",
-    meters: ["Регіональна відповідність", "Документи", "Ризик відмови"],
-    reviewTitle: "Потрібно перевірити",
-    sampleWatermark: "Зразок",
-    checkItems: ["Строки та дедлайни", "Варіанти програм + код BDNS", "Необхідна документація", "Варіанти співпраці"],
-    problemKicker: "Проблема",
-    problemTitle: "Багато заявок починаються запізно, неправильно або без реальної відповідності.",
-    problems: [
-      ["Розкидані вимоги", "Правила, строки й умови змінюються залежно від програми, регіону і типу бізнесу."],
-      ["Втрачений час", "Документи готуються тижнями, навіть коли базові умови не виконані."],
-      ["Нечіткі обіцянки", "Потрібна чесна перевірка, а не загальні фрази про можливості."]
-    ],
-    diagnosticTitle: "Чесний фільтр перед паперовою роботою.",
-    diagnosticText:
-      "Veris Check дає першу оцінку профілю, можливих шляхів і стоп-факторів до того, як ви витратите час на повний пакет документів.",
-    price: "99 EUR",
-    priceTax: "21% IVA включено",
-    priceNote: "* враховується при подальшому супроводі",
-    stepsTitle: "Ми допоможемо зрозуміти, чи є у вашій ситуації реальний шанс, що саме варто пробувати і де краще не витрачати нерви.",
-    steps: [
-      "Ви заповнюєте коротку форму.",
-      "Veris перевіряє профіль і локальний контекст.",
-      "Ви отримуєте першу відповідь протягом 24 годин.",
-      "При позитивному результаті - Veris Check.",
-      "Ви бачите реальні варіанти, блокери або чітке ні."
-    ],
-    checksTitle: "Ми перевіряємо відповідність, вимоги і ризики.",
-    checks: [
-      "Субсидії, гранти і фінансування",
-      "Вимоги за регіоном і програмою",
-      "Готові або відсутні документи",
-      "Ризики, строки і причини зупинитись"
-    ],
-    complianceTitle: "Ми не обіцяємо схвалення. Ми обіцяємо ясність.",
-    compliance:
-      "Остаточне рішення ухвалює державний орган, банк або програма. Veris надає діагностичну та консультаційну підтримку.",
-    faqTitle: "Так, тут можна отримати підтримку. Ні, це не працює як банкомат.",
-    faq: [
-      ["Veris гарантує субсидію?", "Ні. Ми допомагаємо зрозуміти, чи є сенс рухатись далі."],
-      ["Це підходить для autonomos?", "Так. Veris створений для autonomos, майбутніх autonomos і малого бізнесу."],
-      ["Можна перевірити фінансування?", "Так. Ми дивимось субсидії, гранти, фінансування і стоп-фактори."]
-    ],
-    formTitle: "Почніть з ясної оцінки вашої ситуації.",
-    time: "2 хвилини",
-    fields: ["Ім'я", "Email або WhatsApp", "Місто / регіон", "Тип бізнесу", "Що хочете перевірити?"],
-    submit: "Надіслати запит",
-    finalTitle: "Оцініть реальний шанс отримати фінансування.",
-    finalCopy: "Не сам. Не навмання.",
-    footer: "Veris допомагає перевірити реальні варіанти до підготовки документів.",
-    contact: "Контакт: TODO"
-  },
-  en: {
-    nav: ["How it works", "What we check", "Diagnostic", "FAQ"],
-    slogan: "Not alone. Not in the dark.",
-    cta: "Check your case",
-    heroCta: "Check my options",
-    formCta: "Assess options",
-    diagnosticCta: "Start diagnosis",
-    cardCta: "Diagnose",
-    locale: "Alicante, Valencian Community and Spain",
-    heroEyebrow: "For those building a business in Spain not from zero, but inside a new system",
-    h1: "Do not lose financing opportunities just because the system is unclear.",
-    lead: "Veris helps entrepreneurs in Spain check which ayudas, subvenciones or financing may fit their business. In your language, without empty guarantees, with a clear next step.",
-    sub: "",
-    proof: "If there are no real options, we say so clearly.",
-    secondary: "How it works",
-    cardTitle: "Autonomo in preparation",
-    cardMeta: "Digitalization + equipment, Alicante",
-    meters: ["Regional fit", "Documents", "Refusal risk"],
-    reviewTitle: "Needs review",
-    sampleWatermark: "Sample",
-    checkItems: ["Timelines and deadlines", "Program options + BDNS code", "Required documentation", "Cooperation options"],
-    problemKicker: "Problem",
-    problemTitle: "Many applications start late, incorrectly or without real fit.",
-    problems: [
-      ["Scattered requirements", "Rules, deadlines and conditions change by program, region and business type."],
-      ["Lost time", "Documents can take weeks, even when basic conditions are not met."],
-      ["Vague promises", "You need a clear check, not generic claims about opportunities."]
-    ],
-    diagnosticTitle: "An honest filter before paperwork.",
-    diagnosticText:
-      "Veris Check gives a first view of your profile, possible paths and stop factors before you spend time on a full file.",
-    price: "99 EUR",
-    priceTax: "21% IVA included",
-    priceNote: "* credited toward further support",
-    stepsTitle: "We help you understand whether your situation has a real chance, what is worth trying and where it is better not to waste your nerves.",
-    steps: ["Short form.", "Profile and local context review.", "You receive the first answer within 24 hours.", "If the result is positive - Veris Check.", "Real options, blockers or a clear no."],
-    checksTitle: "We check fit, requirements and risks.",
-    checks: ["Subsidies, grants and financing", "Regional and program requirements", "Ready or missing documents", "Risks, timing and stop reasons"],
-    complianceTitle: "We do not promise approval. We promise clarity.",
-    compliance: "The final decision is made by the public body, bank or program. Veris provides diagnostic and advisory support.",
-    faqTitle: "Yes, support may be available here. No, it does not work like an ATM.",
-    faq: [
-      ["Does Veris guarantee a subsidy?", "No. We help you understand whether it makes sense to continue."],
-      ["Is it for autonomos?", "Yes. Veris is built for autonomos, future autonomos and small businesses."],
-      ["Can financing be checked?", "Yes. We review subsidies, grants, financing and stop factors."]
-    ],
-    formTitle: "Start with a clear assessment of your situation.",
-    time: "2 minutes",
-    fields: ["Name", "Email or WhatsApp", "City / region", "Business type", "What do you want to check?"],
-    submit: "Send request",
-    finalTitle: "Assess your real chance of getting financing.",
-    finalCopy: "Not alone. Not in the dark.",
-    footer: "Veris helps check real options before document preparation.",
-    contact: "Contact: TODO"
-  }
+const STORAGE_KEY = "veris-client-cards";
+const DRAFT_KEY = "veris-scoring-draft";
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const SUPABASE_ENABLED = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
+
+const defaultForm = {
+  clientName: "",
+  contact: "",
+  age: 35,
+  maritalStatus: "Одружений/заміжня",
+  nationality: "Іспанська",
+  residence: "Резидент",
+  employmentType: "Безстроковий",
+  seniorityMonths: 36,
+  netIncome: 2500,
+  otherIncome: 0,
+  currentPayments: 500,
+  creditHistory: "Добра",
+  housing: "Оренда",
+  savings: 8000,
+  loanAmount: 20000,
+  loanTermMonths: 60,
+  purpose: "Автомобіль",
+  notes: ""
 };
 
-Object.assign(translations, {
-  es: {
-    nav: ["Cómo funciona", "Qué revisamos", "Diagnóstico", "FAQ"],
-    slogan: "No solo. No a ciegas.",
-    cta: "Revisar mi caso",
-    heroCta: "Comprobar mis opciones",
-    formCta: "Evaluar opciones",
-    diagnosticCta: "Empezar diagnóstico",
-    cardCta: "Diagnosticar",
-    locale: "Alicante, Comunidad Valenciana y España",
-    heroEyebrow: "Para quienes construyen un negocio en España no desde cero, sino dentro de un sistema nuevo",
-    h1: "No pierdas oportunidades de financiación solo porque el sistema no está claro.",
-    lead: "Veris ayuda a emprendedores en España a comprobar qué ayudas, subvenciones o financiación pueden encajar con su negocio. En tu idioma, sin garantías vacías, con un siguiente paso claro.",
-    sub: "",
-    proof: "Si no hay opciones reales, lo diremos claramente.",
-    secondary: "Cómo funciona",
-    cardTitle: "Autónomo en preparación",
-    cardMeta: "Digitalización + equipamiento, Alicante",
-    meters: ["Encaje regional", "Documentos", "Riesgo de rechazo"],
-    reviewTitle: "Requiere revisión",
-    sampleWatermark: "Muestra",
-    checkItems: ["Plazos y fechas límite", "Opciones de programas + código BDNS", "Documentación necesaria", "Opciones de colaboración"],
-    problemKicker: "Problema",
-    problemTitle: "Muchas solicitudes empiezan tarde, mal o sin encaje real.",
-    problems: [
-      ["Requisitos dispersos", "Las reglas, plazos y condiciones cambian según el programa, la región y el tipo de negocio."],
-      ["Tiempo perdido", "Preparar documentos puede llevar semanas, incluso cuando no se cumplen las condiciones básicas."],
-      ["Promesas vagas", "Necesitas una revisión clara, no frases genéricas sobre oportunidades."]
-    ],
-    diagnosticTitle: "Un filtro honesto antes del papeleo.",
-    diagnosticText:
-      "Veris Check ofrece una primera evaluación de tu perfil, posibles caminos y factores de bloqueo antes de dedicar tiempo a un expediente completo.",
-    price: "99 EUR",
-    priceTax: "21% IVA incluido",
-    priceNote: "* se descuenta del acompañamiento posterior",
-    stepsTitle: "Te ayudamos a entender si tu situación tiene una posibilidad real, qué merece la pena intentar y dónde es mejor no gastar nervios.",
-    steps: ["Formulario breve.", "Revisión del perfil y contexto local.", "Recibes la primera respuesta en un plazo de 24 horas.", "Si el resultado es positivo - Veris Check.", "Opciones reales, bloqueos o un no claro."],
-    checksTitle: "Revisamos encaje, requisitos y riesgos.",
-    checks: ["Subvenciones, ayudas y financiación", "Requisitos regionales y del programa", "Documentos listos o pendientes", "Riesgos, plazos y motivos para parar"],
-    complianceTitle: "No prometemos aprobación. Prometemos claridad.",
-    compliance: "La decisión final la toma el organismo público, banco o programa. Veris ofrece apoyo diagnóstico y consultivo.",
-    faqTitle: "Sí, aquí se puede obtener apoyo. No, no funciona como un cajero automático.",
-    faq: [
-      ["¿Veris garantiza una subvención?", "No. Ayudamos a entender si tiene sentido continuar."],
-      ["¿Sirve para autónomos?", "Sí. Veris está pensado para autónomos, futuros autónomos y pequeñas empresas."],
-      ["¿Se puede revisar financiación?", "Sí. Revisamos subvenciones, ayudas, financiación y factores de bloqueo."]
-    ],
-    formTitle: "Empieza con una evaluación clara de tu situación.",
-    time: "2 minutos",
-    fields: ["Nombre", "Email o WhatsApp", "Ciudad / región", "Tipo de negocio", "¿Qué quieres revisar?"],
-    submit: "Enviar solicitud",
-    finalTitle: "Evalúa tus posibilidades reales de obtener financiación.",
-    finalCopy: "No solo. No a ciegas.",
-    footer: "Veris ayuda a revisar opciones reales antes de preparar documentos.",
-    contact: "Contacto: TODO"
-  },
-  fr: {
-    nav: ["Fonctionnement", "Ce que nous vérifions", "Diagnostic", "FAQ"],
-    slogan: "Pas seul. Pas à l'aveugle.",
-    cta: "Vérifier mon cas",
-    heroCta: "Vérifier mes options",
-    formCta: "Évaluer les options",
-    diagnosticCta: "Commencer le diagnostic",
-    cardCta: "Diagnostiquer",
-    locale: "Alicante, Communauté valencienne et Espagne",
-    heroEyebrow: "Pour ceux qui construisent une activité en Espagne non pas de zéro, mais dans un nouveau système",
-    h1: "Ne perdez pas des possibilités de financement simplement parce que le système n'est pas clair.",
-    lead: "Veris aide les entrepreneurs en Espagne à vérifier quelles ayudas, subvenciones ou financements peuvent correspondre à leur activité. Dans votre langue, sans garanties vides, avec une prochaine étape claire.",
-    sub: "",
-    proof: "S'il n'y a pas d'options réelles, nous le dirons clairement.",
-    secondary: "Fonctionnement",
-    cardTitle: "Autónomo en préparation",
-    cardMeta: "Numérisation + équipement, Alicante",
-    meters: ["Adéquation régionale", "Documents", "Risque de refus"],
-    reviewTitle: "À vérifier",
-    sampleWatermark: "Exemple",
-    checkItems: ["Délais et dates limites", "Options de programmes + code BDNS", "Documentation nécessaire", "Options de collaboration"],
-    problemKicker: "Problème",
-    problemTitle: "Beaucoup de demandes commencent tard, mal ou sans réelle adéquation.",
-    problems: [
-      ["Exigences dispersées", "Les règles, délais et conditions changent selon le programme, la région et le type d'activité."],
-      ["Temps perdu", "Les documents peuvent prendre des semaines, même lorsque les conditions de base ne sont pas remplies."],
-      ["Promesses floues", "Il faut une vérification claire, pas des phrases générales sur les opportunités."]
-    ],
-    diagnosticTitle: "Un filtre honnête avant la paperasse.",
-    diagnosticText:
-      "Veris Check donne une première évaluation du profil, des pistes possibles et des facteurs bloquants avant de consacrer du temps à un dossier complet.",
-    price: "99 EUR",
-    priceTax: "21% IVA inclus",
-    priceNote: "* déduit de l'accompagnement ultérieur",
-    stepsTitle: "Nous vous aidons à comprendre si votre situation a une chance réelle, ce qu'il vaut la peine d'essayer et où il vaut mieux ne pas perdre vos nerfs.",
-    steps: ["Formulaire court.", "Analyse du profil et du contexte local.", "Vous recevez une première réponse sous 24 heures.", "Si le résultat est positif - Veris Check.", "Options réelles, blocages ou non clair."],
-    checksTitle: "Nous vérifions l'adéquation, les exigences et les risques.",
-    checks: ["Subventions, aides et financement", "Exigences régionales et du programme", "Documents prêts ou manquants", "Risques, délais et raisons de s'arrêter"],
-    complianceTitle: "Nous ne promettons pas l'approbation. Nous promettons la clarté.",
-    compliance: "La décision finale appartient à l'organisme public, à la banque ou au programme. Veris fournit un soutien de diagnostic et de conseil.",
-    faqTitle: "Oui, il est possible d'obtenir un soutien ici. Non, cela ne fonctionne pas comme un distributeur automatique.",
-    faq: [
-      ["Veris garantit-il une subvention ?", "Non. Nous aidons à comprendre s'il est pertinent de continuer."],
-      ["Est-ce adapté aux autónomos ?", "Oui. Veris est conçu pour les autónomos, futurs autónomos et petites entreprises."],
-      ["Peut-on vérifier un financement ?", "Oui. Nous examinons subventions, aides, financement et facteurs bloquants."]
-    ],
-    formTitle: "Commencez par une évaluation claire de votre situation.",
-    time: "2 minutes",
-    fields: ["Nom", "Email ou WhatsApp", "Ville / région", "Type d'activité", "Que voulez-vous vérifier ?"],
-    submit: "Envoyer la demande",
-    finalTitle: "Évaluez vos chances réelles d'obtenir un financement.",
-    finalCopy: "Pas seul. Pas à l'aveugle.",
-    footer: "Veris aide à vérifier les options réelles avant de préparer les documents.",
-    contact: "Contact : TODO"
-  },
-  de: {
-    nav: ["So funktioniert es", "Was wir prüfen", "Diagnose", "FAQ"],
-    slogan: "Nicht allein. Nicht im Dunkeln.",
-    cta: "Fall prüfen",
-    heroCta: "Meine Optionen prüfen",
-    formCta: "Optionen bewerten",
-    diagnosticCta: "Diagnose starten",
-    cardCta: "Diagnostizieren",
-    locale: "Alicante, Valencianische Gemeinschaft und Spanien",
-    heroEyebrow: "Für alle, die in Spanien nicht bei null starten, sondern in einem neuen System ein Geschäft aufbauen",
-    h1: "Verlieren Sie keine Finanzierungschancen, nur weil das System unklar ist.",
-    lead: "Veris hilft Unternehmern in Spanien zu prüfen, welche ayudas, subvenciones oder Finanzierungen zu ihrem Geschäft passen können. In Ihrer Sprache, ohne leere Garantien, mit einem klaren nächsten Schritt.",
-    sub: "",
-    proof: "Wenn es keine realistischen Optionen gibt, sagen wir das klar.",
-    secondary: "So funktioniert es",
-    cardTitle: "Autónomo in Vorbereitung",
-    cardMeta: "Digitalisierung + Ausstattung, Alicante",
-    meters: ["Regionale Passung", "Dokumente", "Ablehnungsrisiko"],
-    reviewTitle: "Zu prüfen",
-    sampleWatermark: "Beispiel",
-    checkItems: ["Fristen und Termine", "Programmoptionen + BDNS-Code", "Erforderliche Dokumentation", "Möglichkeiten der Zusammenarbeit"],
-    problemKicker: "Problem",
-    problemTitle: "Viele Anträge starten zu spät, falsch oder ohne echte Passung.",
-    problems: [
-      ["Verstreute Anforderungen", "Regeln, Fristen und Bedingungen ändern sich je nach Programm, Region und Unternehmenstyp."],
-      ["Verlorene Zeit", "Dokumente können Wochen dauern, selbst wenn Grundbedingungen nicht erfüllt sind."],
-      ["Unklare Versprechen", "Sie brauchen eine ehrliche Prüfung, keine allgemeinen Aussagen über Chancen."]
-    ],
-    diagnosticTitle: "Ein ehrlicher Filter vor der Papierarbeit.",
-    diagnosticText:
-      "Veris Check gibt eine erste Einschätzung von Profil, möglichen Wegen und Stop-Faktoren, bevor Sie Zeit in vollständige Unterlagen investieren.",
-    price: "99 EUR",
-    priceTax: "21% IVA enthalten",
-    priceNote: "* wird bei weiterer Begleitung angerechnet",
-    stepsTitle: "Wir helfen Ihnen zu verstehen, ob Ihre Situation eine echte Chance hat, was sich zu versuchen lohnt und wo Sie besser keine Nerven verschwenden.",
-    steps: ["Kurzes Formular.", "Prüfung von Profil und lokalem Kontext.", "Sie erhalten die erste Antwort innerhalb von 24 Stunden.", "Bei positivem Ergebnis - Veris Check.", "Reale Optionen, Blocker oder ein klares Nein."],
-    checksTitle: "Wir prüfen Passung, Anforderungen und Risiken.",
-    checks: ["Zuschüsse, Fördermittel und Finanzierung", "Regionale und programmspezifische Anforderungen", "Vorhandene oder fehlende Dokumente", "Risiken, Fristen und Stop-Gründe"],
-    complianceTitle: "Wir versprechen keine Genehmigung. Wir versprechen Klarheit.",
-    compliance: "Die endgültige Entscheidung trifft die öffentliche Stelle, Bank oder das Programm. Veris bietet diagnostische und beratende Unterstützung.",
-    faqTitle: "Ja, hier kann Unterstützung möglich sein. Nein, es funktioniert nicht wie ein Geldautomat.",
-    faq: [
-      ["Garantiert Veris eine Förderung?", "Nein. Wir helfen zu verstehen, ob es sinnvoll ist, weiterzumachen."],
-      ["Ist das für Autónomos geeignet?", "Ja. Veris ist für Autónomos, zukünftige Autónomos und kleine Unternehmen gedacht."],
-      ["Kann Finanzierung geprüft werden?", "Ja. Wir prüfen Zuschüsse, Fördermittel, Finanzierung und Stop-Faktoren."]
-    ],
-    formTitle: "Beginnen Sie mit einer klaren Einschätzung Ihrer Situation.",
-    time: "2 Minuten",
-    fields: ["Name", "Email oder WhatsApp", "Stadt / Region", "Unternehmenstyp", "Was möchten Sie prüfen?"],
-    submit: "Anfrage senden",
-    finalTitle: "Bewerten Sie Ihre realen Chancen auf Finanzierung.",
-    finalCopy: "Nicht allein. Nicht im Dunkeln.",
-    footer: "Veris hilft, reale Optionen vor der Dokumentenvorbereitung zu prüfen.",
-    contact: "Kontakt: TODO"
-  },
-  pl: {
-    nav: ["Jak to działa", "Co sprawdzamy", "Diagnoza", "FAQ"],
-    slogan: "Nie sam. Nie na ślepo.",
-    cta: "Sprawdź przypadek",
-    heroCta: "Sprawdź moje opcje",
-    formCta: "Oceń możliwości",
-    diagnosticCta: "Rozpocznij diagnozę",
-    cardCta: "Diagnozuj",
-    locale: "Alicante, Wspólnota Walencka i Hiszpania",
-    heroEyebrow: "Dla tych, którzy budują biznes w Hiszpanii nie od zera, ale w nowym systemie",
-    h1: "Nie trać możliwości finansowania tylko dlatego, że system jest niezrozumiały.",
-    lead: "Veris pomaga przedsiębiorcom w Hiszpanii sprawdzić, które ayudas, subvenciones lub finansowanie mogą pasować do ich biznesu. W Twoim języku, bez pustych gwarancji, z jasnym następnym krokiem.",
-    sub: "",
-    proof: "Jeśli nie ma realnych opcji, powiemy o tym wprost.",
-    secondary: "Jak to działa",
-    cardTitle: "Autónomo w przygotowaniu",
-    cardMeta: "Cyfryzacja + wyposażenie, Alicante",
-    meters: ["Dopasowanie regionalne", "Dokumenty", "Ryzyko odmowy"],
-    reviewTitle: "Do sprawdzenia",
-    sampleWatermark: "Przykład",
-    checkItems: ["Terminy i deadline'y", "Opcje programów + kod BDNS", "Wymagana dokumentacja", "Opcje współpracy"],
-    problemKicker: "Problem",
-    problemTitle: "Wiele wniosków zaczyna się za późno, błędnie albo bez realnego dopasowania.",
-    problems: [
-      ["Rozproszone wymagania", "Zasady, terminy i warunki zmieniają się zależnie od programu, regionu i typu firmy."],
-      ["Stracony czas", "Dokumenty mogą zająć tygodnie, nawet gdy podstawowe warunki nie są spełnione."],
-      ["Niejasne obietnice", "Potrzebujesz rzetelnej weryfikacji, nie ogólnych haseł o możliwościach."]
-    ],
-    diagnosticTitle: "Uczciwy filtr przed papierologią.",
-    diagnosticText:
-      "Veris Check daje pierwszą ocenę profilu, możliwych ścieżek i czynników blokujących, zanim poświęcisz czas na pełny pakiet dokumentów.",
-    price: "99 EUR",
-    priceTax: "21% IVA wliczone",
-    priceNote: "* zaliczane przy dalszym wsparciu",
-    stepsTitle: "Pomożemy zrozumieć, czy w Twojej sytuacji jest realna szansa, czego warto próbować i gdzie lepiej nie tracić nerwów.",
-    steps: ["Krótki formularz.", "Analiza profilu i lokalnego kontekstu.", "Otrzymujesz pierwszą odpowiedź w ciągu 24 godzin.", "Przy pozytywnym wyniku - Veris Check.", "Realne opcje, blokady albo jasne nie."],
-    checksTitle: "Sprawdzamy dopasowanie, wymagania i ryzyka.",
-    checks: ["Dotacje, granty i finansowanie", "Wymagania regionalne i programowe", "Gotowe lub brakujące dokumenty", "Ryzyka, terminy i powody, by się zatrzymać"],
-    complianceTitle: "Nie obiecujemy zatwierdzenia. Obiecujemy jasność.",
-    compliance: "Ostateczną decyzję podejmuje instytucja publiczna, bank lub program. Veris zapewnia wsparcie diagnostyczne i doradcze.",
-    faqTitle: "Tak, tutaj można uzyskać wsparcie. Nie, to nie działa jak bankomat.",
-    faq: [
-      ["Czy Veris gwarantuje dotację?", "Nie. Pomagamy zrozumieć, czy warto iść dalej."],
-      ["Czy to jest dla autónomos?", "Tak. Veris jest dla autónomos, przyszłych autónomos i małych firm."],
-      ["Czy można sprawdzić finansowanie?", "Tak. Sprawdzamy dotacje, granty, finansowanie i czynniki blokujące."]
-    ],
-    formTitle: "Zacznij od jasnej oceny swojej sytuacji.",
-    time: "2 minuty",
-    fields: ["Imię", "Email lub WhatsApp", "Miasto / region", "Typ firmy", "Co chcesz sprawdzić?"],
-    submit: "Wyślij zapytanie",
-    finalTitle: "Oceń realną szansę na uzyskanie finansowania.",
-    finalCopy: "Nie sam. Nie na ślepo.",
-    footer: "Veris pomaga sprawdzić realne opcje przed przygotowaniem dokumentów.",
-    contact: "Kontakt: TODO"
-  },
-  ru: {
-    nav: ["Как это работает", "Что проверяем", "Диагностика", "FAQ"],
-    slogan: "Не один. Не вслепую.",
-    cta: "Проверить случай",
-    heroCta: "Проверить мои шансы",
-    formCta: "Оценить возможности",
-    diagnosticCta: "Начать диагностику",
-    cardCta: "Диагностировать",
-    locale: "Аликанте, Валенсийское сообщество и Испания",
-    heroEyebrow: "Для тех, кто строит бизнес в Испании не с нуля, а в новой системе",
-    h1: "Не теряйте возможности финансирования только потому, что система непонятна.",
-    lead: "Veris помогает предпринимателям в Испании проверить, какие ayudas, subvenciones или финансирование могут подходить их бизнесу. На родном языке, без пустых гарантий, с четким следующим шагом.",
-    sub: "",
-    proof: "Если реальных вариантов нет, мы скажем об этом прямо.",
-    secondary: "Как это работает",
-    cardTitle: "Autónomo в подготовке",
-    cardMeta: "Цифровизация + оборудование, Аликанте",
-    meters: ["Региональное соответствие", "Документы", "Риск отказа"],
-    reviewTitle: "Нужно проверить",
-    sampleWatermark: "Образец",
-    checkItems: ["Сроки и дедлайны", "Варианты программ + код BDNS", "Необходимая документация", "Варианты сотрудничества"],
-    problemKicker: "Проблема",
-    problemTitle: "Многие заявки начинаются поздно, неправильно или без реального соответствия.",
-    problems: [
-      ["Разрозненные требования", "Правила, сроки и условия меняются в зависимости от программы, региона и типа бизнеса."],
-      ["Потерянное время", "Подготовка документов может занять недели, даже когда базовые условия не выполнены."],
-      ["Нечеткие обещания", "Нужна честная проверка, а не общие фразы о возможностях."]
-    ],
-    diagnosticTitle: "Честный фильтр перед бумажной работой.",
-    diagnosticText:
-      "Veris Check дает первую оценку профиля, возможных путей и стоп-факторов до того, как вы потратите время на полный пакет документов.",
-    price: "99 EUR",
-    priceTax: "21% IVA включено",
-    priceNote: "* учитывается при дальнейшем сопровождении",
-    stepsTitle: "Мы поможем понять, есть ли в вашей ситуации реальный шанс, что именно стоит пробовать и где лучше не тратить нервы.",
-    steps: ["Короткая форма.", "Проверка профиля и локального контекста.", "Вы получаете первый ответ в течение 24 часов.", "При положительном результате - Veris Check.", "Реальные варианты, блокеры или четкое нет."],
-    checksTitle: "Мы проверяем соответствие, требования и риски.",
-    checks: ["Субсидии, гранты и финансирование", "Региональные и программные требования", "Готовые или отсутствующие документы", "Риски, сроки и причины остановиться"],
-    complianceTitle: "Мы не обещаем одобрение. Мы обещаем ясность.",
-    compliance: "Окончательное решение принимает государственный орган, банк или программа. Veris оказывает диагностическую и консультационную поддержку.",
-    faqTitle: "Да, здесь можно получить поддержку. Нет, это не работает как банкомат.",
-    faq: [
-      ["Veris гарантирует субсидию?", "Нет. Мы помогаем понять, есть ли смысл двигаться дальше."],
-      ["Это подходит для autonomos?", "Да. Veris создан для autonomos, будущих autonomos и малого бизнеса."],
-      ["Можно проверить финансирование?", "Да. Мы смотрим субсидии, гранты, финансирование и стоп-факторы."]
-    ],
-    formTitle: "Начните с ясной оценки вашей ситуации.",
-    time: "2 минуты",
-    fields: ["Имя", "Email или WhatsApp", "Город / регион", "Тип бизнеса", "Что хотите проверить?"],
-    submit: "Отправить запрос",
-    finalTitle: "Оцените реальный шанс получить финансирование.",
-    finalCopy: "Не один. Не вслепую.",
-    footer: "Veris помогает проверить реальные варианты до подготовки документов.",
-    contact: "Контакт: TODO"
-  }
-});
-
-const languageOrder = ["en", "es", "fr", "de", "pl", "ru", "uk"];
-
-const languageLabels = {
-  en: "EN",
-  es: "ES",
-  fr: "FR",
-  de: "DE",
-  pl: "PL",
-  ru: "RU",
-  uk: "UA"
+const options = {
+  maritalStatus: ["Неодружений/незаміжня", "Одружений/заміжня", "Розлучений/розлучена", "Вдівець/вдова"],
+  nationality: ["Іспанська", "Українська", "Інша ЄС", "Інша не ЄС"],
+  residence: ["Резидент", "Нерезидент", "У процесі оформлення"],
+  employmentType: ["Безстроковий", "Тимчасовий", "Автономо", "Безробітний/інше"],
+  creditHistory: ["Відмінна", "Добра", "Середня", "Погана (ASNEF/RAI)", "Без історії"],
+  housing: ["Власник", "Іпотека", "Оренда", "Інше"],
+  purpose: ["Автомобіль", "Обладнання", "Цифровізація", "Оборотні кошти", "Запуск бізнесу", "Інше"]
 };
 
-const questionnaireTranslations = {
-  uk: {
-    clearStep: "Зрозумілий наступний крок",
-    title: "Оцінити можливості",
-    meta: "3 блоки · 10 простих запитань · без обіцянок схвалення",
-    open: "Відкрити анкету",
-    close: "Закрити анкету",
-    groups: ["Профіль бізнесу", "Параметри запиту", "Контакт і деталі"],
-    selects: [
-      ["Ситуація", ["Оберіть варіант", "Я вже autonomo", "Планую стати autonomo", "Маю малий бізнес", "Хочу перевірити ідею"]],
-      ["Вік бізнесу", ["Оберіть варіант", "Ще не зареєстрований", "До 6 місяців", "6-24 місяці", "Більше 2 років"]],
-      ["Орієнтовна сума", ["Оберіть варіант", "До 3 000 EUR", "3 000-10 000 EUR", "10 000-30 000 EUR", "Понад 30 000 EUR"]],
-      ["Для чого потрібна підтримка?", ["Оберіть варіант", "Обладнання", "Цифровізація", "Запуск бізнесу", "Оборотні кошти", "Інше"]],
-      ["Інвестиція", ["Оберіть варіант", "Планується", "Вже зроблена", "Частково зроблена", "Поки не знаю"]],
-      ["Бажаний контакт", ["Оберіть варіант", "Email", "WhatsApp", "Телефон"]]
-    ],
-    textFields: [
-      ["Місто і регіон", "Напр. Аліканте, Валенсійська спільнота"],
-      ["Сектор або діяльність", "Напр. торгівля, horeca, послуги..."],
-      ["Контакт", "Email або телефон"],
-      ["Конкретна програма, якщо вже є", "Необов'язково"]
-    ],
-    notesLabel: "Щось важливе про ваш випадок",
-    optional: "Необов'язково",
-    consent: "Я погоджуюсь, щоб Veris розглянув цю інформацію для відповіді щодо мого випадку. TODO: додати реальну політику приватності.",
-    submit: "Надіслати на перевірку"
-  },
-  en: {
-    clearStep: "Clear next step",
-    title: "Assess options",
-    meta: "3 blocks · 10 simple questions · no approval promises",
-    open: "Open questionnaire",
-    close: "Close questionnaire",
-    groups: ["Business profile", "Request parameters", "Contact and details"],
-    selects: [
-      ["Situation", ["Choose an option", "I am already autonomo", "I plan to become autonomo", "I have a small business", "I want to check an idea"]],
-      ["Business age", ["Choose an option", "Not registered yet", "Up to 6 months", "6-24 months", "More than 2 years"]],
-      ["Estimated amount", ["Choose an option", "Up to 3,000 EUR", "3,000-10,000 EUR", "10,000-30,000 EUR", "More than 30,000 EUR"]],
-      ["What support is needed for?", ["Choose an option", "Equipment", "Digitalization", "Business launch", "Working capital", "Other"]],
-      ["Investment", ["Choose an option", "Planned", "Already made", "Partly made", "Not sure yet"]],
-      ["Preferred contact", ["Choose an option", "Email", "WhatsApp", "Phone"]]
-    ],
-    textFields: [["City and region", "E.g. Alicante, Valencian Community"], ["Sector or activity", "E.g. retail, horeca, services..."], ["Contact", "Email or phone"], ["Specific program, if any", "Optional"]],
-    notesLabel: "Anything important about your case",
-    optional: "Optional",
-    consent: "I agree that Veris may review this information to respond about my case. TODO: add a real privacy policy.",
-    submit: "Send for review"
-  },
-  es: {
-    clearStep: "Siguiente paso claro",
-    title: "Evaluar opciones",
-    meta: "3 bloques · 10 preguntas sencillas · sin promesas de aprobación",
-    open: "Abrir cuestionario",
-    close: "Cerrar cuestionario",
-    groups: ["Perfil del negocio", "Parámetros de la solicitud", "Contacto y detalles"],
-    selects: [
-      ["Situación", ["Elige una opción", "Ya soy autónomo", "Planeo ser autónomo", "Tengo una pequeña empresa", "Quiero revisar una idea"]],
-      ["Antigüedad del negocio", ["Elige una opción", "Aún no registrado", "Hasta 6 meses", "6-24 meses", "Más de 2 años"]],
-      ["Importe estimado", ["Elige una opción", "Hasta 3.000 EUR", "3.000-10.000 EUR", "10.000-30.000 EUR", "Más de 30.000 EUR"]],
-      ["¿Para qué necesitas apoyo?", ["Elige una opción", "Equipamiento", "Digitalización", "Inicio del negocio", "Capital circulante", "Otro"]],
-      ["Inversión", ["Elige una opción", "Planificada", "Ya realizada", "Realizada parcialmente", "Aún no lo sé"]],
-      ["Contacto preferido", ["Elige una opción", "Email", "WhatsApp", "Teléfono"]]
-    ],
-    textFields: [["Ciudad y región", "Ej. Alicante, Comunidad Valenciana"], ["Sector o actividad", "Ej. comercio, horeca, servicios..."], ["Contacto", "Email o teléfono"], ["Programa concreto, si ya existe", "Opcional"]],
-    notesLabel: "Algo importante sobre tu caso",
-    optional: "Opcional",
-    consent: "Acepto que Veris revise esta información para responder sobre mi caso. TODO: añadir una política de privacidad real.",
-    submit: "Enviar para revisión"
-  },
-  fr: {
-    clearStep: "Prochaine étape claire",
-    title: "Évaluer les options",
-    meta: "3 blocs · 10 questions simples · aucune promesse d'approbation",
-    open: "Ouvrir le questionnaire",
-    close: "Fermer le questionnaire",
-    groups: ["Profil de l'activité", "Paramètres de la demande", "Contact et détails"],
-    selects: [
-      ["Situation", ["Choisir une option", "Je suis déjà autónomo", "Je prévois de devenir autónomo", "J'ai une petite entreprise", "Je veux vérifier une idée"]],
-      ["Âge de l'activité", ["Choisir une option", "Pas encore enregistrée", "Jusqu'à 6 mois", "6-24 mois", "Plus de 2 ans"]],
-      ["Montant estimé", ["Choisir une option", "Jusqu'à 3 000 EUR", "3 000-10 000 EUR", "10 000-30 000 EUR", "Plus de 30 000 EUR"]],
-      ["Pourquoi avez-vous besoin d'aide ?", ["Choisir une option", "Équipement", "Numérisation", "Lancement d'activité", "Fonds de roulement", "Autre"]],
-      ["Investissement", ["Choisir une option", "Prévu", "Déjà réalisé", "Partiellement réalisé", "Pas encore sûr"]],
-      ["Contact préféré", ["Choisir une option", "Email", "WhatsApp", "Téléphone"]]
-    ],
-    textFields: [["Ville et région", "Ex. Alicante, Communauté valencienne"], ["Secteur ou activité", "Ex. commerce, horeca, services..."], ["Contact", "Email ou téléphone"], ["Programme précis, s'il existe", "Optionnel"]],
-    notesLabel: "Quelque chose d'important sur votre cas",
-    optional: "Optionnel",
-    consent: "J'accepte que Veris examine ces informations pour répondre à propos de mon cas. TODO : ajouter une vraie politique de confidentialité.",
-    submit: "Envoyer pour vérification"
-  },
-  de: {
-    clearStep: "Klarer nächster Schritt",
-    title: "Optionen bewerten",
-    meta: "3 Blöcke · 10 einfache Fragen · keine Genehmigungsversprechen",
-    open: "Fragebogen öffnen",
-    close: "Fragebogen schließen",
-    groups: ["Geschäftsprofil", "Anfrageparameter", "Kontakt und Details"],
-    selects: [
-      ["Situation", ["Option wählen", "Ich bin bereits autónomo", "Ich plane autónomo zu werden", "Ich habe ein kleines Unternehmen", "Ich möchte eine Idee prüfen"]],
-      ["Alter des Unternehmens", ["Option wählen", "Noch nicht registriert", "Bis 6 Monate", "6-24 Monate", "Mehr als 2 Jahre"]],
-      ["Geschätzter Betrag", ["Option wählen", "Bis 3.000 EUR", "3.000-10.000 EUR", "10.000-30.000 EUR", "Mehr als 30.000 EUR"]],
-      ["Wofür wird Unterstützung benötigt?", ["Option wählen", "Ausstattung", "Digitalisierung", "Geschäftsstart", "Betriebskapital", "Sonstiges"]],
-      ["Investition", ["Option wählen", "Geplant", "Bereits getätigt", "Teilweise getätigt", "Noch unsicher"]],
-      ["Bevorzugter Kontakt", ["Option wählen", "Email", "WhatsApp", "Telefon"]]
-    ],
-    textFields: [["Stadt und Region", "Z. B. Alicante, Valencianische Gemeinschaft"], ["Branche oder Tätigkeit", "Z. B. Handel, Horeca, Dienstleistungen..."], ["Kontakt", "Email oder Telefon"], ["Konkretes Programm, falls vorhanden", "Optional"]],
-    notesLabel: "Etwas Wichtiges zu Ihrem Fall",
-    optional: "Optional",
-    consent: "Ich stimme zu, dass Veris diese Informationen prüft, um zu meinem Fall zu antworten. TODO: echte Datenschutzerklärung hinzufügen.",
-    submit: "Zur Prüfung senden"
-  },
-  pl: {
-    clearStep: "Jasny następny krok",
-    title: "Oceń możliwości",
-    meta: "3 bloki · 10 prostych pytań · bez obietnic zatwierdzenia",
-    open: "Otwórz ankietę",
-    close: "Zamknij ankietę",
-    groups: ["Profil firmy", "Parametry zapytania", "Kontakt i szczegóły"],
-    selects: [
-      ["Sytuacja", ["Wybierz opcję", "Jestem już autónomo", "Planuję zostać autónomo", "Mam małą firmę", "Chcę sprawdzić pomysł"]],
-      ["Wiek firmy", ["Wybierz opcję", "Jeszcze niezarejestrowana", "Do 6 miesięcy", "6-24 miesiące", "Ponad 2 lata"]],
-      ["Szacowana kwota", ["Wybierz opcję", "Do 3 000 EUR", "3 000-10 000 EUR", "10 000-30 000 EUR", "Ponad 30 000 EUR"]],
-      ["Na co potrzebne jest wsparcie?", ["Wybierz opcję", "Wyposażenie", "Cyfryzacja", "Start firmy", "Kapitał obrotowy", "Inne"]],
-      ["Inwestycja", ["Wybierz opcję", "Planowana", "Już wykonana", "Częściowo wykonana", "Jeszcze nie wiem"]],
-      ["Preferowany kontakt", ["Wybierz opcję", "Email", "WhatsApp", "Telefon"]]
-    ],
-    textFields: [["Miasto i region", "Np. Alicante, Wspólnota Walencka"], ["Sektor lub działalność", "Np. handel, horeca, usługi..."], ["Kontakt", "Email lub telefon"], ["Konkretny program, jeśli już jest", "Opcjonalnie"]],
-    notesLabel: "Coś ważnego o Twoim przypadku",
-    optional: "Opcjonalnie",
-    consent: "Zgadzam się, aby Veris przeanalizował te informacje w celu odpowiedzi dotyczącej mojego przypadku. TODO: dodać prawdziwą politykę prywatności.",
-    submit: "Wyślij do sprawdzenia"
-  },
-  ru: {
-    clearStep: "Понятный следующий шаг",
-    title: "Оценить возможности",
-    meta: "3 блока · 10 простых вопросов · без обещаний одобрения",
-    open: "Открыть анкету",
-    close: "Закрыть анкету",
-    groups: ["Профиль бизнеса", "Параметры запроса", "Контакт и детали"],
-    selects: [
-      ["Ситуация", ["Выберите вариант", "Я уже autonomo", "Планирую стать autonomo", "У меня малый бизнес", "Хочу проверить идею"]],
-      ["Возраст бизнеса", ["Выберите вариант", "Еще не зарегистрирован", "До 6 месяцев", "6-24 месяца", "Более 2 лет"]],
-      ["Ориентировочная сумма", ["Выберите вариант", "До 3 000 EUR", "3 000-10 000 EUR", "10 000-30 000 EUR", "Более 30 000 EUR"]],
-      ["Для чего нужна поддержка?", ["Выберите вариант", "Оборудование", "Цифровизация", "Запуск бизнеса", "Оборотные средства", "Другое"]],
-      ["Инвестиция", ["Выберите вариант", "Планируется", "Уже сделана", "Частично сделана", "Пока не знаю"]],
-      ["Желаемый контакт", ["Выберите вариант", "Email", "WhatsApp", "Телефон"]]
-    ],
-    textFields: [["Город и регион", "Напр. Аликанте, Валенсийское сообщество"], ["Сектор или деятельность", "Напр. торговля, horeca, услуги..."], ["Контакт", "Email или телефон"], ["Конкретная программа, если уже есть", "Необязательно"]],
-    notesLabel: "Что-то важное о вашем случае",
-    optional: "Необязательно",
-    consent: "Я соглашаюсь, чтобы Veris рассмотрел эту информацию для ответа по моему случаю. TODO: добавить реальную политику приватности.",
-    submit: "Отправить на проверку"
+const sourceFields = [
+  ["D6", "Edad", "Вік"],
+  ["D13", "Tipo de Empleo", "Тип зайнятості"],
+  ["D14", "Antigüedad", "Стаж, місяців"],
+  ["D15", "Ingresos Netos Mensuales", "Чистий місячний дохід"],
+  ["D16", "Otros Ingresos", "Інші доходи"],
+  ["D20", "Pagos Mensuales Actuales", "Поточні щомісячні платежі"],
+  ["D21", "Historial Crediticio", "Кредитна історія"],
+  ["D22", "Vivienda", "Житло"],
+  ["D23", "Ahorros Disponibles", "Доступні заощадження"],
+  ["D27", "Importe Solicitado", "Запитувана сума"],
+  ["D28", "Plazo", "Строк, місяців"],
+  ["D29", "Finalidad", "Мета"]
+];
+
+const criteria = [
+  { key: "age", label: "Вік", weight: "10%", max: 10, optimal: "25-55 років" },
+  { key: "employment", label: "Стабільність роботи", weight: "20%", max: 20, optimal: "Безстроковий > 12 міс." },
+  { key: "income", label: "Дохід", weight: "20%", max: 20, optimal: "> 1 500 EUR/міс." },
+  { key: "dti", label: "DTI", weight: "20%", max: 20, optimal: "< 40%" },
+  { key: "credit", label: "Кредитна історія", weight: "15%", max: 15, optimal: "Без інцидентів" },
+  { key: "savings", label: "Заощадження", weight: "10%", max: 10, optimal: "> 10% кредиту" },
+  { key: "housing", label: "Житло", weight: "5%", max: 5, optimal: "Власник" }
+];
+
+function toNumber(value) {
+  const number = Number(value);
+  return Number.isFinite(number) ? number : 0;
+}
+
+function pmt(monthlyRate, months, principal) {
+  if (months <= 0 || principal <= 0) return 0;
+  if (monthlyRate === 0) return principal / months;
+  return (principal * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -months));
+}
+
+function calculateScoring(raw) {
+  const form = Object.fromEntries(
+    Object.entries(raw).map(([key, value]) => [
+      key,
+      typeof defaultForm[key] === "number" ? toNumber(value) : value
+    ])
+  );
+
+  const monthlyIncome = form.netIncome + form.otherIncome;
+  const monthlyPayment = pmt(0.08 / 12, form.loanTermMonths, form.loanAmount);
+  const currentDti = monthlyIncome > 0 ? (form.currentPayments / monthlyIncome) * 100 : 999;
+  const loanToAnnualIncome = form.netIncome > 0 ? (form.loanAmount / (form.netIncome * 12)) * 100 : 999;
+  const totalDti = monthlyIncome > 0 ? ((form.currentPayments + monthlyPayment) / monthlyIncome) * 100 : 999;
+
+  const points = {
+    age: form.age < 25 ? 5 : form.age <= 55 ? 10 : form.age <= 65 ? 7 : 3,
+    employment: getEmploymentPoints(form.employmentType, form.seniorityMonths),
+    income: form.netIncome >= 3000 ? 20 : form.netIncome >= 2000 ? 18 : form.netIncome >= 1500 ? 15 : form.netIncome >= 1000 ? 10 : 5,
+    dti: currentDti < 30 ? 20 : currentDti < 40 ? 15 : currentDti < 50 ? 10 : currentDti < 60 ? 5 : 0,
+    credit: getCreditPoints(form.creditHistory),
+    savings: form.savings >= form.loanAmount * 0.2 ? 10 : form.savings >= form.loanAmount * 0.1 ? 7 : form.savings >= form.loanAmount * 0.05 ? 4 : 0,
+    housing: form.housing === "Власник" ? 5 : form.housing === "Оренда" ? 3 : form.housing === "Іпотека" ? 4 : 2
+  };
+
+  const total = Object.values(points).reduce((sum, value) => sum + value, 0);
+  const approved =
+    total >= 60 &&
+    totalDti < 50 &&
+    form.netIncome >= 1000 &&
+    form.employmentType !== "Безробітний/інше" &&
+    form.creditHistory !== "Погана (ASNEF/RAI)";
+
+  return {
+    form,
+    indicators: { currentDti, loanToAnnualIncome, monthlyPayment, totalDti },
+    points,
+    total,
+    percentage: total / 100,
+    approved,
+    risk: total >= 80 ? "НИЗЬКИЙ" : total >= 60 ? "СЕРЕДНІЙ" : total >= 40 ? "ВИСОКИЙ" : "ДУЖЕ ВИСОКИЙ",
+    offer: total >= 80 ? "Преференційний тип" : total >= 60 ? "Стандартні умови" : total >= 40 ? "Потрібні гарантії" : "Не рекомендувати",
+    amountAdvice: totalDti > 50 ? "Зменшити суму" : "Сума адекватна",
+    verification: form.creditHistory === "Погана (ASNEF/RAI)" ? "ВІДХИЛИТИ - ASNEF/RAI" : "Перевірити документацію"
+  };
+}
+
+function getEmploymentPoints(type, months) {
+  if (type === "Безстроковий") return months >= 24 ? 20 : months >= 12 ? 18 : 15;
+  if (type === "Тимчасовий") return months >= 12 ? 12 : 8;
+  if (type === "Автономо") return months >= 24 ? 14 : 10;
+  return 0;
+}
+
+function getCreditPoints(history) {
+  if (history === "Відмінна") return 15;
+  if (history === "Добра") return 12;
+  if (history === "Середня") return 8;
+  if (history === "Без історії") return 5;
+  return 0;
+}
+
+function buildClientCard(scoring, id, mode = "Автозбережено") {
+  return {
+    id,
+    mode,
+    createdAt: new Date().toLocaleString("uk-UA"),
+    ...scoring.form,
+    total: scoring.total,
+    approved: scoring.approved,
+    risk: scoring.risk,
+    currentDti: scoring.indicators.currentDti,
+    totalDti: scoring.indicators.totalDti,
+    monthlyPayment: scoring.indicators.monthlyPayment,
+    offer: scoring.offer,
+    amountAdvice: scoring.amountAdvice,
+    verification: scoring.verification
+  };
+}
+
+async function saveCardToSupabase(card) {
+  if (!SUPABASE_ENABLED) {
+    return { saved: false, reason: "supabase_not_configured" };
   }
-};
+
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/client_scoring_cases`, {
+    method: "POST",
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      local_card_id: card.id,
+      client_name: card.clientName || null,
+      contact: card.contact || null,
+      source: card.mode,
+      input_data: {
+        age: card.age,
+        maritalStatus: card.maritalStatus,
+        nationality: card.nationality,
+        residence: card.residence,
+        employmentType: card.employmentType,
+        seniorityMonths: card.seniorityMonths,
+        netIncome: card.netIncome,
+        otherIncome: card.otherIncome,
+        currentPayments: card.currentPayments,
+        creditHistory: card.creditHistory,
+        housing: card.housing,
+        savings: card.savings,
+        loanAmount: card.loanAmount,
+        loanTermMonths: card.loanTermMonths,
+        purpose: card.purpose,
+        notes: card.notes
+      },
+      scoring_result: {
+        total: card.total,
+        approved: card.approved,
+        risk: card.risk,
+        currentDti: card.currentDti,
+        totalDti: card.totalDti,
+        monthlyPayment: card.monthlyPayment,
+        offer: card.offer,
+        amountAdvice: card.amountAdvice,
+        verification: card.verification
+      },
+      total_score: card.total,
+      approved: card.approved,
+      risk_level: card.risk,
+      total_dti: card.totalDti,
+      monthly_payment: card.monthlyPayment,
+      recommendation: `${card.offer}; ${card.amountAdvice}; ${card.verification}`
+    })
+  });
+
+  if (!response.ok) {
+    const message = await response.text();
+    throw new Error(message || `Supabase save failed: ${response.status}`);
+  }
+
+  return { saved: true };
+}
+
+function formatMoney(value) {
+  return new Intl.NumberFormat("uk-UA", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(value || 0);
+}
+
+function formatPercent(value) {
+  return `${Number.isFinite(value) ? value.toFixed(1) : "0.0"}%`;
+}
 
 function App() {
-  const [lang, setLang] = useState("uk");
-  const t = translations[lang];
-  const q = questionnaireTranslations[lang];
+  const [form, setForm] = useState(() => {
+    const draft = localStorage.getItem(DRAFT_KEY);
+    return draft ? { ...defaultForm, ...JSON.parse(draft) } : defaultForm;
+  });
+  const [cards, setCards] = useState(() => JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"));
+  const [savedMessage, setSavedMessage] = useState("Результат оновлюється під час введення");
+  const [touched, setTouched] = useState(false);
+  const activeCardId = useRef(crypto.randomUUID());
+  const scoring = useMemo(() => calculateScoring(form), [form]);
 
   useEffect(() => {
-    document.documentElement.lang = lang;
-  }, [lang]);
+    localStorage.setItem(DRAFT_KEY, JSON.stringify(form));
+  }, [form]);
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(cards));
+  }, [cards]);
+
+  useEffect(() => {
+    if (!touched) return undefined;
+    const timeout = window.setTimeout(() => {
+      const card = buildClientCard(scoring, activeCardId.current);
+      setCards((current) => {
+        const withoutCurrent = current.filter((item) => item.id !== activeCardId.current);
+        return [card, ...withoutCurrent];
+      });
+      setSavedMessage(`Карту клієнта автоматично збережено локально: ${card.createdAt}`);
+      saveCardToSupabase(card)
+        .then((result) => {
+          if (result.saved) setSavedMessage(`Карту клієнта збережено локально і в Supabase: ${card.createdAt}`);
+        })
+        .catch((error) => {
+          setSavedMessage(`Локально збережено. Supabase не прийняв запис: ${error.message}`);
+        });
+    }, 450);
+    return () => window.clearTimeout(timeout);
+  }, [scoring, touched]);
+
+  function updateField(key, value) {
+    setTouched(true);
+    setForm((current) => ({ ...current, [key]: value }));
+  }
+
+  function saveSnapshot() {
+    const card = buildClientCard(scoring, crypto.randomUUID(), "Знімок");
+    setCards((current) => [card, ...current]);
+    setSavedMessage(`Знімок карти збережено: ${card.createdAt}`);
+    saveCardToSupabase(card)
+      .then((result) => {
+        if (result.saved) setSavedMessage(`Знімок карти збережено локально і в Supabase: ${card.createdAt}`);
+      })
+      .catch((error) => {
+        setSavedMessage(`Знімок локально збережено. Supabase не прийняв запис: ${error.message}`);
+      });
+  }
+
+  function clearCards() {
+    setCards([]);
+    activeCardId.current = crypto.randomUUID();
+    setSavedMessage("Таблицю карт клієнтів очищено");
+  }
 
   return (
     <>
-      <header className="site-header" id="top">
-        <a className="brand" href="#top" aria-label="Veris home">
+      <header className="site-header">
+        <a className="brand" href="#top" aria-label="Veris">
           <img className="brand-logo" src="/veris-full-logo.png" alt="Veris" />
-          <span className="brand-slogan">{t.slogan}</span>
+          <span className="brand-slogan">Скорингова модель</span>
         </a>
-        <nav className="nav-links" aria-label="Primary">
-          <a href="#how">{t.nav[0]}</a>
-          <a href="#checks">{t.nav[1]}</a>
-          <a href="#diagnostic">{t.nav[2]}</a>
-          <a href="#faq">{t.nav[3]}</a>
+        <nav className="nav-links" aria-label="Навігація">
+          <a href="#input">Дані</a>
+          <a href="#result">Результат</a>
+          <a href="#criteria">Критерії</a>
+          <a href="#cards">Карти</a>
         </nav>
-        <div className="header-actions">
-          <select aria-label="Language" value={lang} onChange={(event) => setLang(event.target.value)}>
-            {languageOrder.map((code) => (
-              <option key={code} value={code}>
-                {languageLabels[code]}
-              </option>
-            ))}
-          </select>
-          <a className="button primary small" href="#lead-check">
-            {t.formCta}
-          </a>
-        </div>
       </header>
 
-      <main>
-        <section className="hero section">
+      <main id="top">
+        <section className="hero section scoring-hero">
           <div className="hero-copy">
-            <p className="eyebrow">{t.heroEyebrow}</p>
-            <h1>{t.h1}</h1>
-            <p className="lead">{t.lead}</p>
-            {t.sub ? <p className="muted">{t.sub}</p> : null}
-            <div className="actions">
-              <a className="button primary" href="#lead-check">
-                {t.heroCta}
-              </a>
-              <a className="button quiet" href="#how">
-                {t.secondary}
-              </a>
+            <p className="eyebrow">Veris Credit Scoring</p>
+            <h1>Скорингова модель для Veris</h1>
+            <p className="lead">
+              Дані вводяться за структурою аркуша “Datos Cliente”. Результат нижче форми повторює формули з аркуша “Resultado”:
+              DTI, платіж при 8% TIN, 100-бальну оцінку, рішення, ризик і рекомендації.
+            </p>
+            <p className="muted">
+              Supabase: {SUPABASE_ENABLED ? "підключення налаштовано через змінні середовища" : "потрібні VITE_SUPABASE_URL і VITE_SUPABASE_ANON_KEY"}
+            </p>
+            <p className="proof"><span aria-hidden="true">*</span>Це попередній скоринг, не гарантія рішення банку або фінансової установи.</p>
+          </div>
+        </section>
+
+        <section className="section scoring-workspace" id="input">
+          <form className="lead-form scoring-form" onSubmit={(event) => event.preventDefault()}>
+            <SectionTitle title="Карта клієнта" />
+            <TextField label="Ім'я клієнта" value={form.clientName} onChange={(value) => updateField("clientName", value)} placeholder="Напр. Олена К." />
+            <TextField label="Контакт" value={form.contact} onChange={(value) => updateField("contact", value)} placeholder="Email або телефон" />
+
+            <SectionTitle title="Особиста інформація" />
+            <NumberField label="Вік" value={form.age} onChange={(value) => updateField("age", value)} suffix="років" min="18" />
+            <SelectField label="Сімейний стан" value={form.maritalStatus} onChange={(value) => updateField("maritalStatus", value)} options={options.maritalStatus} />
+            <SelectField label="Національність" value={form.nationality} onChange={(value) => updateField("nationality", value)} options={options.nationality} />
+            <SelectField label="Резиденція" value={form.residence} onChange={(value) => updateField("residence", value)} options={options.residence} />
+
+            <SectionTitle title="Робота та доходи" />
+            <SelectField label="Тип зайнятості" value={form.employmentType} onChange={(value) => updateField("employmentType", value)} options={options.employmentType} />
+            <NumberField label="Стаж" value={form.seniorityMonths} onChange={(value) => updateField("seniorityMonths", value)} suffix="міс." min="0" />
+            <NumberField label="Чистий місячний дохід" value={form.netIncome} onChange={(value) => updateField("netIncome", value)} suffix="EUR" min="0" />
+            <NumberField label="Інші доходи" value={form.otherIncome} onChange={(value) => updateField("otherIncome", value)} suffix="EUR/міс." min="0" />
+
+            <SectionTitle title="Фінансова ситуація" />
+            <NumberField label="Поточні щомісячні платежі" value={form.currentPayments} onChange={(value) => updateField("currentPayments", value)} suffix="EUR" min="0" />
+            <SelectField label="Кредитна історія" value={form.creditHistory} onChange={(value) => updateField("creditHistory", value)} options={options.creditHistory} />
+            <SelectField label="Житло" value={form.housing} onChange={(value) => updateField("housing", value)} options={options.housing} />
+            <NumberField label="Доступні заощадження" value={form.savings} onChange={(value) => updateField("savings", value)} suffix="EUR" min="0" />
+
+            <SectionTitle title="Деталі кредиту" />
+            <NumberField label="Запитувана сума" value={form.loanAmount} onChange={(value) => updateField("loanAmount", value)} suffix="EUR" min="0" />
+            <NumberField label="Строк" value={form.loanTermMonths} onChange={(value) => updateField("loanTermMonths", value)} suffix="міс." min="1" />
+            <SelectField label="Мета" value={form.purpose} onChange={(value) => updateField("purpose", value)} options={options.purpose} />
+            <label className="form-field full">
+              <span>Нотатки</span>
+              <textarea rows="4" value={form.notes} onChange={(event) => updateField("notes", event.target.value)} placeholder="Важливі деталі щодо клієнта" />
+            </label>
+
+            <div className="form-actions full">
+              <span>{savedMessage}</span>
+              <button className="button primary" type="button" onClick={saveSnapshot}>Зберегти знімок карти</button>
             </div>
-            <p className="proof"><span aria-hidden="true">*</span>{t.proof}</p>
-          </div>
-          <DiagnosticCard t={t} />
+          </form>
         </section>
 
-        <section className="section problem">
-          <p className="kicker">{t.problemKicker}</p>
-          <h2>{t.problemTitle}</h2>
-          <div className="problem-grid">
-            {t.problems.map(([title, copy]) => (
-              <article className="problem-card" key={title}>
-                <span className="icon-box" aria-hidden="true">!</span>
-                <h3>{title}</h3>
-                <p>{copy}</p>
-              </article>
-            ))}
+        <section className="section result-section" id="result">
+          <div className={`diagnostic-card result-card ${scoring.approved ? "approved" : "declined"}`}>
+            <div className="card-top">
+              <span>Результат після введення даних</span>
+              <strong>{scoring.total}</strong>
+            </div>
+            <h2>{scoring.approved ? "Попередньо схвалено" : "Попередньо не схвалено"}</h2>
+            <p>Рівень ризику: {scoring.risk}</p>
+            <div className="meters">
+              <Meter label="Поточний DTI" value={Math.min(scoring.indicators.currentDti, 100)} display={formatPercent(scoring.indicators.currentDti)} />
+              <Meter label="DTI з новим кредитом" value={Math.min(scoring.indicators.totalDti, 100)} display={formatPercent(scoring.indicators.totalDti)} />
+              <Meter label="Сума / річний дохід" value={Math.min(scoring.indicators.loanToAnnualIncome, 100)} display={formatPercent(scoring.indicators.loanToAnnualIncome)} />
+            </div>
+            <div className="review-box">
+              <span>Орієнтовний платіж: {formatMoney(scoring.indicators.monthlyPayment)}</span>
+              <span>Пропозиція: {scoring.offer}</span>
+              <span>Сума: {scoring.amountAdvice}</span>
+              <span>Перевірка: {scoring.verification}</span>
+            </div>
           </div>
+
+          <aside className="score-breakdown">
+            <h2>Розбивка балів</h2>
+            <div className="criteria-list">
+              {criteria.map((item) => (
+                <div className="criterion" key={item.key}>
+                  <div>
+                    <strong>{item.label}</strong>
+                    <span>{item.optimal}</span>
+                  </div>
+                  <b>{scoring.points[item.key]} / {item.max}</b>
+                </div>
+              ))}
+            </div>
+            <div className="decision-rules">
+              <h3>Умови схвалення</h3>
+              <Rule passed={scoring.total >= 60} text="Підсумок не менше 60 балів" />
+              <Rule passed={scoring.indicators.totalDti < 50} text="DTI з новим кредитом нижче 50%" />
+              <Rule passed={scoring.form.netIncome >= 1000} text="Чистий дохід від 1 000 EUR" />
+              <Rule passed={scoring.form.employmentType !== "Безробітний/інше"} text="Клієнт не у статусі безробітний/інше" />
+              <Rule passed={scoring.form.creditHistory !== "Погана (ASNEF/RAI)"} text="Немає ASNEF/RAI" />
+            </div>
+          </aside>
         </section>
 
-        <section className="section steps" id="how">
-          <p className="kicker">{t.nav[0]}</p>
-          <div className="step-list">
-            {t.steps.map((step, index) => (
-              <div className="step" key={step}>
-                <span>{index + 1}</span>
-                <p>{step}</p>
-              </div>
-            ))}
+        <section className="section criteria-source" id="criteria">
+          <div className="cards-heading">
+            <div>
+              <p className="kicker">Дані з Excel</p>
+              <h2>Поля та критерії моделі</h2>
+            </div>
           </div>
-          <div className="steps-message">
-            <h2>{t.stepsTitle}</h2>
-            <div className="steps-visual" aria-hidden="true">
-              <svg viewBox="0 0 420 220" role="img">
-                <rect className="paper back" x="118" y="24" width="168" height="132" rx="10" />
-                <rect className="paper front" x="88" y="44" width="184" height="142" rx="12" />
-                <path className="doc-line" d="M116 82h108" />
-                <path className="doc-line short" d="M116 112h82" />
-                <path className="doc-line" d="M116 142h120" />
-                <circle className="coin soft" cx="300" cy="72" r="42" />
-                <circle className="coin" cx="302" cy="72" r="30" />
-                <text className="coin-text" x="302" y="83">EUR</text>
-                <path className="checkmark" d="M278 151l22 22 54-66" />
-                <path className="route" d="M42 174c46-44 86-50 128-24 34 21 63 20 96-4 31-22 59-27 94-13" />
-              </svg>
+          <div className="source-grid">
+            <div className="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Клітинка</th>
+                    <th>Excel</th>
+                    <th>Українське поле</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {sourceFields.map(([cell, excel, uk]) => (
+                    <tr key={cell}>
+                      <td>{cell}</td>
+                      <td>{excel}</td>
+                      <td>{uk}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Критерій</th>
+                    <th>Вага</th>
+                    <th>Макс.</th>
+                    <th>Оптимум</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {criteria.map((item) => (
+                    <tr key={item.key}>
+                      <td>{item.label}</td>
+                      <td>{item.weight}</td>
+                      <td>{item.max}</td>
+                      <td>{item.optimal}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </section>
 
-        <section className="section lead-section" id="lead-check">
-          <div className="lead-copy">
-            <div className="lead-heading">
-              <p className="kicker">{t.formCta}</p>
-              <h2>{t.formTitle}</h2>
+        <section className="section client-cards" id="cards">
+          <div className="cards-heading">
+            <div>
+              <p className="kicker">Окрема таблиця</p>
+              <h2>Автоматично збережені карти клієнтів</h2>
             </div>
-            <ul className="compact-list">
-              <li>{t.time}</li>
-              <li>{t.proof}</li>
-              <li>{q.clearStep}</li>
-            </ul>
+            <button className="button quiet" type="button" onClick={clearCards} disabled={cards.length === 0}>Очистити таблицю</button>
           </div>
-          <details className="questionnaire-dropdown">
-            <summary>
-              <span className="dropdown-meta">{q.meta}</span>
-              <span className="dropdown-action" aria-hidden="true">
-                <span className="action-open">{q.open}</span>
-                <span className="action-close">{q.close}</span>
-              </span>
-            </summary>
-            <form className="lead-form large-lead-form detailed-check-form" onSubmit={(event) => event.preventDefault()}>
-              <div className="form-group-title full">{q.groups[0]}</div>
-              <FormSelect label={q.selects[0][0]} options={q.selects[0][1]} className="full" />
-              <TextField label={q.textFields[0][0]} placeholder={q.textFields[0][1]} className="full" />
-              <TextField label={q.textFields[1][0]} placeholder={q.textFields[1][1]} className="full" />
-              <div className="form-group-title full">{q.groups[1]}</div>
-              <FormSelect label={q.selects[1][0]} options={q.selects[1][1]} />
-              <FormSelect label={q.selects[2][0]} options={q.selects[2][1]} />
-              <FormSelect label={q.selects[3][0]} options={q.selects[3][1]} className="full" />
-              <FormSelect label={q.selects[4][0]} options={q.selects[4][1]} className="full" />
-              <div className="form-group-title full">{q.groups[2]}</div>
-              <FormSelect label={q.selects[5][0]} options={q.selects[5][1]} />
-              <TextField label={q.textFields[2][0]} placeholder={q.textFields[2][1]} />
-              <TextField label={q.textFields[3][0]} placeholder={q.textFields[3][1]} className="full" />
-              <label className="form-field full">
-                <span>{q.notesLabel}</span>
-                <textarea rows="5" placeholder={q.optional} />
-              </label>
-              <label className="consent full">
-                <input type="checkbox" />
-                <span>{q.consent}</span>
-              </label>
-              <button className="button primary full" type="submit">{q.submit}</button>
-            </form>
-          </details>
-        </section>
-
-        <section className="section compliance">
-          <h2>{t.complianceTitle}</h2>
-          <p>{t.compliance}</p>
-        </section>
-
-        <section className="section faq" id="faq">
-          <p className="kicker">FAQ</p>
-          <h2>{t.faqTitle}</h2>
-          <div className="faq-list">
-            {t.faq.map(([question, answer]) => (
-              <details key={question}>
-                <summary>{question}</summary>
-                <p>{answer}</p>
-              </details>
-            ))}
+          <div className="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Дата</th>
+                  <th>Тип</th>
+                  <th>Клієнт</th>
+                  <th>Контакт</th>
+                  <th>Сума</th>
+                  <th>Платіж</th>
+                  <th>DTI</th>
+                  <th>Бал</th>
+                  <th>Рішення</th>
+                  <th>Ризик</th>
+                  <th>Рекомендація</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cards.length === 0 ? (
+                  <tr>
+                    <td colSpan="11">Почніть вводити дані клієнта. Карта автоматично зʼявиться тут.</td>
+                  </tr>
+                ) : (
+                  cards.map((card) => (
+                    <tr key={card.id}>
+                      <td>{card.createdAt}</td>
+                      <td>{card.mode}</td>
+                      <td>{card.clientName || "Без імені"}</td>
+                      <td>{card.contact || "-"}</td>
+                      <td>{formatMoney(card.loanAmount)}</td>
+                      <td>{formatMoney(card.monthlyPayment)}</td>
+                      <td>{formatPercent(card.totalDti)}</td>
+                      <td>{card.total}</td>
+                      <td>{card.approved ? "Так" : "Ні"}</td>
+                      <td>{card.risk}</td>
+                      <td>{card.offer}; {card.amountAdvice}</td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
           </div>
-        </section>
-
-        <section className="section offer" id="diagnostic">
-          <div>
-            <p className="kicker">Veris Check</p>
-            <h2>{t.diagnosticTitle}</h2>
-            <p>{t.diagnosticText}</p>
-          </div>
-          <div className="price-panel">
-            <div className="price-copy">
-              <span>{t.price}</span>
-              <small>{t.priceTax}</small>
-              <p>{t.priceNote}</p>
-            </div>
-            <a className="button primary" href="#lead-check">{t.diagnosticCta}</a>
-          </div>
-        </section>
-
-        <section className="section checks" id="checks">
-          <p className="kicker">{t.nav[1]}</p>
-          <h2>{t.checksTitle}</h2>
-          <div className="check-grid">
-            {t.checks.map((check) => (
-              <div className="check-item" key={check}>{check}</div>
-            ))}
-          </div>
-        </section>
-
-        <section className="section final-cta">
-          <h2>{t.finalTitle}</h2>
-          <p>{t.slogan}</p>
-          <a className="button primary" href="#lead-check">{t.formCta}</a>
         </section>
       </main>
-
-      <footer className="footer">
-        <img className="footer-logo" src="/veris-full-logo.png" alt="Veris" />
-        <p>{t.footer}</p>
-        <p>{t.contact}</p>
-      </footer>
     </>
   );
 }
 
-function DiagnosticCard({ t }) {
-  return (
-    <aside className="diagnostic-card" aria-label="Diagnostic preview">
-      <span className="sample-watermark" aria-hidden="true">{t.sampleWatermark}</span>
-      <div className="card-top">
-        <span>Veris Check</span>
-        <strong>68</strong>
-      </div>
-      <h3>{t.cardTitle}</h3>
-      <p>{t.cardMeta}</p>
-      <div className="meters">
-        <Meter label={t.meters[0]} value="72" />
-        <Meter label={t.meters[1]} value="42" />
-        <Meter label={t.meters[2]} value="36" />
-      </div>
-      <div className="review-box">
-        {t.checkItems.map((item) => (
-          <span key={item}>{item}</span>
-        ))}
-      </div>
-      <a className="button dark" href="#lead-check">{t.cardCta}</a>
-    </aside>
-  );
+function SectionTitle({ title }) {
+  return <div className="form-group-title full">{title}</div>;
 }
 
-function TextField({ label, placeholder, className = "" }) {
+function TextField({ label, value, onChange, placeholder }) {
   return (
-    <label className={`form-field ${className}`}>
+    <label className="form-field">
       <span>{label}</span>
-      <input type="text" placeholder={placeholder} />
+      <input type="text" value={value} placeholder={placeholder} onChange={(event) => onChange(event.target.value)} />
     </label>
   );
 }
 
-function FormSelect({ label, options, className = "" }) {
+function NumberField({ label, value, onChange, suffix, min }) {
   return (
-    <label className={`form-field ${className}`}>
+    <label className="form-field">
       <span>{label}</span>
-      <select defaultValue="">
-        {options.map((option, index) => (
-          <option key={option} value={index === 0 ? "" : option}>
-            {option}
-          </option>
+      <div className="input-with-suffix">
+        <input type="number" min={min} value={value} onChange={(event) => onChange(event.target.value)} />
+        <small>{suffix}</small>
+      </div>
+    </label>
+  );
+}
+
+function SelectField({ label, value, onChange, options }) {
+  return (
+    <label className="form-field">
+      <span>{label}</span>
+      <select value={value} onChange={(event) => onChange(event.target.value)}>
+        {options.map((option) => (
+          <option key={option} value={option}>{option}</option>
         ))}
       </select>
     </label>
   );
 }
 
-function Meter({ label, value, color }) {
+function Meter({ label, value, display }) {
   return (
     <div className="meter">
       <div className="meter-label">
         <span>{label}</span>
-        <span>{value}%</span>
+        <span>{display}</span>
       </div>
       <div className="track">
-        <span className={color} style={{ width: `${value}%` }} />
+        <span style={{ width: `${Math.max(0, Math.min(value, 100))}%` }} />
       </div>
     </div>
   );
+}
+
+function Rule({ passed, text }) {
+  return <p className={passed ? "rule passed" : "rule failed"}>{text}</p>;
 }
 
 createRoot(document.getElementById("root")).render(<App />);
