@@ -276,25 +276,20 @@ textarea:focus-visible {
 }
 
 .card-top {
-  display: grid;
-  grid-template-columns: 104px minmax(0, 1fr);
+  display: flex;
   align-items: center;
-  gap: 24px;
-  margin-bottom: 22px;
+  justify-content: space-between;
+  margin-bottom: 24px;
 }
 
 .card-top span {
-  order: 2;
   color: var(--veris-red);
   font-size: 13px;
   font-weight: 900;
-  line-height: 1.25;
   text-transform: uppercase;
-  overflow-wrap: anywhere;
 }
 
 .card-top strong {
-  order: 1;
   display: grid;
   place-items: center;
   width: 96px;
@@ -303,8 +298,6 @@ textarea:focus-visible {
   border-right-color: var(--veris-line);
   border-radius: 50%;
   font-size: 31px;
-  line-height: 1;
-  white-space: nowrap;
 }
 
 .approved .card-top strong {
@@ -645,18 +638,6 @@ tbody tr:last-child td {
 
   .lead-form {
     grid-template-columns: 1fr;
-  }
-
-  .card-top {
-    grid-template-columns: 82px minmax(0, 1fr);
-    gap: 14px;
-  }
-
-  .card-top strong {
-    width: 78px;
-    height: 78px;
-    border-width: 10px;
-    font-size: 25px;
   }
 
   .form-field:nth-child(even):not(.full) {
